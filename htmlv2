@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="color-scheme" content="light">
+<title>U.S. Inflation Dashboard — Official Sources</title>
+<style>
+  :root{
+    color-scheme: light;
+    --ink:#161616; --sub:#44403c; --line:#d8d8d4; --bg:#f6f6f4;
+    --accent:#7a2e22; --card:#ffffff; --up:#9c2f22; --down:#1f5c3f; --flat:#6b5416;
+  }
+  html{ background:var(--bg); }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; padding:0; background:var(--bg); color:var(--ink);
+    font-family:"Georgia","Iowan Old Style",serif;
+  }
+  section h2, section h3{ color:var(--ink); }
+  header{
+    padding:32px 24px 20px; border-bottom:2px solid var(--ink); background:#eeede8;
+  }
+  header h1{ margin:0 0 6px; font-size:1.6rem; letter-spacing:0.02em; color:var(--ink); }
+  header p{ margin:0; color:var(--sub); font-family:Helvetica,Arial,sans-serif; font-size:0.85rem; }
+  .asof{ font-family:Helvetica,Arial,sans-serif; font-size:0.78rem; color:var(--ink); font-weight:bold; margin-top:8px; }
+  main{max-width:920px; margin:0 auto; padding:24px;}
+
+  section{margin-bottom:34px;}
+  section h2{ font-size:1.1rem; border-bottom:1px solid var(--line); padding-bottom:6px; margin-bottom:14px; }
+  section h3{ font-size:0.95rem; margin:0 0 8px; }
+  .subnote{ font-family:Helvetica,Arial,sans-serif; font-size:0.78rem; color:var(--sub); margin:-6px 0 14px; }
+
+  /* trend table */
+  .trend-table{ width:100%; border-collapse:collapse; background:var(--card); border:1px solid var(--line); border-radius:6px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,0.08); }
+  .trend-table th, .trend-table td{ padding:10px 12px; text-align:right; font-family:Helvetica,Arial,sans-serif; font-size:0.85rem; border-bottom:1px solid var(--line); color:var(--ink); }
+  .trend-table th:first-child, .trend-table td:first-child{ text-align:left; }
+  .trend-table th{ background:#2b2620; color:#f3f0e8; font-weight:bold; text-transform:uppercase; font-size:0.7rem; letter-spacing:0.05em; }
+  .trend-table td.metric{ font-weight:bold; }
+  .trend-table tr:last-child td{ border-bottom:none; }
+  .trend-table tr:nth-child(even){ background:#f5f4f1; }
+  .trend-table td.arrow-up{ color:var(--up); font-weight:bold; }
+  .trend-table td.arrow-down{ color:var(--down); font-weight:bold; }
+  .trend-table td.arrow-flat{ color:var(--flat); font-weight:bold; }
+  .sparkline{ display:inline-block; vertical-align:middle; margin-left:8px; }
+
+  .stat-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:14px; margin-top:16px; }
+  .stat{ background:var(--card); border:1px solid var(--line); border-radius:6px; padding:16px; box-shadow:0 1px 3px rgba(0,0,0,0.08); }
+  .stat .label{ font-family:Helvetica,Arial,sans-serif; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--sub); margin-bottom:6px; font-weight:bold; }
+  .stat .value{ font-size:1.7rem; font-weight:bold; color:var(--up); }
+  .stat .period{ font-family:Helvetica,Arial,sans-serif; font-size:0.73rem; color:var(--sub); margin-top:4px; }
+
+  .source-card{ background:var(--card); border:1px solid var(--line); border-radius:6px; padding:14px 16px; margin-bottom:10px; box-shadow:0 1px 3px rgba(0,0,0,0.08); }
+  .source-card a{ color:var(--accent); text-decoration:none; font-weight:bold; font-size:1rem; }
+  .source-card a:hover{ text-decoration:underline; }
+  .source-card .desc{ font-family:Helvetica,Arial,sans-serif; font-size:0.82rem; color:var(--sub); margin-top:4px; }
+  .source-card .tag{ display:inline-block; font-family:Helvetica,Arial,sans-serif; font-size:0.68rem; background:#f0efe9; color:var(--ink); padding:2px 8px; border-radius:10px; margin-top:6px; border:1px solid var(--line); }
+
+  .note{ font-family:Helvetica,Arial,sans-serif; font-size:0.8rem; color:var(--ink); background:#ffffff; border:1px solid var(--line); border-radius:6px; padding:12px 14px; line-height:1.55; box-shadow:0 1px 3px rgba(0,0,0,0.06); }
+  .note.warn{ border-left:4px solid var(--accent); }
+
+  footer{ font-family:Helvetica,Arial,sans-serif; font-size:0.72rem; color:var(--sub); text-align:center; padding:20px; border-top:1px solid var(--line); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>U.S. Inflation Dashboard</h1>
+  <p>Figures below trace directly to federal statistical agencies — click through to verify each number at its origin.</p>
+  <div class="asof">Latest official data pulled: July 19, 2026 · includes June CPI (Jul 14), June PPI (Jul 15), weekly jobless claims (Jul 16), and mortgage rates (Jul 16) · Next CPI release: July 2026 data, out August 12, 2026</div>
+</header>
+
+<main>
+
+<section>
+  <h2>3-month trend — headline &amp; core inflation</h2>
+  <p class="subnote">All figures are 12-month (year-over-year) percent change, not seasonally adjusted, from BLS CPI news releases.</p>
+  <table class="trend-table">
+    <tr>
+      <th>Measure</th><th>April 2026</th><th>May 2026</th><th>June 2026</th><th>Trend</th>
+    </tr>
+    <tr>
+      <td class="metric">CPI-U, all items (headline)</td>
+      <td>3.8%</td><td>4.2%</td><td>3.5%</td>
+      <td class="arrow-down">↓ pulled back</td>
+    </tr>
+    <tr>
+      <td class="metric">Core CPI (excl. food &amp; energy)</td>
+      <td>2.8%</td><td>2.9%</td><td>2.6%</td>
+      <td class="arrow-down">↓ eased</td>
+    </tr>
+    <tr>
+      <td class="metric">Food at home (groceries)</td>
+      <td>2.9%</td><td>2.7%</td><td>2.7%</td>
+      <td class="arrow-flat">↔ steady</td>
+    </tr>
+    <tr>
+      <td class="metric">Medical care (CPI)</td>
+      <td>2.5%</td><td>2.6%</td><td>2.0%</td>
+      <td class="arrow-down">↓ cooling</td>
+    </tr>
+  </table>
+  <div class="note" style="margin-top:12px;">
+    June brought the first deceleration in four months, and it was a big one: headline CPI fell from 4.2% to 3.5% — the largest one-month drop in the index itself since April 2020. It's almost entirely an energy story, not a broad cooldown: a ceasefire reopened the Strait of Hormuz, gasoline fell 7.5% for the month (still up 26.7% year-over-year), and energy overall swung from +23.5% to +15.7%. Core CPI also eased, from 2.9% to 2.6%, but Fed Chair Kevin Warsh cautioned today that this one month shouldn't be read as "mission accomplished" — shelter and services inflation remain sticky underneath the energy swing.
+  </div>
+</section>
+
+<section>
+  <h2>Groceries (food at home)</h2>
+  <div class="stat-grid">
+    <div class="stat">
+      <div class="label">Grocery CPI, 12-mo</div>
+      <div class="value">2.7%</div>
+      <div class="period">June 2026 vs. June 2025</div>
+    </div>
+    <div class="stat">
+      <div class="label">Monthly change</div>
+      <div class="value" style="color:var(--flat);">+0.2%</div>
+      <div class="period">May → June 2026</div>
+    </div>
+    <div class="stat">
+      <div class="label">Beef &amp; veal, 12-mo</div>
+      <div class="value" style="color:var(--up);">+12.9%</div>
+      <div class="period">May 2026 vs. May 2025, USDA ERS</div>
+    </div>
+    <div class="stat">
+      <div class="label">Eggs, 12-mo</div>
+      <div class="value" style="color:var(--down);">-35.2%</div>
+      <div class="period">May 2026 vs. May 2025, USDA ERS</div>
+    </div>
+  </div>
+  <div class="note" style="margin-top:12px;">
+    Groceries held basically flat in June: food-at-home prices rose 2.7% year-over-year, the same pace as May, with 4 of the 6 major grocery-store food groups increasing. Food away from home (restaurants) is running hotter, up 3.4% year-over-year. Beef/veal and egg figures are the latest BLS/USDA data available (May); USDA's Economic Research Service — which tracks food prices separately from BLS — forecasts food-at-home prices to rise about 2.8% for full-year 2026, faster than the 20-year historical average.
+  </div>
+  <div class="source-card" style="margin-top:12px;">
+    <a href="https://www.ers.usda.gov/data-products/food-price-outlook/summary-findings" target="_blank">USDA ERS — Food Price Outlook</a>
+    <div class="desc">Category-by-category grocery price forecasts and monthly actuals, separate from and complementary to the BLS CPI.</div>
+    <span class="tag">ers.usda.gov</span>
+  </div>
+</section>
+
+<section>
+  <h2>Housing costs (shelter CPI)</h2>
+  <p class="subnote">12-month percent change, not seasonally adjusted, from BLS CPI news releases.</p>
+  <table class="trend-table">
+    <tr>
+      <th>Measure</th><th>April 2026</th><th>May 2026</th><th>June 2026</th><th>Trend</th>
+    </tr>
+    <tr>
+      <td class="metric">Shelter (overall)</td>
+      <td>3.3%</td><td>3.4%</td><td>3.3%</td>
+      <td class="arrow-flat">↔ holding near 3.3%</td>
+    </tr>
+    <tr>
+      <td class="metric">Rent of primary residence</td>
+      <td>—</td><td>up y/y</td><td>up y/y</td>
+      <td class="arrow-up">↑ rising</td>
+    </tr>
+    <tr>
+      <td class="metric">Owners' equivalent rent (OER)</td>
+      <td>—</td><td>up y/y</td><td>up y/y</td>
+      <td class="arrow-up">↑ rising</td>
+    </tr>
+  </table>
+  <div class="note" style="margin-top:12px;">
+    Shelter is the single largest component of the CPI basket (about a third of the index), so it barely budged even while headline CPI swung sharply on energy. That's exactly why the Fed watches shelter closely: unlike gasoline, it doesn't move with a ceasefire. Rent and owners' equivalent rent (what a homeowner would pay to rent their own home) are the two subcomponents BLS uses to build the shelter index; exact monthly percentages for those two are in BLS Table 7, linked below.
+  </div>
+</section>
+
+<section>
+  <h2>Mortgage rates</h2>
+  <div class="stat-grid">
+    <div class="stat">
+      <div class="label">30-year fixed rate, current</div>
+      <div class="value" style="color:var(--up);">6.55%</div>
+      <div class="period">week of July 16, 2026 (Freddie Mac)</div>
+    </div>
+    <div class="stat">
+      <div class="label">30-year fixed, one year ago</div>
+      <div class="value" style="color:var(--down);">6.75%</div>
+      <div class="period">week of July 2025</div>
+    </div>
+    <div class="stat">
+      <div class="label">15-year fixed rate, current</div>
+      <div class="value" style="color:var(--up);">5.93%</div>
+      <div class="period">week of July 16, 2026</div>
+    </div>
+  </div>
+  <div class="note" style="margin-top:12px;">
+    Mortgage rates are a market price, not a government-set inflation index, but Freddie Mac's weekly survey is the standard benchmark and is often paired with CPI shelter data to gauge housing affordability. Rates ticked up 6 basis points this week to their highest level since August 2025, even as inventory keeps rising and Freddie Mac's chief economist described homebuying conditions as "modestly improving." Freddie Mac's next weekly update is due July 23, 2026.
+  </div>
+  <div class="source-card" style="margin-top:12px;">
+    <a href="https://www.freddiemac.com/pmms" target="_blank">Freddie Mac — Primary Mortgage Market Survey</a>
+    <div class="desc">Weekly average 30-year and 15-year fixed mortgage rates, updated every Thursday.</div>
+    <span class="tag">freddiemac.com</span>
+  </div>
+</section>
+
+<section>
+  <h2>Energy &amp; fuel costs</h2>
+  <p class="subnote">12-month percent change, not seasonally adjusted, from BLS CPI news releases.</p>
+  <table class="trend-table">
+    <tr>
+      <th>Measure</th><th>April 2026</th><th>May 2026</th><th>June 2026</th><th>Trend</th>
+    </tr>
+    <tr>
+      <td class="metric">Energy (overall)</td>
+      <td>17.9%</td><td>23.5%</td><td>15.7%</td>
+      <td class="arrow-down">↓ reversed sharply</td>
+    </tr>
+    <tr>
+      <td class="metric">Gasoline</td>
+      <td>28.4%</td><td>40.5%</td><td>26.7%</td>
+      <td class="arrow-down">↓ reversed sharply</td>
+    </tr>
+    <tr>
+      <td class="metric">Electricity</td>
+      <td>—</td><td>5.9%</td><td>—</td>
+      <td class="arrow-flat">↔ still elevated</td>
+    </tr>
+    <tr>
+      <td class="metric">Natural gas</td>
+      <td>—</td><td>3.0%</td><td>—</td>
+      <td class="arrow-flat">↔ moderate</td>
+    </tr>
+  </table>
+  <div class="note warn" style="margin-top:12px;">
+    Energy swung hard in both directions this spring and early summer. The Iran conflict pushed gasoline up as high as 40.5% year-over-year by May; a ceasefire in late June reopened the Strait of Hormuz and reversed most of that spike — gasoline fell 7.5% for the month in June alone, cutting the annual rate to 26.7%. Energy overall dropped from +23.5% to +15.7% in a single month, and the entire monthly CPI decline in June was driven by this reversal. Electricity/natural gas figures for June weren't separately called out in today's headline release; the full BLS Table 7 (linked below) has the exact figures.
+  </div>
+</section>
+
+<section>
+  <h2>Health insurance &amp; medical care</h2>
+  <div class="stat-grid">
+    <div class="stat">
+      <div class="label">Medical care CPI, 12-mo</div>
+      <div class="value" style="color:var(--down);">2.0%</div>
+      <div class="period">June 2026, all urban consumers</div>
+    </div>
+    <div class="stat">
+      <div class="label">Medical care services, 12-mo</div>
+      <div class="value">3.6%</div>
+      <div class="period">May 2026 (latest subcomponent detail)</div>
+    </div>
+    <div class="stat">
+      <div class="label">Medical care commodities, 12-mo</div>
+      <div class="value" style="color:var(--down);">-1.8%</div>
+      <div class="period">May 2026 (mostly Rx drugs)</div>
+    </div>
+  </div>
+  <div class="note" style="margin-top:12px;">
+    Medical care cooled notably in June, down to 2.0% year-over-year from 2.6% in May — the index actually fell on the month, alongside apparel, communication, and used cars. That's now the lowest medical care reading of 2026 so far.
+  </div>
+  <div class="note warn" style="margin-top:12px;">
+    <strong>Important methodology note:</strong> BLS does not price health insurance policies directly. It uses an "indirect method" — measuring insurers' retained earnings (premiums minus benefits paid) rather than premium prices themselves — because it can't reliably control for changes in plan quality across insurers. There is no standalone monthly "health insurance inflation rate" published the way there is for, say, groceries or gasoline. Health insurance is folded into the broader "medical care services" category above.
+  </div>
+  <div class="source-card" style="margin-top:12px;">
+    <a href="https://www.bls.gov/cpi/factsheets/medical-care.htm" target="_blank">BLS — How CPI Measures Medical Care &amp; Health Insurance</a>
+    <div class="desc">Explains the indirect pricing method for health insurance and why Medicaid isn't included in the CPI at all.</div>
+    <span class="tag">bls.gov</span>
+  </div>
+</section>
+
+<section>
+  <h2>Medicare</h2>
+  <div class="stat-grid">
+    <div class="stat">
+      <div class="label">Part B standard premium, 2026</div>
+      <div class="value">$202.90/mo</div>
+      <div class="period">up 9.7% from $185.00 in 2025</div>
+    </div>
+    <div class="stat">
+      <div class="label">Part A inpatient deductible, 2026</div>
+      <div class="value">$1,736</div>
+      <div class="period">up from $1,676 in 2025</div>
+    </div>
+    <div class="stat">
+      <div class="label">National Medicare spending, 2024</div>
+      <div class="value">+7.8%</div>
+      <div class="period">grew to $1.12 trillion (CMS NHE)</div>
+    </div>
+  </div>
+  <div class="note" style="margin-top:12px;">
+    CMS attributes the 2026 Part B premium jump mainly to projected price increases and higher utilization. CMS says the increase would have been larger if it hadn't acted to curb spending on "skin substitutes," a billing category flagged for fraud risk. This is a program-cost figure (what CMS spends and charges), not a CPI inflation rate.
+  </div>
+  <div class="source-card" style="margin-top:12px;">
+    <a href="https://www.cms.gov/newsroom/fact-sheets/2026-medicare-parts-b-premiums-deductibles" target="_blank">CMS — 2026 Medicare Parts A &amp; B Premiums and Deductibles</a>
+    <div class="desc">Official fact sheet with every 2026 premium, deductible, and coinsurance figure, and the reasoning behind them.</div>
+    <span class="tag">cms.gov</span>
+  </div>
+</section>
+
+<section>
+  <h2>Medicaid</h2>
+  <div class="stat-grid">
+    <div class="stat">
+      <div class="label">National Medicaid spending, 2024</div>
+      <div class="value">+6.6%</div>
+      <div class="period">grew to $931.7 billion (CMS NHE)</div>
+    </div>
+    <div class="stat">
+      <div class="label">Spending per enrollee, 2024</div>
+      <div class="value">+16.6%</div>
+      <div class="period">largest of any payer type</div>
+    </div>
+    <div class="stat">
+      <div class="label">Share of national health spending</div>
+      <div class="value">18%</div>
+      <div class="period">2024</div>
+    </div>
+  </div>
+  <div class="note warn" style="margin-top:12px;">
+    <strong>Medicaid is not part of the CPI.</strong> BLS explicitly excludes Medicaid from CPI medical-care pricing because enrollees generally make no out-of-pocket payment to participate — there's no consumer "price" to track. What's shown here instead is CMS's National Health Expenditure (NHE) data, which measures total program spending growth, not a price index. Spending growth reflects both prices and how much care people used, so it isn't directly comparable to a CPI percentage.
+  </div>
+  <div class="source-card" style="margin-top:12px;">
+    <a href="https://www.cms.gov/data-research/statistics-trends-and-reports/national-health-expenditure-data/nhe-fact-sheet" target="_blank">CMS — National Health Expenditure Fact Sheet</a>
+    <div class="desc">Official annual spending totals and growth rates by payer (Medicare, Medicaid, private insurance, out-of-pocket).</div>
+    <span class="tag">cms.gov</span>
+  </div>
+</section>
+
+<section>
+  <h2>Unemployment</h2>
+  <p class="subnote">Seasonally adjusted U-3 unemployment rate, from BLS Employment Situation reports.</p>
+  <table class="trend-table">
+    <tr>
+      <th>Measure</th><th>April 2026</th><th>May 2026</th><th>June 2026</th><th>Trend</th>
+    </tr>
+    <tr>
+      <td class="metric">Unemployment rate (U-3)</td>
+      <td>4.3%</td><td>4.3%</td><td>4.2%</td>
+      <td class="arrow-down">↓ slight improvement</td>
+    </tr>
+    <tr>
+      <td class="metric">Labor force participation</td>
+      <td>—</td><td>—</td><td>61.5%</td>
+      <td class="arrow-down">↓ falling</td>
+    </tr>
+    <tr>
+      <td class="metric">Nonfarm payroll growth</td>
+      <td>+148K</td><td>+129K</td><td>+57K</td>
+      <td class="arrow-down">↓ slowing sharply</td>
+    </tr>
+  </table>
+  <div class="stat-grid" style="margin-top:14px;">
+    <div class="stat">
+      <div class="label">Initial jobless claims, weekly</div>
+      <div class="value" style="color:var(--down);">208,000</div>
+      <div class="period">week ending July 11, 2026 (DOL)</div>
+    </div>
+    <div class="stat">
+      <div class="label">Change from prior week</div>
+      <div class="value" style="color:var(--down);">-8,000</div>
+      <div class="period">lowest in over two months</div>
+    </div>
+  </div>
+  <div class="note warn" style="margin-top:12px;">
+    The June dip to 4.2% looks like good news, but BLS data show it was driven mainly by 720,000 people leaving the labor force — not by stronger hiring. Job growth itself slowed sharply, from 148,000 in April to just 57,000 in June, and April/May were revised down by a combined 74,000. Labor force participation fell to 61.5%, the lowest since March 2021. The one bright spot in the most current data: weekly jobless claims fell to 208,000 for the week ending July 11 — well below forecasts and the lowest reading in over two months — suggesting layoffs remain low even as hiring has cooled.
+  </div>
+  <div class="source-card" style="margin-top:12px;">
+    <a href="https://www.bls.gov/news.release/empsit.htm" target="_blank">BLS — The Employment Situation</a>
+    <div class="desc">The monthly jobs report: unemployment rate, payroll growth, participation rate, and demographic detail.</div>
+    <span class="tag">bls.gov</span>
+  </div>
+  <div class="source-card" style="margin-top:12px;">
+    <a href="https://oui.doleta.gov/unemploy/claims.asp" target="_blank">U.S. Department of Labor — Weekly Claims Data</a>
+    <div class="desc">Initial and continuing unemployment insurance claims, updated every Thursday — the earliest weekly signal on layoffs.</div>
+    <span class="tag">dol.gov</span>
+  </div>
+</section>
+
+<section>
+  <h2>Producer prices (PPI) — a leading indicator</h2>
+  <p class="subnote">Measures prices businesses receive for goods/services before they reach consumers — often a preview of future CPI.</p>
+  <div class="stat-grid">
+    <div class="stat">
+      <div class="label">PPI, final demand, 12-mo</div>
+      <div class="value" style="color:var(--down);">5.5%</div>
+      <div class="period">June 2026, down from 6.5% peak in May</div>
+    </div>
+    <div class="stat">
+      <div class="label">PPI, monthly change</div>
+      <div class="value" style="color:var(--down);">-0.3%</div>
+      <div class="period">largest drop since a 0.6% rise in May</div>
+    </div>
+    <div class="stat">
+      <div class="label">PPI energy, monthly</div>
+      <div class="value" style="color:var(--down);">-6.4%</div>
+      <div class="period">gasoline at wholesale: -12.0%</div>
+    </div>
+  </div>
+  <div class="note" style="margin-top:12px;">
+    PPI tends to lead CPI by a month or two, since it captures price changes before they're passed on to consumers. June's sharp pullback — echoing the same Strait of Hormuz ceasefire that pulled down consumer gasoline prices — suggests the wholesale pipeline pressure that's been pushing inflation higher may be easing, which is a modest positive sign for July and August CPI. Goods prices fell 1.4%, the largest drop since July 2022, though services PPI still rose 0.2%.
+  </div>
+  <div class="source-card" style="margin-top:12px;">
+    <a href="https://www.bls.gov/ppi/" target="_blank">BLS — Producer Price Index (PPI)</a>
+    <div class="desc">Monthly wholesale/producer-level price data, often a leading indicator for future consumer inflation.</div>
+    <span class="tag">bls.gov</span>
+  </div>
+</section>
+
+<section>
+  <h2>Uninsured rate</h2>
+  <div class="stat-grid">
+    <div class="stat">
+      <div class="label">Uninsured, all ages</div>
+      <div class="value" style="color:var(--up);">8.3%</div>
+      <div class="period">2025, ~28 million people (CDC)</div>
+    </div>
+    <div class="stat">
+      <div class="label">Uninsured, ages 18-64</div>
+      <div class="value" style="color:var(--up);">11.6%</div>
+      <div class="period">2025, unchanged from 2024</div>
+    </div>
+    <div class="stat">
+      <div class="label">Uninsured, 2024 (all ages)</div>
+      <div class="value" style="color:var(--flat);">8.2%</div>
+      <div class="period">for comparison</div>
+    </div>
+  </div>
+  <div class="note warn" style="margin-top:12px;">
+    The uninsured rate was essentially flat in 2025, but CDC and CBO both expect it to rise going forward. Enhanced ACA marketplace subsidies expired at the end of 2025, and Medicaid eligibility changes from last year's federal tax and spending law are set to phase in — the Congressional Budget Office projects roughly 10 million more uninsured Americans over the next decade as a result.
+  </div>
+  <div class="source-card" style="margin-top:12px;">
+    <a href="https://www.cdc.gov/nchs/fastats/health-insurance.htm" target="_blank">CDC/NCHS — Health Insurance Coverage (NHIS Early Release)</a>
+    <div class="desc">The most current federal uninsured-rate estimates, released ahead of the Census Bureau's annual American Community Survey figures.</div>
+    <span class="tag">cdc.gov</span>
+  </div>
+</section>
+
+<section>
+  <h2>Primary official sources</h2>
+  <div class="source-card">
+    <a href="https://www.bls.gov/cpi/" target="_blank">BLS — Consumer Price Index (CPI)</a>
+    <div class="desc">The headline inflation measure. Monthly news release, historical tables, RSS feed, and local/regional breakdowns.</div>
+    <span class="tag">bls.gov</span>
+  </div>
+  <div class="source-card">
+    <a href="https://www.bls.gov/news.release/cpi.htm" target="_blank">BLS — Latest CPI News Release</a>
+    <div class="desc">The current full release, updated monthly. This is the primary document journalists and the Fed cite.</div>
+    <span class="tag">bls.gov</span>
+  </div>
+  <div class="source-card">
+    <a href="https://www.bea.gov/data/personal-consumption-expenditures-price-index" target="_blank">BEA — PCE Price Index</a>
+    <div class="desc">The Federal Reserve's preferred inflation gauge, released monthly in the Personal Income and Outlays report.</div>
+    <span class="tag">bea.gov</span>
+  </div>
+  <div class="source-card">
+    <a href="https://fred.stlouisfed.org/series/CPIAUCSL" target="_blank">FRED — CPI, All Urban Consumers (historical series)</a>
+    <div class="desc">St. Louis Fed database. Interactive charts, downloadable data, and full history back to 1947.</div>
+    <span class="tag">fred.stlouisfed.org</span>
+  </div>
+  <div class="source-card">
+    <a href="https://www.cms.gov/data-research/statistics-trends-and-reports/national-health-expenditure-data" target="_blank">CMS — National Health Expenditure Data</a>
+    <div class="desc">Official Medicare/Medicaid/private insurance spending by category, payer, and year, plus 10-year projections.</div>
+    <span class="tag">cms.gov</span>
+  </div>
+  <div class="source-card">
+    <a href="https://www.federalreserve.gov/monetarypolicy.htm" target="_blank">Federal Reserve — Monetary Policy</a>
+    <div class="desc">FOMC statements, projections (dot plot), and the Fed's own read on inflation trends and policy response.</div>
+    <span class="tag">federalreserve.gov</span>
+  </div>
+  <div class="source-card">
+    <a href="https://www.bls.gov/news.release/cpi.t07.htm" target="_blank">BLS — CPI 12-Month Analysis Table (Table 7)</a>
+    <div class="desc">Every CPI subcategory's 12-month percent change in one table, including shelter, rent, and OER detail.</div>
+    <span class="tag">bls.gov</span>
+  </div>
+</section>
+
+<section>
+  <h2>How to verify these numbers yourself</h2>
+  <div class="note">
+    For CPI figures: open the BLS CPI News Release for the relevant month and match the "12 months ending [month]" percentage for each category. For Medicare/Medicaid: open the CMS NHE Fact Sheet or the Medicare Parts A &amp; B Premiums fact sheet and match the dollar figures and growth rates directly. FRED lets you plot any of these series yourself and download the raw CSV for your own analysis.
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Built from live BLS/BEA/CMS/USDA/CDC/Freddie Mac/DOL data, refreshed July 19, 2026. Figures are subject to revision by the issuing agency.
+</footer>
+
+</body>
+</html>
