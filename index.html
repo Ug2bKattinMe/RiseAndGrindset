@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
 <title>U.S. Inflation Dashboard — Official Sources</title>
 <style>
@@ -10,31 +11,40 @@
     --ink:#161616; --sub:#44403c; --line:#d8d8d4; --bg:#f6f6f4;
     --accent:#7a2e22; --card:#ffffff; --up:#9c2f22; --down:#1f5c3f; --flat:#6b5416;
   }
-  html{ background:var(--bg); }
+  html{ background:var(--bg); font-size:17px; }
   *{box-sizing:border-box;}
   body{
     margin:0; padding:0; background:var(--bg); color:var(--ink);
     font-family:"Georgia","Iowan Old Style",serif;
+    line-height:1.5;
   }
   section h2, section h3{ color:var(--ink); }
   header{
-    padding:32px 24px 20px; border-bottom:2px solid var(--ink); background:#eeede8;
+    padding:28px 20px 18px; border-bottom:2px solid var(--ink); background:#eeede8;
   }
-  header h1{ margin:0 0 6px; font-size:1.6rem; letter-spacing:0.02em; color:var(--ink); }
-  header p{ margin:0; color:var(--sub); font-family:Helvetica,Arial,sans-serif; font-size:0.85rem; }
-  .asof{ font-family:Helvetica,Arial,sans-serif; font-size:0.78rem; color:var(--ink); font-weight:bold; margin-top:8px; }
-  main{max-width:920px; margin:0 auto; padding:24px;}
+  header h1{ margin:0 0 8px; font-size:1.7rem; line-height:1.25; letter-spacing:0.01em; color:var(--ink); }
+  header p{ margin:0; color:var(--sub); font-family:Helvetica,Arial,sans-serif; font-size:0.95rem; line-height:1.5; }
+  .asof{ font-family:Helvetica,Arial,sans-serif; font-size:0.88rem; color:var(--ink); font-weight:bold; margin-top:10px; line-height:1.5; }
+  main{max-width:920px; margin:0 auto; padding:20px 16px;}
 
-  section{margin-bottom:34px;}
-  section h2{ font-size:1.1rem; border-bottom:1px solid var(--line); padding-bottom:6px; margin-bottom:14px; }
-  section h3{ font-size:0.95rem; margin:0 0 8px; }
-  .subnote{ font-family:Helvetica,Arial,sans-serif; font-size:0.78rem; color:var(--sub); margin:-6px 0 14px; }
+  section{margin-bottom:32px;}
+  section h2{ font-size:1.25rem; line-height:1.3; border-bottom:1px solid var(--line); padding-bottom:8px; margin-bottom:14px; }
+  section h3{ font-size:1.05rem; margin:0 0 8px; }
+  .subnote{ font-family:Helvetica,Arial,sans-serif; font-size:0.88rem; color:var(--sub); margin:-4px 0 14px; line-height:1.5; }
 
   /* trend table */
-  .trend-table{ width:100%; border-collapse:collapse; background:var(--card); border:1px solid var(--line); border-radius:6px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,0.08); }
-  .trend-table th, .trend-table td{ padding:10px 12px; text-align:right; font-family:Helvetica,Arial,sans-serif; font-size:0.85rem; border-bottom:1px solid var(--line); color:var(--ink); }
-  .trend-table th:first-child, .trend-table td:first-child{ text-align:left; }
-  .trend-table th{ background:#2b2620; color:#f3f0e8; font-weight:bold; text-transform:uppercase; font-size:0.7rem; letter-spacing:0.05em; }
+  .table-wrap{ position:relative; }
+  .scroll-hint{ display:none; align-items:center; gap:6px; font-family:Helvetica,Arial,sans-serif; font-size:0.8rem; color:var(--sub); font-weight:bold; margin-bottom:6px; }
+  .table-scroll{ position:relative; width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; border-radius:6px; box-shadow:0 1px 3px rgba(0,0,0,0.08); }
+  .table-scroll::after{
+    content:""; position:absolute; top:0; right:0; bottom:0; width:28px;
+    background:linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.10));
+    pointer-events:none; border-radius:0 6px 6px 0;
+  }
+  .trend-table{ width:100%; min-width:520px; border-collapse:collapse; background:var(--card); border:1px solid var(--line); border-radius:6px; overflow:hidden; }
+  .trend-table th, .trend-table td{ padding:11px 12px; text-align:right; font-family:Helvetica,Arial,sans-serif; font-size:0.92rem; border-bottom:1px solid var(--line); color:var(--ink); white-space:nowrap; }
+  .trend-table th:first-child, .trend-table td:first-child{ text-align:left; white-space:normal; }
+  .trend-table th{ background:#2b2620; color:#f3f0e8; font-weight:bold; text-transform:uppercase; font-size:0.75rem; letter-spacing:0.04em; }
   .trend-table td.metric{ font-weight:bold; }
   .trend-table tr:last-child td{ border-bottom:none; }
   .trend-table tr:nth-child(even){ background:#f5f4f1; }
@@ -43,33 +53,192 @@
   .trend-table td.arrow-flat{ color:var(--flat); font-weight:bold; }
   .sparkline{ display:inline-block; vertical-align:middle; margin-left:8px; }
 
-  .stat-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:14px; margin-top:16px; }
+  .stat-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin-top:16px; }
   .stat{ background:var(--card); border:1px solid var(--line); border-radius:6px; padding:16px; box-shadow:0 1px 3px rgba(0,0,0,0.08); }
-  .stat .label{ font-family:Helvetica,Arial,sans-serif; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--sub); margin-bottom:6px; font-weight:bold; }
-  .stat .value{ font-size:1.7rem; font-weight:bold; color:var(--up); }
-  .stat .period{ font-family:Helvetica,Arial,sans-serif; font-size:0.73rem; color:var(--sub); margin-top:4px; }
+  .stat .label{ font-family:Helvetica,Arial,sans-serif; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--sub); margin-bottom:6px; font-weight:bold; line-height:1.35; }
+  .stat .value{ font-size:1.8rem; font-weight:bold; color:var(--up); line-height:1.2; }
+  .stat .period{ font-family:Helvetica,Arial,sans-serif; font-size:0.82rem; color:var(--sub); margin-top:5px; line-height:1.4; }
 
   .source-card{ background:var(--card); border:1px solid var(--line); border-radius:6px; padding:14px 16px; margin-bottom:10px; box-shadow:0 1px 3px rgba(0,0,0,0.08); }
-  .source-card a{ color:var(--accent); text-decoration:none; font-weight:bold; font-size:1rem; }
+  .source-card a{ color:var(--accent); text-decoration:none; font-weight:bold; font-size:1.05rem; line-height:1.4; }
   .source-card a:hover{ text-decoration:underline; }
-  .source-card .desc{ font-family:Helvetica,Arial,sans-serif; font-size:0.82rem; color:var(--sub); margin-top:4px; }
-  .source-card .tag{ display:inline-block; font-family:Helvetica,Arial,sans-serif; font-size:0.68rem; background:#f0efe9; color:var(--ink); padding:2px 8px; border-radius:10px; margin-top:6px; border:1px solid var(--line); }
+  .source-card .desc{ font-family:Helvetica,Arial,sans-serif; font-size:0.9rem; color:var(--sub); margin-top:5px; line-height:1.45; }
+  .source-card .tag{ display:inline-block; font-family:Helvetica,Arial,sans-serif; font-size:0.75rem; background:#f0efe9; color:var(--ink); padding:3px 9px; border-radius:10px; margin-top:7px; border:1px solid var(--line); }
 
-  .note{ font-family:Helvetica,Arial,sans-serif; font-size:0.8rem; color:var(--ink); background:#ffffff; border:1px solid var(--line); border-radius:6px; padding:12px 14px; line-height:1.55; box-shadow:0 1px 3px rgba(0,0,0,0.06); }
+  .note{ font-family:Helvetica,Arial,sans-serif; font-size:0.9rem; color:var(--ink); background:#ffffff; border:1px solid var(--line); border-radius:6px; padding:13px 15px; line-height:1.55; box-shadow:0 1px 3px rgba(0,0,0,0.06); }
   .note.warn{ border-left:4px solid var(--accent); }
 
-  footer{ font-family:Helvetica,Arial,sans-serif; font-size:0.72rem; color:var(--sub); text-align:center; padding:20px; border-top:1px solid var(--line); }
+  .impact{
+    font-family:Helvetica,Arial,sans-serif; font-size:0.88rem; color:var(--ink);
+    background:#f3ede6; border:1px solid var(--line); border-left:4px solid var(--flat);
+    border-radius:6px; padding:12px 15px; line-height:1.55; margin-top:12px;
+  }
+  .impact .impact-label{
+    display:block; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.06em;
+    font-weight:bold; color:var(--flat); margin-bottom:4px;
+  }
+
+  .summary-box{
+    background:var(--card); border:1px solid var(--line); border-radius:6px;
+    padding:16px 18px; margin-bottom:10px; box-shadow:0 1px 3px rgba(0,0,0,0.08);
+  }
+  .summary-box .sb-top{ display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:6px; }
+  .summary-box .sb-metric{ font-family:"Georgia",serif; font-weight:bold; font-size:1.05rem; }
+  .summary-box .sb-value{ font-family:"Georgia",serif; font-weight:bold; font-size:1.05rem; }
+  .summary-box .sb-value.up{ color:var(--up); }
+  .summary-box .sb-value.down{ color:var(--down); }
+  .summary-box .sb-value.flat{ color:var(--flat); }
+  .summary-box .sb-impact{ font-family:Helvetica,Arial,sans-serif; font-size:0.85rem; color:var(--sub); line-height:1.5; }
+
+  footer{ font-family:Helvetica,Arial,sans-serif; font-size:0.8rem; color:var(--sub); text-align:center; padding:20px; border-top:1px solid var(--line); line-height:1.5; }
+
+  /* Accessibility: skip link */
+  .skip-link{
+    position:absolute; left:-999px; top:0; background:var(--ink); color:#fff;
+    padding:10px 16px; z-index:200; font-family:Helvetica,Arial,sans-serif; font-size:0.9rem;
+    border-radius:0 0 6px 0; text-decoration:none;
+  }
+  .skip-link:focus{ left:0; }
+
+  /* Accessibility: visible focus for all interactive elements */
+  a:focus-visible, button:focus-visible{
+    outline:3px solid #1a5fb4; outline-offset:2px;
+  }
+
+  /* Accessibility: read-aloud toolbar */
+  #a11y-toolbar{
+    position:sticky; top:0; z-index:100; background:var(--ink); color:#fff;
+    font-family:Helvetica,Arial,sans-serif; padding:10px 16px;
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    border-bottom:2px solid var(--accent);
+  }
+  #a11y-toolbar .a11y-label{ font-size:0.85rem; font-weight:bold; margin-right:2px; white-space:nowrap; }
+  #a11y-toolbar button{
+    background:#2b2620; color:#fff; border:1px solid #55504a; border-radius:5px;
+    padding:8px 12px; font-size:0.85rem; font-family:Helvetica,Arial,sans-serif;
+    cursor:pointer; display:inline-flex; align-items:center; gap:6px;
+  }
+  #a11y-toolbar button:hover{ background:#3a3530; }
+  #a11y-toolbar button:disabled{ opacity:0.45; cursor:not-allowed; }
+  #a11y-toolbar select{
+    background:#2b2620; color:#fff; border:1px solid #55504a; border-radius:5px;
+    padding:7px 8px; font-size:0.85rem; font-family:Helvetica,Arial,sans-serif;
+  }
+  #a11y-status{
+    font-size:0.8rem; color:#d8d4c8; margin-left:auto; font-style:italic;
+  }
+  #a11y-toolbar.unsupported #a11y-status{ color:#e2b8a8; font-style:normal; }
+
+  /* Per-section read buttons */
+  .section-read-btn{
+    display:inline-flex; align-items:center; gap:6px; background:var(--card);
+    border:1px solid var(--line); border-radius:5px; padding:6px 11px;
+    font-family:Helvetica,Arial,sans-serif; font-size:0.78rem; color:var(--accent);
+    font-weight:bold; cursor:pointer; margin-bottom:14px;
+  }
+  .section-read-btn:hover{ background:#f0ece3; }
+  .section-read-btn.reading{ background:var(--accent); color:#fff; border-color:var(--accent); }
+  section.is-reading{ outline:3px solid var(--accent); outline-offset:6px; border-radius:6px; }
+
+  @media (max-width: 620px){
+    #a11y-toolbar{ padding:10px 12px; }
+    #a11y-status{ width:100%; margin-left:0; order:10; }
+  }
+
+  @media (max-width: 620px){
+    .scroll-hint{ display:flex; }
+  }
+
+  @media (max-width: 480px){
+    html{ font-size:18px; }
+    header{ padding:24px 16px 16px; }
+    header h1{ font-size:1.5rem; }
+    main{ padding:16px 12px; }
+    section h2{ font-size:1.15rem; }
+    .stat-grid{ grid-template-columns:1fr 1fr; gap:10px; }
+    .stat{ padding:13px; }
+    .stat .value{ font-size:1.5rem; }
+    .trend-table th, .trend-table td{ padding:10px; font-size:0.88rem; }
+    .scroll-hint{ display:flex; }
+  }
 </style>
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<div id="a11y-toolbar" role="region" aria-label="Read-aloud accessibility controls">
+  <span class="a11y-label">🔊 Listen:</span>
+  <button id="a11y-play" type="button" aria-label="Read entire dashboard aloud">▶ Read entire page</button>
+  <button id="a11y-pause" type="button" aria-label="Pause reading" disabled>⏸ Pause</button>
+  <button id="a11y-stop" type="button" aria-label="Stop reading" disabled>⏹ Stop</button>
+  <label for="a11y-rate" class="a11y-label" style="margin-left:4px;">Speed</label>
+  <select id="a11y-rate" aria-label="Reading speed">
+    <option value="0.8">Slow</option>
+    <option value="1" selected>Normal</option>
+    <option value="1.25">Fast</option>
+    <option value="1.5">Fastest</option>
+  </select>
+  <span id="a11y-status" role="status" aria-live="polite">Ready.</span>
+</div>
+
 <header>
   <h1>U.S. Inflation Dashboard</h1>
   <p>Figures below trace directly to federal statistical agencies — click through to verify each number at its origin.</p>
-  <div class="asof">Latest official data pulled: August 16, 2026 · includes July CPI (Aug 12), July jobs report (Aug 7), July PPI (Aug 13), FOMC decision (Jul 29), and mortgage rates (Aug 13) · Next CPI release: August 2026 data, out September 11, 2026</div>
+  <div class="asof">Latest official data pulled: August 25, 2026 · adds Case-Shiller home prices (Aug 25), JOLTS (Aug 4), and CBO's fiscal/economic outlook to the existing BLS/BEA/CMS/USDA/CDC/Freddie Mac/Fed data · Next CPI release: August 2026 data, out September 11, 2026</div>
 </header>
 
-<main>
+<main id="main-content">
+
+<section>
+  <h2>Summary — where things stand right now</h2>
+  <p class="subnote">The dashboard's ~20 metrics, boiled down. Every number links to its full section below for sourcing and detail.</p>
+
+  <div class="summary-box">
+    <div class="sb-top"><span class="sb-metric">Headline inflation (CPI)</span><span class="sb-value down">3.4%</span></div>
+    <div class="sb-impact">Cooling for 3 straight months, but real wages are still falling — prices are rising slower, not actually dropping. Your dollar buys a bit less than it did a year ago, just less badly than in spring.</div>
+  </div>
+  <div class="summary-box">
+    <div class="sb-top"><span class="sb-metric">Groceries</span><span class="sb-value flat">3.0%</span></div>
+    <div class="sb-impact">Food costs are outpacing wage growth for many households. Combined with 4.5M+ people losing SNAP benefits, grocery budgets are under real, compounding pressure right now.</div>
+  </div>
+  <div class="summary-box">
+    <div class="sb-top"><span class="sb-metric">Housing (rent/shelter)</span><span class="sb-value up">3.2%</span></div>
+    <div class="sb-impact">Still the single biggest driver of your cost of living, even as it slowly cools. If you're renting or plan to buy soon, this is the number that affects you most directly, more than any other on this page.</div>
+  </div>
+  <div class="summary-box">
+    <div class="sb-top"><span class="sb-metric">Mortgage rate (30-yr)</span><span class="sb-value up">6.67%</span></div>
+    <div class="sb-impact">Homebuying got modestly more expensive again this month. On a $400,000 loan, the difference between 6.5% and 6.7% is roughly $50/month.</div>
+  </div>
+  <div class="summary-box">
+    <div class="sb-top"><span class="sb-metric">Gasoline</span><span class="sb-value down">24.6%</span></div>
+    <div class="sb-impact">Still up sharply year-over-year from the Iran conflict, but easing fast. Expect this number to keep shrinking through fall — it's the main reason headline inflation is falling right now.</div>
+  </div>
+  <div class="summary-box">
+    <div class="sb-top"><span class="sb-metric">Unemployment</span><span class="sb-value down">4.1%</span></div>
+    <div class="sb-impact">Looks good, isn't really. The economy lost jobs in July; the rate only fell because people stopped looking for work. If you're job-hunting, this is a harder market than the headline number suggests.</div>
+  </div>
+  <div class="summary-box">
+    <div class="sb-top"><span class="sb-metric">Real wage growth</span><span class="sb-value up">-0.2 pts</span></div>
+    <div class="sb-impact">Paychecks are growing slower than prices for a 4th straight month. This is arguably the single most important number for household budgets on this whole page.</div>
+  </div>
+  <div class="summary-box">
+    <div class="sb-top"><span class="sb-metric">Home prices (sale value)</span><span class="sb-value flat">1.5%</span></div>
+    <div class="sb-impact">If you own a home, its real (inflation-adjusted) value has fallen for 13 straight months, even though the price tag looks higher. Don't confuse rising rent with rising home equity — they're moving differently.</div>
+  </div>
+  <div class="summary-box">
+    <div class="sb-top"><span class="sb-metric">Medical care</span><span class="sb-value down">1.7%</span></div>
+    <div class="sb-impact">The one clearly good number here — healthcare cost growth has slowed to its lowest pace of 2026. Doesn't offset the loss of SNAP or the uninsured-rate trend below, but it's genuinely encouraging.</div>
+  </div>
+  <div class="summary-box">
+    <div class="sb-top"><span class="sb-metric">Uninsured rate</span><span class="sb-value flat">8.3%</span></div>
+    <div class="sb-impact">Flat for now, but expected to climb — expired ACA subsidies and Medicaid changes are still phasing in. If you or family members rely on marketplace coverage, budget for higher premiums ahead.</div>
+  </div>
+
+  <div class="note warn" style="margin-top:14px;">
+    <strong>The one-sentence version:</strong> inflation is cooling but hasn't stopped, wages aren't keeping up, the job market is weaker than the unemployment rate suggests, and the safety net (SNAP, ACA subsidies) is shrinking at the same time — meaning the people most exposed to slower price growth are also losing some of the support that used to cushion it.
+  </div>
+</section>
 
 <section>
   <h2>A note on data reliability</h2>
@@ -81,7 +250,7 @@
 <section>
   <h2>3-month trend — headline &amp; core inflation</h2>
   <p class="subnote">All figures are 12-month (year-over-year) percent change, not seasonally adjusted, from BLS CPI news releases.</p>
-  <table class="trend-table">
+  <div class="table-wrap"><div class="scroll-hint">↔ swipe to see all columns</div><div class="table-scroll"><table class="trend-table">
     <tr>
       <th>Measure</th><th>May 2026</th><th>June 2026</th><th>July 2026</th><th>Trend</th>
     </tr>
@@ -105,10 +274,11 @@
       <td>2.6%</td><td>2.0%</td><td>1.7%</td>
       <td class="arrow-down">↓ cooling further</td>
     </tr>
-  </table>
+  </table></div></div>
   <div class="note" style="margin-top:12px;">
     Headline CPI has now cooled for three straight months, but July's report showed the deceleration losing steam: prices rose 0.1% for the month, and the annual rate barely budged, from 3.5% to 3.4%. Gasoline kept falling (-2.9% for the month, still up 24.6% year-over-year), but a new concern surfaced — inflation is now outpacing wage growth. Average hourly earnings were up 3.2% year-over-year, below the 3.4% CPI rate, meaning real wages actually fell for a fourth straight month. Fed officials are split on what to do about it: three regional presidents dissented at the July 29 meeting, pushing for a rate hike, while Chair Kevin Warsh held rates steady at 3.50%-3.75% for a fifth consecutive meeting.
   </div>
+  <div class="impact"><span class="impact-label">What this means for you</span>Your overall cost of living is still rising, just more slowly than in spring. If your raises or fixed income haven't kept pace with about 3.4% growth over the past year, you're effectively behind — and July's data shows wages already are.</div>
 </section>
 
 <section>
@@ -128,12 +298,13 @@
   <div class="note warn" style="margin-top:12px;">
     This is the measure that's easy to miss but directly affects money in people's pockets. The Chained CPI (C-CPI-U) — not the headline CPI everyone talks about — is what the IRS uses to set tax bracket thresholds and standard deductions each year, and a closely related index sets the annual Social Security Cost-of-Living Adjustment (COLA). It's designed to run slightly below headline CPI because it accounts for consumers substituting cheaper goods when prices rise (e.g., chicken instead of beef). At 3.3%, it's tracking close to headline CPI right now, which points toward a larger-than-average COLA bump for 2027 if the pattern holds through the fall reference period the Social Security Administration uses.
   </div>
+  <div class="impact"><span class="impact-label">What this means for you</span>If you or someone you support relies on Social Security, this number (not headline CPI) is what determines next year's benefit increase. At 3.3%, expect a larger-than-typical COLA bump announced this October.</div>
 </section>
 
 <section>
   <h2>Regional divergence</h2>
   <p class="subnote">All-items CPI-U, 12-month percent change, July 2026 (Northeast/West) and June 2026 (South/Midwest, most recent available).</p>
-  <table class="trend-table">
+  <div class="table-wrap"><div class="scroll-hint">↔ swipe to see all columns</div><div class="table-scroll"><table class="trend-table">
     <tr>
       <th>Region</th><th>All items</th><th>Core</th><th>Shelter</th><th>Notes</th>
     </tr>
@@ -157,7 +328,7 @@
       <td class="arrow-down">3.0%</td><td>2.2%</td><td>2.5%</td>
       <td>Coolest major region</td>
     </tr>
-  </table>
+  </table></div></div>
   <div class="note" style="margin-top:12px;">
     The national headline number (3.4%) hides a real geographic split. The Northeast is running 1.1 percentage points hotter than the West, driven mainly by shelter (3.9% vs. 2.5%) — New York, Boston, and other dense Northeast metros have tighter housing supply than most Western cities right now. If you live in the Northeast, "official" inflation is understating what you're likely feeling; if you're in the West, it's overstating it.
   </div>
@@ -166,6 +337,7 @@
     <div class="desc">Monthly CPI broken out by Census region (Northeast, South, Midwest, West) and major metro areas.</div>
     <span class="tag">bls.gov</span>
   </div>
+  <div class="impact"><span class="impact-label">What this means for you</span>The national number may not describe your actual cost of living. If you're in the Northeast, budget as if inflation is closer to 4%, not 3.4%. If you're in the West, the squeeze is genuinely lighter than headlines suggest.</div>
 </section>
 
 <section>
@@ -200,12 +372,13 @@
     <div class="desc">Category-by-category grocery price forecasts and monthly actuals, separate from and complementary to the BLS CPI.</div>
     <span class="tag">ers.usda.gov</span>
   </div>
+  <div class="impact"><span class="impact-label">What this means for you</span>Expect grocery bills to keep rising modestly rather than spike or fall. If you or someone you know relies on SNAP, this is the exact cost pressure landing at the same time benefits are shrinking — a real, compounding hit to food budgets.</div>
 </section>
 
 <section>
   <h2>Housing costs (shelter CPI)</h2>
   <p class="subnote">12-month percent change, not seasonally adjusted, from BLS CPI news releases.</p>
-  <table class="trend-table">
+  <div class="table-wrap"><div class="scroll-hint">↔ swipe to see all columns</div><div class="table-scroll"><table class="trend-table">
     <tr>
       <th>Measure</th><th>May 2026</th><th>June 2026</th><th>July 2026</th><th>Trend</th>
     </tr>
@@ -224,13 +397,14 @@
       <td>up y/y</td><td>up y/y</td><td>up y/y</td>
       <td class="arrow-up">↑ rising</td>
     </tr>
-  </table>
+  </table></div></div>
   <div class="note" style="margin-top:12px;">
     Shelter is the single largest component of the CPI basket (about a third of the index), and it's been the quiet story all summer: a slow, steady decline from 3.4% to 3.2% even as headline CPI swung sharply on energy. In July, shelter rose just 0.1% for the month but still accounted for roughly two-thirds of the entire monthly CPI increase — that's how dominant it is in the basket. Rent and owners' equivalent rent (what a homeowner would pay to rent their own home) are the two subcomponents BLS uses to build the shelter index; exact monthly percentages for those two are in BLS Table 7, linked below.
   </div>
   <div class="note" style="margin-top:12px;">
     Worth noting for context: Realtor.com's midyear 2026 forecast puts actual home price growth at just 1.2% for the year — well below CPI inflation. That means home prices are effectively falling in real, inflation-adjusted terms even as CPI shelter costs (which track rent and OER, not sale prices) keep climbing. The two measures capture different things and can move in opposite directions.
   </div>
+  <div class="impact"><span class="impact-label">What this means for you</span>This is the line item most likely to actually strain your monthly budget, renter or owner. It moves slowly, so don't expect quick relief — but it is decelerating, which is a genuinely good sign for affordability over the next year.</div>
 </section>
 
 <section>
@@ -260,12 +434,54 @@
     <div class="desc">Weekly average 30-year and 15-year fixed mortgage rates, updated every Thursday.</div>
     <span class="tag">freddiemac.com</span>
   </div>
+  <div class="impact"><span class="impact-label">What this means for you</span>If you're house-hunting, financing costs ticked up again this month. If you already locked in a lower rate, you're increasingly insulated from this — the gap between existing homeowners and new buyers keeps widening.</div>
+</section>
+
+<section>
+  <h2>Home prices (Case-Shiller)</h2>
+  <p class="subnote">S&amp;P Cotality Case-Shiller U.S. National Home Price Index — actual sale prices, not rent/OER like CPI shelter above.</p>
+  <div class="stat-grid">
+    <div class="stat">
+      <div class="label">National index, 12-mo</div>
+      <div class="value" style="color:var(--up);">+1.5%</div>
+      <div class="period">June 2026, up from +1.2% in May</div>
+    </div>
+    <div class="stat">
+      <div class="label">Monthly change (NSA)</div>
+      <div class="value" style="color:var(--up);">+0.4%</div>
+      <div class="period">June 2026</div>
+    </div>
+    <div class="stat">
+      <div class="label">Strongest metro, 12-mo</div>
+      <div class="value" style="color:var(--up);">+6.9%</div>
+      <div class="period">Chicago</div>
+    </div>
+    <div class="stat">
+      <div class="label">Weakest metro, 12-mo</div>
+      <div class="value" style="color:var(--down);">-2.0%</div>
+      <div class="period">Seattle</div>
+    </div>
+  </div>
+  <div class="note warn" style="margin-top:12px;">
+    This is the number that fills the gap flagged earlier in the Housing section: CPI shelter tracks rent and owners' equivalent rent, while Case-Shiller tracks actual home sale prices using a repeat-sales method (the gold standard for measuring true appreciation). The headline: nominal home prices are up just 1.5% year-over-year, well below the 3.4% CPI inflation rate — meaning home values have now fallen in <em>real</em> (inflation-adjusted) terms for 13 consecutive months. Regionally it's a wide spread, from Chicago's +6.9% to Seattle's -2.0%, a nearly 9-point gap that the national figure alone doesn't show.
+  </div>
+  <div class="source-card" style="margin-top:12px;">
+    <a href="https://www.spglobal.com/spdji/en/index-family/indicators/sp-cotality-case-shiller/sp-cotality-case-shiller-composite/" target="_blank">S&amp;P Dow Jones Indices — Case-Shiller Home Price Indices</a>
+    <div class="desc">Official monthly release, national and 20-city composite, published on the last Tuesday of each month with a two-month lag.</div>
+    <span class="tag">spglobal.com</span>
+  </div>
+  <div class="source-card" style="margin-top:12px;">
+    <a href="https://fred.stlouisfed.org/series/CSUSHPINSA" target="_blank">FRED — Case-Shiller U.S. National Home Price Index</a>
+    <div class="desc">Full historical series back to 1987, downloadable, hosted by the St. Louis Fed.</div>
+    <span class="tag">fred.stlouisfed.org</span>
+  </div>
+  <div class="impact"><span class="impact-label">What this means for you</span>If you own a home, don't assume rising list prices mean rising real wealth — adjusted for inflation, typical home equity has been shrinking for over a year. If you're buying, this modest price growth is one of the more buyer-friendly signals on this page.</div>
 </section>
 
 <section>
   <h2>Energy &amp; fuel costs</h2>
   <p class="subnote">12-month percent change, not seasonally adjusted, from BLS CPI news releases.</p>
-  <table class="trend-table">
+  <div class="table-wrap"><div class="scroll-hint">↔ swipe to see all columns</div><div class="table-scroll"><table class="trend-table">
     <tr>
       <th>Measure</th><th>May 2026</th><th>June 2026</th><th>July 2026</th><th>Trend</th>
     </tr>
@@ -289,10 +505,11 @@
       <td>3.0%</td><td>—</td><td>—</td>
       <td class="arrow-flat">↔ moderate</td>
     </tr>
-  </table>
+  </table></div></div>
   <div class="note warn" style="margin-top:12px;">
     Energy is still the dominant swing factor, just a smaller one each month now. Gasoline fell another 2.9% in July on top of June's 9.7% drop, pulling the annual rate down to 24.6% — well off May's 40.5% peak, but this reflects prices calming somewhat, not a resolution of the underlying conflict (see below). At the pump, the national average was $4.03/gallon as of the July report. Crude oil prices (Brent near $90, WTI near $84) remain elevated, and Brent has since climbed further into mid-August on renewed Iranian demands over the Strait.
   </div>
+  <div class="impact"><span class="impact-label">What this means for you</span>Your gas and utility bills are still elevated versus a year ago but easing month over month. If you drive regularly, expect noticeably smaller pinches at the pump through the fall compared to earlier this year.</div>
 </section>
 
 <section>
@@ -327,6 +544,7 @@
     <div class="desc">Regularly updated nonpartisan briefing on the conflict's status and commodity market impacts.</div>
     <span class="tag">congress.gov</span>
   </div>
+  <div class="impact"><span class="impact-label">What this means for you</span>This single geopolitical event is responsible for a meaningful chunk of the inflation you've felt all year — roughly 0.6 points of it. It's not resolved, so don't assume energy prices are done reacting to it.</div>
 </section>
 
 <section>
@@ -356,6 +574,7 @@
     <div class="desc">Reporting on a California Earthquake Authority study quantifying wildfire cost pass-through to consumers.</div>
     <span class="tag">insurancejournal.com</span>
   </div>
+  <div class="impact"><span class="impact-label">What this means for you</span>If you live in a fire-prone area (California especially), expect insurance premiums and utility bills to keep climbing regardless of what national CPI shows — this cost pressure is regional and largely invisible in the headline numbers.</div>
 </section>
 
 <section>
@@ -388,6 +607,7 @@
     <div class="desc">Explains the indirect pricing method for health insurance and why Medicaid isn't included in the CPI at all.</div>
     <span class="tag">bls.gov</span>
   </div>
+  <div class="impact"><span class="impact-label">What this means for you</span>Medical costs are cooling, which is good news for your wallet if you pay out of pocket. But remember: there's no clean way to track your specific health insurance premium trend nationally — your plan's renewal could still rise more than this number suggests.</div>
 </section>
 
 <section>
@@ -417,6 +637,7 @@
     <div class="desc">Official fact sheet with every 2026 premium, deductible, and coinsurance figure, and the reasoning behind them.</div>
     <span class="tag">cms.gov</span>
   </div>
+  <div class="impact"><span class="impact-label">What this means for you</span>If you're on Medicare, your Part B premium already rose nearly 10% for 2026 — that's locked in regardless of what happens with broader inflation. Budget for continued increases; program spending is growing faster than general prices.</div>
 </section>
 
 <section>
@@ -446,6 +667,7 @@
     <div class="desc">Official annual spending totals and growth rates by payer (Medicare, Medicaid, private insurance, out-of-pocket).</div>
     <span class="tag">cms.gov</span>
   </div>
+  <div class="impact"><span class="impact-label">What this means for you</span>If you or a family member relies on Medicaid, program spending is growing quickly, but that doesn't guarantee your own benefits or provider access will improve — eligibility rules are tightening even as total spending rises.</div>
 </section>
 
 <section>
@@ -491,12 +713,13 @@
     <div class="desc">Official USDA participation and benefit data, the underlying source for enrollment figures nationwide.</div>
     <span class="tag">fns.usda.gov</span>
   </div>
+  <div class="impact"><span class="impact-label">What this means for you</span>If you or someone you know is on SNAP, this is the most direct and immediate hit on this entire dashboard — millions have already lost benefits while food prices keep climbing. Check eligibility rules directly if your status may have changed.</div>
 </section>
 
 <section>
   <h2>Unemployment</h2>
   <p class="subnote">Seasonally adjusted U-3 unemployment rate, from BLS Employment Situation reports.</p>
-  <table class="trend-table">
+  <div class="table-wrap"><div class="scroll-hint">↔ swipe to see all columns</div><div class="table-scroll"><table class="trend-table">
     <tr>
       <th>Measure</th><th>May 2026</th><th>June 2026</th><th>July 2026</th><th>Trend</th>
     </tr>
@@ -515,7 +738,7 @@
       <td>+63K (rev.)</td><td>+20K (rev.)</td><td>-23K</td>
       <td class="arrow-down">↓ turned negative</td>
     </tr>
-  </table>
+  </table></div></div>
   <div class="stat-grid" style="margin-top:14px;">
     <div class="stat">
       <div class="label">U-6 (broader) unemployment</div>
@@ -549,6 +772,43 @@
     <div class="desc">Initial and continuing unemployment insurance claims, updated every Thursday — the earliest weekly signal on layoffs.</div>
     <span class="tag">dol.gov</span>
   </div>
+  <div class="impact"><span class="impact-label">What this means for you</span>If you're job-hunting, this is a tougher market than the 4.1% headline rate implies — postings are softening and the labor force itself is shrinking. Budget for a longer search than the unemployment rate alone would suggest.</div>
+</section>
+
+<section>
+  <h2>Job openings &amp; labor turnover (JOLTS) — a leading indicator</h2>
+  <p class="subnote">June 2026 data, released Aug 4, 2026. July data isn't out yet — next JOLTS release is September 1, 2026.</p>
+  <div class="stat-grid">
+    <div class="stat">
+      <div class="label">Job openings</div>
+      <div class="value" style="color:var(--flat);">7.4M</div>
+      <div class="period">little changed from May's revised 7.5M</div>
+    </div>
+    <div class="stat">
+      <div class="label">Hires</div>
+      <div class="value" style="color:var(--flat);">5.3M</div>
+      <div class="period">unchanged</div>
+    </div>
+    <div class="stat">
+      <div class="label">Quits</div>
+      <div class="value" style="color:var(--flat);">3.2M</div>
+      <div class="period">unchanged — a confidence signal</div>
+    </div>
+    <div class="stat">
+      <div class="label">Layoffs &amp; discharges</div>
+      <div class="value" style="color:var(--flat);">1.8M</div>
+      <div class="period">unchanged</div>
+    </div>
+  </div>
+  <div class="note" style="margin-top:12px;">
+    JOLTS is the Fed's favorite labor-market gauge because it captures demand for workers (openings) and worker confidence (quits — people quit more readily when they trust they can find another job) a month or so before it shows up in the headline jobs report. June's reading was unusually quiet — every major metric "little changed" or "unchanged" — which is actually notable given how volatile the June/July jobs data turned out to be. That quiet JOLTS report didn't foreshadow July's surprise job losses, a reminder that no single leading indicator catches everything. Watch the September 1 release (July data) closely for whether it starts reflecting the weakness the payroll numbers showed.
+  </div>
+  <div class="source-card" style="margin-top:12px;">
+    <a href="https://www.bls.gov/news.release/jolts.htm" target="_blank">BLS — Job Openings and Labor Turnover Survey (JOLTS)</a>
+    <div class="desc">Monthly openings, hires, quits, and layoffs data — the Fed's preferred forward-looking labor market read.</div>
+    <span class="tag">bls.gov</span>
+  </div>
+  <div class="impact"><span class="impact-label">What this means for you</span>If you're considering a job change, the flat quits rate suggests workers aren't feeling confident about finding something better right now — a sign to negotiate carefully rather than assume leverage.</div>
 </section>
 
 <section>
@@ -579,6 +839,7 @@
     <div class="desc">Monthly wholesale/producer-level price data, often a leading indicator for future consumer inflation.</div>
     <span class="tag">bls.gov</span>
   </div>
+  <div class="impact"><span class="impact-label">What this means for you</span>This won't hit your wallet directly, but it's an early warning system. If PPI keeps falling, expect consumer inflation (the number that does hit your wallet) to keep cooling too, with a one-to-two month lag.</div>
 </section>
 
 <section>
@@ -601,6 +862,43 @@
   <div class="note warn" style="margin-top:12px;">
     <strong>Tariffs:</strong> multiple sources this year — including Fed commentary and economic reporting cited elsewhere on this dashboard — point to tariffs as a contributing cost pressure, particularly on construction materials (steel, aluminum, lumber) and imported goods. BLS's CPI release doesn't break out a "tariff impact" figure directly, so this dashboard can't give you a precise number the way it can for energy or shelter. Economists and political figures disagree sharply on how large the tariff effect is versus other factors (energy, labor markets, the Iran war) — treat any specific percentage-point estimate you see elsewhere with some skepticism unless it's traceable to a named economic model, the way the war impact estimate above is.
   </div>
+  <div class="impact"><span class="impact-label">What this means for you</span>If you travel by air, budget noticeably more than last year — this is one of the steepest increases in the entire basket. Tariff effects are harder to isolate, but expect continued upward pressure on imported goods and construction materials.</div>
+</section>
+
+<section>
+  <h2>CBO fiscal &amp; economic outlook</h2>
+  <p class="subnote">From CBO's February 2026 Budget and Economic Outlook — nonpartisan by statutory mandate, produced for Congress regardless of which party controls it.</p>
+  <div class="stat-grid">
+    <div class="stat">
+      <div class="label">FY2026 federal deficit</div>
+      <div class="value" style="color:var(--up);">$1.9T</div>
+      <div class="period">5.8% of GDP</div>
+    </div>
+    <div class="stat">
+      <div class="label">Federal debt, 2026</div>
+      <div class="value" style="color:var(--up);">101% of GDP</div>
+      <div class="period">projected 120% by 2036</div>
+    </div>
+    <div class="stat">
+      <div class="label">CBO's PCE inflation forecast</div>
+      <div class="value" style="color:var(--ink);">2.7%</div>
+      <div class="period">for full-year 2026; 2.0% by 2030</div>
+    </div>
+    <div class="stat">
+      <div class="label">CBO's real GDP growth forecast</div>
+      <div class="value" style="color:var(--ink);">2.2%</div>
+      <div class="period">for 2026</div>
+    </div>
+  </div>
+  <div class="note" style="margin-top:12px;">
+    Why this belongs here: everything else on this dashboard is a snapshot of where prices and employment stand right now. CBO's outlook is the closest thing to an official forward-looking baseline — it's what Congress itself uses to evaluate legislation, updated to reflect current law (including 2025's tax and spending law, tariffs, and immigration policy changes). CBO's own inflation forecast (2.7% PCE for 2026) is notably below where actual CPI has been running most of this year, largely because their forecast predates the Iran conflict's energy-price effects. Worth watching whether CBO revises that projection upward when its next outlook is published.
+  </div>
+  <div class="source-card" style="margin-top:12px;">
+    <a href="https://www.cbo.gov/topics/budget/outlook-budget-and-economy" target="_blank">Congressional Budget Office — Budget &amp; Economic Outlook</a>
+    <div class="desc">CBO's official 10-year baseline projections for the federal budget and economy, updated regularly.</div>
+    <span class="tag">cbo.gov</span>
+  </div>
+  <div class="impact"><span class="impact-label">What this means for you</span>This doesn't affect your budget today, but it shapes the environment your taxes, interest rates, and benefits sit in for the next decade. Rising federal debt tends to put upward pressure on borrowing costs over time, including mortgage rates.</div>
 </section>
 
 <section>
@@ -630,6 +928,7 @@
     <div class="desc">Official rate decisions, statements, and the quarterly Summary of Economic Projections ("dot plot").</div>
     <span class="tag">federalreserve.gov</span>
   </div>
+  <div class="impact"><span class="impact-label">What this means for you</span>If you carry variable-rate debt (credit cards, some mortgages, HELOCs), the Fed holding rates steady means your rates aren't falling yet. A September cut, if it happens, would be the first relief on that front this year.</div>
 </section>
 
 <section>
@@ -659,6 +958,7 @@
     <div class="desc">The most current federal uninsured-rate estimates, released ahead of the Census Bureau's annual American Community Survey figures.</div>
     <span class="tag">cdc.gov</span>
   </div>
+  <div class="impact"><span class="impact-label">What this means for you</span>If you get insurance through the ACA marketplace, brace for premium increases as enhanced subsidies expire. This is a good year to shop around during open enrollment rather than auto-renew your current plan.</div>
 </section>
 
 <section>
@@ -698,6 +998,21 @@
     <div class="desc">Every CPI subcategory's 12-month percent change in one table, including shelter, rent, and OER detail.</div>
     <span class="tag">bls.gov</span>
   </div>
+  <div class="source-card">
+    <a href="https://www.spglobal.com/spdji/en/index-family/indicators/sp-cotality-case-shiller/sp-cotality-case-shiller-composite/" target="_blank">S&amp;P Dow Jones Indices — Case-Shiller Home Price Indices</a>
+    <div class="desc">Actual home sale prices by repeat-sales method — the standard complement to CPI's rent-based shelter measure.</div>
+    <span class="tag">spglobal.com</span>
+  </div>
+  <div class="source-card">
+    <a href="https://www.bls.gov/news.release/jolts.htm" target="_blank">BLS — Job Openings and Labor Turnover Survey (JOLTS)</a>
+    <div class="desc">Job openings, hires, quits, and layoffs — the Fed's preferred leading indicator for the labor market.</div>
+    <span class="tag">bls.gov</span>
+  </div>
+  <div class="source-card">
+    <a href="https://www.cbo.gov/topics/budget/outlook-budget-and-economy" target="_blank">Congressional Budget Office — Budget &amp; Economic Outlook</a>
+    <div class="desc">Nonpartisan 10-year federal budget and economic projections, produced for Congress by statute.</div>
+    <span class="tag">cbo.gov</span>
+  </div>
 </section>
 
 <section>
@@ -710,8 +1025,183 @@
 </main>
 
 <footer>
-  Built from live BLS/BEA/CMS/USDA/CDC/Freddie Mac/DOL/Federal Reserve data, refreshed August 16, 2026. Figures are subject to revision by the issuing agency.
+  Built from live BLS/BEA/CMS/USDA/CDC/Freddie Mac/DOL/Federal Reserve/S&amp;P Case-Shiller/CBO/CBPP data, refreshed August 25, 2026. Figures are subject to revision by the issuing agency.
 </footer>
 
+<script>
+(function(){
+  "use strict";
+
+  var synth = window.speechSynthesis;
+  var toolbar = document.getElementById('a11y-toolbar');
+  var playBtn = document.getElementById('a11y-play');
+  var pauseBtn = document.getElementById('a11y-pause');
+  var stopBtn = document.getElementById('a11y-stop');
+  var rateSelect = document.getElementById('a11y-rate');
+  var statusEl = document.getElementById('a11y-status');
+
+  if (!synth) {
+    toolbar.classList.add('unsupported');
+    statusEl.textContent = "Read-aloud isn't supported in this browser. Try Chrome, Edge, or Safari.";
+    playBtn.disabled = true;
+    return;
+  }
+
+  var sections = Array.prototype.slice.call(document.querySelectorAll('main > section'));
+  var queue = [];       // ordered list of {text, sectionEl, label}
+  var queueIndex = 0;
+  var mode = null;      // 'all' | 'section' | null
+  var activeSectionBtn = null;
+
+  function cleanText(el){
+    // Grab visible text, skip our own injected buttons
+    var clone = el.cloneNode(true);
+    var btns = clone.querySelectorAll('.section-read-btn');
+    btns.forEach(function(b){ b.remove(); });
+    var text = clone.textContent.replace(/\s+/g, ' ').trim();
+    return text;
+  }
+
+  function buildQueueFromSection(sec){
+    var h2 = sec.querySelector('h2');
+    var label = h2 ? h2.textContent.trim() : 'Section';
+    return [{ text: cleanText(sec), sectionEl: sec, label: label }];
+  }
+
+  function buildQueueFromAll(){
+    return sections.map(function(sec){
+      var h2 = sec.querySelector('h2');
+      var label = h2 ? h2.textContent.trim() : 'Section';
+      return { text: cleanText(sec), sectionEl: sec, label: label };
+    });
+  }
+
+  function clearHighlight(){
+    sections.forEach(function(s){ s.classList.remove('is-reading'); });
+    document.querySelectorAll('.section-read-btn.reading').forEach(function(b){
+      b.classList.remove('reading');
+      b.textContent = '🔊 Read this section aloud';
+    });
+    activeSectionBtn = null;
+  }
+
+  function setToolbarState(playing, paused){
+    playBtn.disabled = playing && !paused ? true : false;
+    pauseBtn.disabled = !playing;
+    stopBtn.disabled = !playing;
+    pauseBtn.textContent = paused ? '▶ Resume' : '⏸ Pause';
+  }
+
+  function speakNext(){
+    if (queueIndex >= queue.length) {
+      statusEl.textContent = 'Finished reading.';
+      clearHighlight();
+      setToolbarState(false, false);
+      mode = null;
+      return;
+    }
+    var item = queue[queueIndex];
+    item.sectionEl.classList.add('is-reading');
+    item.sectionEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    var btn = item.sectionEl.querySelector('.section-read-btn');
+    if (btn) {
+      btn.classList.add('reading');
+      btn.textContent = '⏹ Stop reading';
+      activeSectionBtn = btn;
+    }
+
+    statusEl.textContent = 'Reading: ' + item.label +
+      (mode === 'all' ? ' (' + (queueIndex + 1) + ' of ' + queue.length + ')' : '');
+
+    var utter = new SpeechSynthesisUtterance(item.text);
+    utter.rate = parseFloat(rateSelect.value) || 1;
+    utter.onend = function(){
+      item.sectionEl.classList.remove('is-reading');
+      if (btn) { btn.classList.remove('reading'); btn.textContent = '🔊 Read this section aloud'; }
+      queueIndex++;
+      speakNext();
+    };
+    utter.onerror = function(){
+      item.sectionEl.classList.remove('is-reading');
+      queueIndex++;
+      speakNext();
+    };
+    synth.speak(utter);
+    setToolbarState(true, false);
+  }
+
+  function startQueue(newQueue, newMode){
+    synth.cancel();
+    clearHighlight();
+    queue = newQueue;
+    queueIndex = 0;
+    mode = newMode;
+    speakNext();
+  }
+
+  function stopAll(){
+    synth.cancel();
+    clearHighlight();
+    setToolbarState(false, false);
+    statusEl.textContent = 'Stopped.';
+    mode = null;
+  }
+
+  // Toolbar controls
+  playBtn.addEventListener('click', function(){
+    startQueue(buildQueueFromAll(), 'all');
+  });
+
+  pauseBtn.addEventListener('click', function(){
+    if (synth.speaking && !synth.paused) {
+      synth.pause();
+      setToolbarState(true, true);
+      statusEl.textContent = 'Paused.';
+    } else if (synth.paused) {
+      synth.resume();
+      setToolbarState(true, false);
+    }
+  });
+
+  stopBtn.addEventListener('click', stopAll);
+
+  rateSelect.addEventListener('change', function(){
+    // Rate applies to the next utterance; restart current item at new rate for immediate effect
+    if (synth.speaking) {
+      var wasIndex = queueIndex;
+      synth.cancel();
+      queueIndex = wasIndex;
+      speakNext();
+    }
+  });
+
+  // Inject a "read this section" button into every section
+  sections.forEach(function(sec, i){
+    var h2 = sec.querySelector('h2');
+    if (!h2) return;
+    if (!h2.id) h2.id = 'section-heading-' + i;
+    sec.setAttribute('aria-labelledby', h2.id);
+
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'section-read-btn';
+    btn.textContent = '🔊 Read this section aloud';
+    btn.setAttribute('aria-label', 'Read the "' + h2.textContent.trim() + '" section aloud');
+
+    btn.addEventListener('click', function(){
+      var isThisReading = sec.classList.contains('is-reading') && mode === 'section';
+      if (isThisReading) {
+        stopAll();
+      } else {
+        startQueue(buildQueueFromSection(sec), 'section');
+      }
+    });
+
+    h2.insertAdjacentElement('afterend', btn);
+  });
+
+})();
+</script>
 </body>
 </html>
