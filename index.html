@@ -11,7 +11,7 @@
     --ink:#161616; --sub:#44403c; --line:#d8d8d4; --bg:#f6f6f4;
     --accent:#7a2e22; --card:#ffffff; --up:#9c2f22; --down:#1f5c3f; --flat:#6b5416;
   }
-  html{ background:var(--bg); font-size:17px; }
+  html{ background:var(--bg); font-size:17px; scroll-behavior:smooth; }
   *{box-sizing:border-box;}
   body{
     margin:0; padding:0; background:var(--bg); color:var(--ink);
@@ -19,6 +19,7 @@
     line-height:1.5;
   }
   section h2, section h3{ color:var(--ink); }
+  section h2[id]{ scroll-margin-top:70px; }
   header{
     padding:28px 20px 18px; border-bottom:2px solid var(--ink); background:#eeede8;
   }
@@ -78,12 +79,28 @@
     font-weight:bold; color:var(--flat); margin-bottom:4px;
   }
 
+  .issue-tag{
+    display:inline-block; font-family:Helvetica,Arial,sans-serif; font-size:0.7rem;
+    text-transform:uppercase; letter-spacing:0.05em; color:var(--flat); font-weight:bold;
+    background:#f3ede6; border:1px solid var(--line); padding:3px 10px; border-radius:10px;
+    margin-bottom:10px;
+  }
+  .involve-group{ margin-bottom:26px; }
+  .election-note{
+    font-family:Helvetica,Arial,sans-serif; font-size:0.85rem; color:var(--sub);
+    background:var(--card); border:1px solid var(--line); border-radius:6px;
+    padding:12px 14px; margin-bottom:8px; line-height:1.5;
+  }
+  .election-note strong{ color:var(--ink); }
+
   .summary-box{
     background:var(--card); border:1px solid var(--line); border-radius:6px;
     padding:16px 18px; margin-bottom:10px; box-shadow:0 1px 3px rgba(0,0,0,0.08);
   }
   .summary-box .sb-top{ display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:6px; }
   .summary-box .sb-metric{ font-family:"Georgia",serif; font-weight:bold; font-size:1.05rem; }
+  .summary-box .sb-link{ color:var(--ink); text-decoration:none; }
+  .summary-box .sb-link:hover{ color:var(--accent); text-decoration:underline; }
   .summary-box .sb-value{ font-family:"Georgia",serif; font-weight:bold; font-size:1.05rem; }
   .summary-box .sb-value.up{ color:var(--up); }
   .summary-box .sb-value.down{ color:var(--down); }
@@ -185,7 +202,7 @@
 <header>
   <h1>U.S. Inflation Dashboard</h1>
   <p>Figures below trace directly to federal statistical agencies — click through to verify each number at its origin.</p>
-  <div class="asof">Latest official data pulled: August 25, 2026 · adds Case-Shiller home prices (Aug 25), JOLTS (Aug 4), and CBO's fiscal/economic outlook to the existing BLS/BEA/CMS/USDA/CDC/Freddie Mac/Fed data · Next CPI release: August 2026 data, out September 11, 2026</div>
+  <div class="asof">Latest official data pulled: August 31, 2026 · adds today's renewed U.S.-Iran fighting and oil price spike on top of the Aug 30 PCE/Fed/mortgage update · Next CPI release: August 2026 data, out September 11, 2026</div>
 </header>
 
 <main id="main-content">
@@ -195,43 +212,43 @@
   <p class="subnote">The dashboard's ~20 metrics, boiled down. Every number links to its full section below for sourcing and detail.</p>
 
   <div class="summary-box">
-    <div class="sb-top"><span class="sb-metric">Headline inflation (CPI)</span><span class="sb-value down">3.4%</span></div>
+    <div class="sb-top"><span class="sb-metric"><a href="#sec-cpi-trend" class="sb-link">Headline inflation (CPI) →</a></span><span class="sb-value down">3.4%</span></div>
     <div class="sb-impact">Cooling for 3 straight months, but real wages are still falling — prices are rising slower, not actually dropping. Your dollar buys a bit less than it did a year ago, just less badly than in spring.</div>
   </div>
   <div class="summary-box">
-    <div class="sb-top"><span class="sb-metric">Groceries</span><span class="sb-value flat">3.0%</span></div>
+    <div class="sb-top"><span class="sb-metric"><a href="#sec-groceries" class="sb-link">Groceries →</a></span><span class="sb-value flat">3.0%</span></div>
     <div class="sb-impact">Food costs are outpacing wage growth for many households. Combined with 4.5M+ people losing SNAP benefits, grocery budgets are under real, compounding pressure right now.</div>
   </div>
   <div class="summary-box">
-    <div class="sb-top"><span class="sb-metric">Housing (rent/shelter)</span><span class="sb-value up">3.2%</span></div>
+    <div class="sb-top"><span class="sb-metric"><a href="#sec-housing" class="sb-link">Housing (rent/shelter) →</a></span><span class="sb-value up">3.2%</span></div>
     <div class="sb-impact">Still the single biggest driver of your cost of living, even as it slowly cools. If you're renting or plan to buy soon, this is the number that affects you most directly, more than any other on this page.</div>
   </div>
   <div class="summary-box">
-    <div class="sb-top"><span class="sb-metric">Mortgage rate (30-yr)</span><span class="sb-value up">6.67%</span></div>
+    <div class="sb-top"><span class="sb-metric"><a href="#sec-mortgage" class="sb-link">Mortgage rate (30-yr) →</a></span><span class="sb-value up">6.67%</span></div>
     <div class="sb-impact">Homebuying got modestly more expensive again this month. On a $400,000 loan, the difference between 6.5% and 6.7% is roughly $50/month.</div>
   </div>
   <div class="summary-box">
-    <div class="sb-top"><span class="sb-metric">Gasoline</span><span class="sb-value down">24.6%</span></div>
+    <div class="sb-top"><span class="sb-metric"><a href="#sec-energy" class="sb-link">Gasoline →</a></span><span class="sb-value down">24.6%</span></div>
     <div class="sb-impact">Still up sharply year-over-year from the Iran conflict, but easing fast. Expect this number to keep shrinking through fall — it's the main reason headline inflation is falling right now.</div>
   </div>
   <div class="summary-box">
-    <div class="sb-top"><span class="sb-metric">Unemployment</span><span class="sb-value down">4.1%</span></div>
+    <div class="sb-top"><span class="sb-metric"><a href="#sec-unemployment" class="sb-link">Unemployment →</a></span><span class="sb-value down">4.1%</span></div>
     <div class="sb-impact">Looks good, isn't really. The economy lost jobs in July; the rate only fell because people stopped looking for work. If you're job-hunting, this is a harder market than the headline number suggests.</div>
   </div>
   <div class="summary-box">
-    <div class="sb-top"><span class="sb-metric">Real wage growth</span><span class="sb-value up">-0.2 pts</span></div>
+    <div class="sb-top"><span class="sb-metric"><a href="#sec-unemployment" class="sb-link">Real wage growth →</a></span><span class="sb-value up">-0.2 pts</span></div>
     <div class="sb-impact">Paychecks are growing slower than prices for a 4th straight month. This is arguably the single most important number for household budgets on this whole page.</div>
   </div>
   <div class="summary-box">
-    <div class="sb-top"><span class="sb-metric">Home prices (sale value)</span><span class="sb-value flat">1.5%</span></div>
+    <div class="sb-top"><span class="sb-metric"><a href="#sec-home-prices" class="sb-link">Home prices (sale value) →</a></span><span class="sb-value flat">1.5%</span></div>
     <div class="sb-impact">If you own a home, its real (inflation-adjusted) value has fallen for 13 straight months, even though the price tag looks higher. Don't confuse rising rent with rising home equity — they're moving differently.</div>
   </div>
   <div class="summary-box">
-    <div class="sb-top"><span class="sb-metric">Medical care</span><span class="sb-value down">1.7%</span></div>
+    <div class="sb-top"><span class="sb-metric"><a href="#sec-medical" class="sb-link">Medical care →</a></span><span class="sb-value down">1.7%</span></div>
     <div class="sb-impact">The one clearly good number here — healthcare cost growth has slowed to its lowest pace of 2026. Doesn't offset the loss of SNAP or the uninsured-rate trend below, but it's genuinely encouraging.</div>
   </div>
   <div class="summary-box">
-    <div class="sb-top"><span class="sb-metric">Uninsured rate</span><span class="sb-value flat">8.3%</span></div>
+    <div class="sb-top"><span class="sb-metric"><a href="#sec-uninsured" class="sb-link">Uninsured rate →</a></span><span class="sb-value flat">8.3%</span></div>
     <div class="sb-impact">Flat for now, but expected to climb — expired ACA subsidies and Medicaid changes are still phasing in. If you or family members rely on marketplace coverage, budget for higher premiums ahead.</div>
   </div>
 
@@ -248,7 +265,7 @@
 </section>
 
 <section>
-  <h2>3-month trend — headline &amp; core inflation</h2>
+  <h2 id="sec-cpi-trend">3-month trend — headline &amp; core inflation</h2>
   <p class="subnote">All figures are 12-month (year-over-year) percent change, not seasonally adjusted, from BLS CPI news releases.</p>
   <div class="table-wrap"><div class="scroll-hint">↔ swipe to see all columns</div><div class="table-scroll"><table class="trend-table">
     <tr>
@@ -279,6 +296,46 @@
     Headline CPI has now cooled for three straight months, but July's report showed the deceleration losing steam: prices rose 0.1% for the month, and the annual rate barely budged, from 3.5% to 3.4%. Gasoline kept falling (-2.9% for the month, still up 24.6% year-over-year), but a new concern surfaced — inflation is now outpacing wage growth. Average hourly earnings were up 3.2% year-over-year, below the 3.4% CPI rate, meaning real wages actually fell for a fourth straight month. Fed officials are split on what to do about it: three regional presidents dissented at the July 29 meeting, pushing for a rate hike, while Chair Kevin Warsh held rates steady at 3.50%-3.75% for a fifth consecutive meeting.
   </div>
   <div class="impact"><span class="impact-label">What this means for you</span>Your overall cost of living is still rising, just more slowly than in spring. If your raises or fixed income haven't kept pace with about 3.4% growth over the past year, you're effectively behind — and July's data shows wages already are.</div>
+</section>
+
+<section>
+  <h2 id="sec-pce">PCE — the Fed's actual preferred gauge</h2>
+  <p class="subnote">Personal Consumption Expenditures price index, from BEA's Personal Income and Outlays report. This is the inflation measure the Fed's 2% target is actually defined against — not CPI.</p>
+  <table class="trend-table">
+    <tr>
+      <th>Measure</th><th>Apr 2026</th><th>May 2026</th><th>Jun 2026</th><th>Jul 2026</th>
+    </tr>
+    <tr>
+      <td class="metric">Core PCE, 12-mo</td>
+      <td>3.3%</td><td>3.4%</td><td>3.3%</td><td>3.3%</td>
+    </tr>
+  </table>
+  <div class="stat-grid" style="margin-top:14px;">
+    <div class="stat">
+      <div class="label">Headline PCE, 12-mo</div>
+      <div class="value" style="color:var(--up);">3.7%</div>
+      <div class="period">July 2026, above forecast</div>
+    </div>
+    <div class="stat">
+      <div class="label">Personal income, monthly</div>
+      <div class="value" style="color:var(--up);">+0.4%</div>
+      <div class="period">July 2026</div>
+    </div>
+    <div class="stat">
+      <div class="label">Real spending, monthly</div>
+      <div class="value" style="color:var(--flat);">~0.0%</div>
+      <div class="period">barely moved despite income growth</div>
+    </div>
+  </div>
+  <div class="note warn" style="margin-top:12px;">
+    This is arguably the most important number added to this dashboard so far: core PCE has now been stuck at 3.3-3.4% for four straight months (April through July) with essentially no net improvement. That stall — not any single month's CPI reading — is what pushed Fed Chair Kevin Warsh toward a notably hawkier tone at Jackson Hole this week (see the Federal Reserve section below). Separately, July's report showed incomes rising twice as fast as actual spending, an unusual combination that suggests households are saving more cautiously rather than spending freely, even as their paychecks grow.
+  </div>
+  <div class="impact"><span class="impact-label">What this means for you</span>The Fed pays more attention to this number than to the CPI headlines. A stalled core PCE reading makes a September rate cut much less likely — and modestly raises the odds of a rate hike instead, which would mean borrowing costs (credit cards, auto loans, variable mortgages) stay elevated or climb further.</div>
+  <div class="source-card" style="margin-top:12px;">
+    <a href="https://www.bea.gov/data/personal-consumption-expenditures-price-index" target="_blank">BEA — Personal Consumption Expenditures Price Index</a>
+    <div class="desc">Released monthly as part of the Personal Income and Outlays report; the Fed's statutory 2% inflation target is defined using this index.</div>
+    <span class="tag">bea.gov</span>
+  </div>
 </section>
 
 <section>
@@ -341,7 +398,7 @@
 </section>
 
 <section>
-  <h2>Groceries (food)</h2>
+  <h2 id="sec-groceries">Groceries (food)</h2>
   <div class="stat-grid">
     <div class="stat">
       <div class="label">Food CPI (all items), 12-mo</div>
@@ -376,7 +433,7 @@
 </section>
 
 <section>
-  <h2>Housing costs (shelter CPI)</h2>
+  <h2 id="sec-housing">Housing costs (shelter CPI)</h2>
   <p class="subnote">12-month percent change, not seasonally adjusted, from BLS CPI news releases.</p>
   <div class="table-wrap"><div class="scroll-hint">↔ swipe to see all columns</div><div class="table-scroll"><table class="trend-table">
     <tr>
@@ -408,37 +465,37 @@
 </section>
 
 <section>
-  <h2>Mortgage rates</h2>
+  <h2 id="sec-mortgage">Mortgage rates</h2>
   <div class="stat-grid">
     <div class="stat">
       <div class="label">30-year fixed rate, current</div>
-      <div class="value" style="color:var(--up);">6.67%</div>
-      <div class="period">week of Aug 13, 2026 (Freddie Mac)</div>
+      <div class="value" style="color:var(--up);">6.66%</div>
+      <div class="period">week of Aug 27, 2026 (Freddie Mac)</div>
     </div>
     <div class="stat">
       <div class="label">30-year fixed, one year ago</div>
-      <div class="value" style="color:var(--down);">6.58%</div>
+      <div class="value" style="color:var(--down);">6.56%</div>
       <div class="period">week of Aug 2025</div>
     </div>
     <div class="stat">
       <div class="label">15-year fixed rate, current</div>
-      <div class="value" style="color:var(--up);">5.96%</div>
-      <div class="period">week of Aug 13, 2026</div>
+      <div class="value" style="color:var(--up);">5.98%</div>
+      <div class="period">week of Aug 27, 2026</div>
     </div>
   </div>
   <div class="note" style="margin-top:12px;">
-    Mortgage rates are a market price, not a government-set inflation index, but Freddie Mac's weekly survey is the standard benchmark and is often paired with CPI shelter data to gauge housing affordability. Rates have drifted higher since mid-July and are now running above year-ago levels, erasing the affordability edge from earlier this year, though Freddie Mac notes inventory is improving and listing prices are modestly below year-ago levels. Freddie Mac's next weekly update is due August 20, 2026.
+    Mortgage rates are a market price, not a government-set inflation index, but Freddie Mac's weekly survey is the standard benchmark and is often paired with CPI shelter data to gauge housing affordability. Rates were essentially flat this week (6.65% → 6.66%), holding above year-ago levels. Freddie Mac's chief economist described the market as "resilient," pointing to steady consumer spending, rising incomes, more homes coming on the market, and slower price growth giving buyers better options. Watch this space closely: mortgage rates react quickly to Fed rate-path signals, and this week's hawkish turn from Chair Warsh (see Federal Reserve section) could push rates higher before the next reading. Freddie Mac's next weekly update is due September 3, 2026.
   </div>
   <div class="source-card" style="margin-top:12px;">
     <a href="https://www.freddiemac.com/pmms" target="_blank">Freddie Mac — Primary Mortgage Market Survey</a>
     <div class="desc">Weekly average 30-year and 15-year fixed mortgage rates, updated every Thursday.</div>
     <span class="tag">freddiemac.com</span>
   </div>
-  <div class="impact"><span class="impact-label">What this means for you</span>If you're house-hunting, financing costs ticked up again this month. If you already locked in a lower rate, you're increasingly insulated from this — the gap between existing homeowners and new buyers keeps widening.</div>
+  <div class="impact"><span class="impact-label">What this means for you</span>If you're house-hunting, rates have been flat for two weeks, but that calm may not last — the Fed's more hawkish tone this week raises the odds rates drift up rather than down heading into fall. If you already locked in a lower rate, you're increasingly insulated from this.</div>
 </section>
 
 <section>
-  <h2>Home prices (Case-Shiller)</h2>
+  <h2 id="sec-home-prices">Home prices (Case-Shiller)</h2>
   <p class="subnote">S&amp;P Cotality Case-Shiller U.S. National Home Price Index — actual sale prices, not rent/OER like CPI shelter above.</p>
   <div class="stat-grid">
     <div class="stat">
@@ -479,7 +536,7 @@
 </section>
 
 <section>
-  <h2>Energy &amp; fuel costs</h2>
+  <h2 id="sec-energy">Energy &amp; fuel costs</h2>
   <p class="subnote">12-month percent change, not seasonally adjusted, from BLS CPI news releases.</p>
   <div class="table-wrap"><div class="scroll-hint">↔ swipe to see all columns</div><div class="table-scroll"><table class="trend-table">
     <tr>
@@ -507,7 +564,7 @@
     </tr>
   </table></div></div>
   <div class="note warn" style="margin-top:12px;">
-    Energy is still the dominant swing factor, just a smaller one each month now. Gasoline fell another 2.9% in July on top of June's 9.7% drop, pulling the annual rate down to 24.6% — well off May's 40.5% peak, but this reflects prices calming somewhat, not a resolution of the underlying conflict (see below). At the pump, the national average was $4.03/gallon as of the July report. Crude oil prices (Brent near $90, WTI near $84) remain elevated, and Brent has since climbed further into mid-August on renewed Iranian demands over the Strait.
+    Energy is still the dominant swing factor, just a smaller one each month now. Gasoline fell another 2.9% in July on top of June's 9.7% drop, pulling the annual rate down to 24.6% — well off May's 40.5% peak, but this reflects prices calming somewhat, not a resolution of the underlying conflict (see below). At the pump, the national average was $4.03/gallon as of the July report. Crude oil jumped again today (Aug 31): Brent rose above $90-93/barrel and WTI near $86, after the U.S. and Iran exchanged strikes for the first time in about a month, ending several weeks of relative calm in the Strait of Hormuz. Expect this to show up in gas prices within 1-2 weeks if the escalation holds.
   </div>
   <div class="impact"><span class="impact-label">What this means for you</span>Your gas and utility bills are still elevated versus a year ago but easing month over month. If you drive regularly, expect noticeably smaller pinches at the pump through the fall compared to earlier this year.</div>
 </section>
@@ -532,12 +589,15 @@
     </div>
     <div class="stat">
       <div class="label">Conflict duration, as of today</div>
-      <div class="value" style="color:var(--ink);">~5.5 months</div>
+      <div class="value" style="color:var(--ink);">~6 months</div>
       <div class="period">began Feb 28, 2026</div>
     </div>
   </div>
   <div class="note warn" style="margin-top:12px;">
-    <strong>Correction from an earlier version of this dashboard:</strong> a prior update described a "ceasefire" that reopened the Strait of Hormuz in late June. That was inaccurate. The Strait has instead been in a state of on-and-off crisis since Iranian forces effectively closed it on March 4, 2026 — insurance for ships transiting the Strait is unavailable or prohibitively expensive, and traffic remains severely disrupted. Oil price dips in June/July reflected temporary lulls in fighting, not resolution; as of August 10, 2026, Iran is demanding major U.S. concessions before it will allow the waterway to reopen, and Brent crude has been climbing again. Economists at CEPR estimate the disruption alone is adding roughly 0.6 percentage points to 2026 headline CPI and 0.2 points to core CPI — a meaningful, quantifiable share of the inflation tracked throughout this dashboard. This is a live, unresolved situation, not a resolved one, and energy figures above should be read with that in mind.
+    <strong>Update, August 31:</strong> fighting resumed today after several weeks of relative calm. U.S. forces struck Iranian rocket launchers near the Strait that were reportedly preparing to deploy mines, and Iran claimed retaliatory attacks on U.S. bases in Jordan; Iran also reported a supertanker struck two mines on Hormuz's southern route, though that's unconfirmed independently. Oil jumped in response (see Energy section above). This ends a period where oil had actually been trending down through most of August as diplomacy seemed possible — a reminder that this situation can reverse in a single day, in either direction.
+  </div>
+  <div class="note warn" style="margin-top:12px;">
+    <strong>Correction from an earlier version of this dashboard:</strong> a prior update described a "ceasefire" that reopened the Strait of Hormuz in late June. That was inaccurate. The Strait has instead been in a state of on-and-off crisis since Iranian forces effectively closed it on March 4, 2026 — insurance for ships transiting the Strait is unavailable or prohibitively expensive, and traffic remains severely disrupted, though analysts estimate 6-8 million barrels/day (down from a pre-war 20-24 million) still move through via other Gulf producers. Economists at CEPR estimate the disruption alone is adding roughly 0.6 percentage points to 2026 headline CPI and 0.2 points to core CPI — a meaningful, quantifiable share of the inflation tracked throughout this dashboard. This is a live, unresolved situation, not a resolved one, and energy figures above should be read with that in mind.
   </div>
   <div class="source-card" style="margin-top:12px;">
     <a href="https://www.congress.gov/crs-product/R45281" target="_blank">Congressional Research Service — Strait of Hormuz Security Developments</a>
@@ -578,7 +638,7 @@
 </section>
 
 <section>
-  <h2>Health insurance &amp; medical care</h2>
+  <h2 id="sec-medical">Health insurance &amp; medical care</h2>
   <div class="stat-grid">
     <div class="stat">
       <div class="label">Medical care CPI, 12-mo</div>
@@ -717,7 +777,7 @@
 </section>
 
 <section>
-  <h2>Unemployment</h2>
+  <h2 id="sec-unemployment">Unemployment</h2>
   <p class="subnote">Seasonally adjusted U-3 unemployment rate, from BLS Employment Situation reports.</p>
   <div class="table-wrap"><div class="scroll-hint">↔ swipe to see all columns</div><div class="table-scroll"><table class="trend-table">
     <tr>
@@ -907,12 +967,12 @@
     <div class="stat">
       <div class="label">Federal funds rate</div>
       <div class="value" style="color:var(--ink);">3.50%-3.75%</div>
-      <div class="period">held steady, 5th straight meeting</div>
+      <div class="period">held steady since May</div>
     </div>
     <div class="stat">
-      <div class="label">July 29 vote</div>
-      <div class="value" style="color:var(--flat);">9-3</div>
-      <div class="period">3 regional presidents dissented for a hike</div>
+      <div class="label">Market odds of a Sept. hike</div>
+      <div class="value" style="color:var(--up);">~50%</div>
+      <div class="period">up from ~34% before Jackson Hole</div>
     </div>
     <div class="stat">
       <div class="label">Next FOMC meeting</div>
@@ -921,18 +981,26 @@
     </div>
   </div>
   <div class="note warn" style="margin-top:12px;">
-    The Fed is visibly split. Three regional bank presidents — Cleveland's Beth Hammack, Minneapolis's Neel Kashkari, and Dallas's Lorie Logan — dissented in July, wanting to raise rates given inflation still running above target. Chair Kevin Warsh held the line, but the July CPI report (in-line, not hot) reduced pressure for a September hike — futures markets now put the odds of another hold near 42%. Watch for Warsh's Jackson Hole speech (Aug 27-29), which is likely to signal which way the September decision leans.
+    <strong>The Fed's tone shifted hawkish this week.</strong> At the Jackson Hole Economic Policy Symposium on August 28, Chair Kevin Warsh delivered his most detailed remarks yet, saying this summer's inflation readings "do not tell me that underlying trends have meaningfully improved" and that inflation is "more concerning" than labor-market softness. He stopped short of committing to a hike, sticking to his pattern of withholding forward guidance — but bond markets reacted immediately: two-year Treasury yields jumped, and CME futures now price the odds of a September rate <em>hike</em> at roughly a coin flip, up sharply from about one-third before he spoke. Some economists (e.g., Navy Federal's Heather Long) think a hike is more likely in October or December than September. This is a real reversal from a month ago, when markets were debating whether the Fed's next move would be a cut.
+  </div>
+  <div class="note" style="margin-top:12px;">
+    Context for the split: three regional bank presidents — Cleveland's Beth Hammack, Minneapolis's Neel Kashkari, and Dallas's Lorie Logan — already dissented at the July 29 meeting, wanting to raise rates. Warsh's Jackson Hole remarks suggest he may now be leaning toward their view, especially with core PCE stalled at 3.3-3.4% for four straight months (see the PCE section above).
   </div>
   <div class="source-card" style="margin-top:12px;">
     <a href="https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm" target="_blank">Federal Reserve — FOMC Meeting Calendar &amp; Statements</a>
     <div class="desc">Official rate decisions, statements, and the quarterly Summary of Economic Projections ("dot plot").</div>
     <span class="tag">federalreserve.gov</span>
   </div>
-  <div class="impact"><span class="impact-label">What this means for you</span>If you carry variable-rate debt (credit cards, some mortgages, HELOCs), the Fed holding rates steady means your rates aren't falling yet. A September cut, if it happens, would be the first relief on that front this year.</div>
+  <div class="source-card" style="margin-top:12px;">
+    <a href="https://www.federalreserve.gov/newsevents/speech/warsh20260828a.htm" target="_blank">Federal Reserve — Chair Warsh's Jackson Hole Remarks (Aug 28, 2026)</a>
+    <div class="desc">Full text of the speech that shifted market rate expectations this week.</div>
+    <span class="tag">federalreserve.gov</span>
+  </div>
+  <div class="impact"><span class="impact-label">What this means for you</span>If you carry variable-rate debt (credit cards, some mortgages, HELOCs), don't count on relief this fall — the odds just shifted toward rates staying flat or rising, not falling. If you were hoping to refinance on a rate cut, this week's news is a reason to reconsider that timeline.</div>
 </section>
 
 <section>
-  <h2>Uninsured rate</h2>
+  <h2 id="sec-uninsured">Uninsured rate</h2>
   <div class="stat-grid">
     <div class="stat">
       <div class="label">Uninsured, all ages</div>
@@ -959,6 +1027,68 @@
     <span class="tag">cdc.gov</span>
   </div>
   <div class="impact"><span class="impact-label">What this means for you</span>If you get insurance through the ACA marketplace, brace for premium increases as enhanced subsidies expire. This is a good year to shop around during open enrollment rather than auto-renew your current plan.</div>
+</section>
+
+<section>
+  <h2>Upcoming elections</h2>
+  <p class="subnote">The federal midterms are the next major election nationwide — general election is November 3, 2026. Most state primaries (which ran March-September 2026) have already occurred.</p>
+  <div class="stat-grid">
+    <div class="stat">
+      <div class="label">General election date</div>
+      <div class="value" style="color:var(--ink);">Nov 3, 2026</div>
+      <div class="period">Federal midterms</div>
+    </div>
+    <div class="stat">
+      <div class="label">House seats up</div>
+      <div class="value" style="color:var(--ink);">435</div>
+      <div class="period">every seat, nationwide</div>
+    </div>
+    <div class="stat">
+      <div class="label">Senate seats up</div>
+      <div class="value" style="color:var(--ink);">35</div>
+      <div class="period">incl. 2 special elections</div>
+    </div>
+    <div class="stat">
+      <div class="label">Governorships up</div>
+      <div class="value" style="color:var(--ink);">36</div>
+      <div class="period">across most states</div>
+    </div>
+  </div>
+
+  <div class="election-note" style="margin-top:14px;"><strong>Northeast</strong> (this dashboard's hottest inflation region, 4.1% CPI): New York holds its general election Nov 3, including the governor's race and all 26 House seats.</div>
+  <div class="election-note"><strong>Midwest:</strong> Ohio has an open Senate seat (Vivek Ramaswamy vs. likely nominee Amy Acton); Illinois has an open Senate seat following Dick Durbin's retirement.</div>
+  <div class="election-note"><strong>South:</strong> Texas Senate race (John Cornyn vs. Jasmine Crockett or James Talarico); Georgia has a crowded race for Marjorie Taylor Greene's former House seat.</div>
+  <div class="election-note"><strong>West</strong> (this dashboard's coolest inflation region, 3.0% CPI): Alaska has an open governor's race (Gov. Dunleavy is term-limited); California already held its primary June 2.</div>
+
+  <div class="note" style="margin-top:12px;">
+    <strong>Registration deadlines vary widely by state.</strong> Same-day registration (register at the polls): California, Colorado, Illinois, Maryland, Michigan, Minnesota, Nevada, Virginia, and others. 30-day deadline (register by Oct 4, 2026): Georgia, Mississippi, Rhode Island, Tennessee, Virginia. 25-day deadline (Oct 9, 2026): Alabama, Florida, Louisiana, Texas. Verify your specific state and status directly — deadlines and rules are subject to change.
+  </div>
+  <div class="impact"><span class="impact-label">What this means for you</span>If any of the cost-of-living issues tracked in this dashboard — grocery prices, SNAP, housing, healthcare access — matter to you, November is when that gets decided at the state and federal level. Check your registration status now rather than in October.</div>
+
+  <div class="source-card" style="margin-top:12px;">
+    <a href="https://www.vote.org" target="_blank">Vote.org — Registration &amp; Deadlines</a>
+    <div class="desc">Check your registration status, find your state's deadline, and see what's on your ballot.</div>
+    <span class="tag">vote.org</span>
+  </div>
+  <div class="source-card" style="margin-top:12px;">
+    <a href="https://ballotpedia.org/2026_elections" target="_blank">Ballotpedia — 2026 Elections</a>
+    <div class="desc">Nonpartisan, detailed race-by-race coverage of every 2026 federal, state, and local election.</div>
+    <span class="tag">ballotpedia.org</span>
+  </div>
+  <div class="source-card" style="margin-top:12px;">
+    <a href="https://www.ncsl.org/elections-and-campaigns/2026-state-primary-election-dates" target="_blank">NCSL — 2026 State Primary Election Dates</a>
+    <div class="desc">Official nonpartisan tracker of primary dates and rules by state.</div>
+    <span class="tag">ncsl.org</span>
+  </div>
+</section>
+
+<section>
+  <h2>Get involved</h2>
+  <p class="subnote">Organizations working directly on the issues tracked in this dashboard — housing, groceries, healthcare, jobs, wildfires, elders, veterans, and youth.</p>
+  <div class="source-card">
+    <a href="get-involved.html">→ View the full Get Involved resource guide</a>
+    <div class="desc">Moved to its own page to keep this dashboard focused on data. Covers 8 issue areas with 20+ organizations, each tied to a specific stat tracked here.</div>
+  </div>
 </section>
 
 <section>
@@ -1025,7 +1155,7 @@
 </main>
 
 <footer>
-  Built from live BLS/BEA/CMS/USDA/CDC/Freddie Mac/DOL/Federal Reserve/S&amp;P Case-Shiller/CBO/CBPP data, refreshed August 25, 2026. Figures are subject to revision by the issuing agency.
+  Built from live BLS/BEA/CMS/USDA/CDC/Freddie Mac/DOL/Federal Reserve/S&amp;P Case-Shiller/CBO/CBPP data, refreshed August 31, 2026. Figures are subject to revision by the issuing agency.
 </footer>
 
 <script>
