@@ -1,0 +1,32 @@
+    }
+  });
+
+  // Inject a "read this section" button into every section
+  sections.forEach(function(sec, i){
+    var h2 = sec.querySelector('h2');
+    if (!h2) return;
+    if (!h2.id) h2.id = 'section-heading-' + i;
+    sec.setAttribute('aria-labelledby', h2.id);
+
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'section-read-btn';
+    btn.textContent = '🔊 Read this section aloud';
+    btn.setAttribute('aria-label', 'Read the "' + h2.textContent.trim() + '" section aloud');
+
+    btn.addEventListener('click', function(){
+      var isThisReading = sec.classList.contains('is-reading') && mode === 'section';
+      if (isThisReading) {
+        stopAll();
+      } else {
+        startQueue(buildQueueFromSection(sec), 'section');
+      }
+    });
+
+    h2.insertAdjacentElement('afterend', btn);
+  });
+
+})();
+</script>
+</body>
+</html>
