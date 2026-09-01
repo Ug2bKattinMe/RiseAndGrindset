@@ -93,6 +93,18 @@
   }
   .election-note strong{ color:var(--ink); }
 
+  .involve-details{ margin-top:4px; }
+  .involve-details summary{
+    cursor:pointer; list-style:none; font-family:Helvetica,Arial,sans-serif;
+    font-weight:bold; font-size:0.95rem; color:var(--accent);
+    background:var(--card); border:1px solid var(--line); border-radius:6px;
+    padding:12px 16px; box-shadow:0 1px 3px rgba(0,0,0,0.08);
+  }
+  .involve-details summary::-webkit-details-marker{ display:none; }
+  .involve-details summary:hover{ background:#f0ece3; }
+  .involve-details[open] summary{ margin-bottom:16px; border-radius:6px 6px 0 0; }
+  .involve-details[open] summary::after{ content:" (click to collapse)"; font-weight:normal; color:var(--sub); font-size:0.8rem; }
+
   .summary-box{
     background:var(--card); border:1px solid var(--line); border-radius:6px;
     padding:16px 18px; margin-bottom:10px; box-shadow:0 1px 3px rgba(0,0,0,0.08);
@@ -202,7 +214,7 @@
 <header>
   <h1>U.S. Inflation Dashboard</h1>
   <p>Figures below trace directly to federal statistical agencies — click through to verify each number at its origin.</p>
-  <div class="asof">Latest official data pulled: August 31, 2026 · adds today's renewed U.S.-Iran fighting and oil price spike on top of the Aug 30 PCE/Fed/mortgage update · Next CPI release: August 2026 data, out September 11, 2026</div>
+  <div class="asof">Latest official data pulled: September 1, 2026 · adds July JOLTS (released today) and continued Iran/Hormuz escalation, incl. new threats to Kharg Island · Next: Aug payrolls (Sept 4), CPI Aug data (Sept 11)</div>
 </header>
 
 <main id="main-content">
@@ -590,8 +602,11 @@
     <div class="stat">
       <div class="label">Conflict duration, as of today</div>
       <div class="value" style="color:var(--ink);">~6 months</div>
-      <div class="period">began Feb 28, 2026</div>
+      <div class="period">began Feb 28, 2026 — escalating again</div>
     </div>
+  </div>
+  <div class="note warn" style="margin-top:12px;">
+    <strong>Update, Sept 1:</strong> the escalation that began Aug 31 has continued to intensify. President Trump reportedly vowed to "hit them very hard" after Iran struck two U.S. bases in Jordan, and threats have now extended to Kharg Island — the terminal handling roughly 90% of Iran's oil exports (about 7 million barrels/day of capacity). Separately, refinery strikes inside Russia have tightened global refining capacity on top of the Hormuz disruption, and reporting indicates the U.S. Strategic Petroleum Reserve has been drawn down close to minimum operational levels amid increased crude exports. A supertanker fire from a mine strike in the southern Strait, reported yesterday, has not been independently confirmed. This is now a broader supply-side story than the Strait alone — worth watching whether Kharg Island threats materialize, since that would be a significant step beyond the shipping-lane disruption this dashboard has tracked so far.
   </div>
   <div class="note warn" style="margin-top:12px;">
     <strong>Update, August 31:</strong> fighting resumed today after several weeks of relative calm. U.S. forces struck Iranian rocket launchers near the Strait that were reportedly preparing to deploy mines, and Iran claimed retaliatory attacks on U.S. bases in Jordan; Iran also reported a supertanker struck two mines on Hormuz's southern route, though that's unconfirmed independently. Oil jumped in response (see Energy section above). This ends a period where oil had actually been trending down through most of August as diplomacy seemed possible — a reminder that this situation can reverse in a single day, in either direction.
@@ -837,38 +852,38 @@
 
 <section>
   <h2>Job openings &amp; labor turnover (JOLTS) — a leading indicator</h2>
-  <p class="subnote">June 2026 data, released Aug 4, 2026. July data isn't out yet — next JOLTS release is September 1, 2026.</p>
+  <p class="subnote">July 2026 data, released today (Sept 1, 2026). Next JOLTS release (August data) is September 29, 2026.</p>
   <div class="stat-grid">
     <div class="stat">
       <div class="label">Job openings</div>
-      <div class="value" style="color:var(--flat);">7.4M</div>
-      <div class="period">little changed from May's revised 7.5M</div>
+      <div class="value" style="color:var(--flat);">7.27M</div>
+      <div class="period">up from June's sharply revised-down 7.18M</div>
     </div>
     <div class="stat">
       <div class="label">Hires</div>
-      <div class="value" style="color:var(--flat);">5.3M</div>
-      <div class="period">unchanged</div>
+      <div class="value" style="color:var(--flat);">5.1M</div>
+      <div class="period">little changed</div>
     </div>
     <div class="stat">
       <div class="label">Quits</div>
-      <div class="value" style="color:var(--flat);">3.2M</div>
-      <div class="period">unchanged — a confidence signal</div>
+      <div class="value" style="color:var(--down);">3.06M</div>
+      <div class="period">quits rate down to 1.9%</div>
     </div>
     <div class="stat">
       <div class="label">Layoffs &amp; discharges</div>
-      <div class="value" style="color:var(--flat);">1.8M</div>
-      <div class="period">unchanged</div>
+      <div class="value" style="color:var(--flat);">1.7M</div>
+      <div class="period">little changed</div>
     </div>
   </div>
-  <div class="note" style="margin-top:12px;">
-    JOLTS is the Fed's favorite labor-market gauge because it captures demand for workers (openings) and worker confidence (quits — people quit more readily when they trust they can find another job) a month or so before it shows up in the headline jobs report. June's reading was unusually quiet — every major metric "little changed" or "unchanged" — which is actually notable given how volatile the June/July jobs data turned out to be. That quiet JOLTS report didn't foreshadow July's surprise job losses, a reminder that no single leading indicator catches everything. Watch the September 1 release (July data) closely for whether it starts reflecting the weakness the payroll numbers showed.
+  <div class="note warn" style="margin-top:12px;">
+    Two things worth separating here. On the surface, July looks fine — openings actually rose from June. But June's originally-reported 7.36M figure was revised down to 7.18M, the largest downward revision since 2025, meaning the "rise" in July is partly an artifact of a lower starting point. The more telling numbers are the quits rate, which slipped to 1.9% (workers aren't confident enough to leave jobs voluntarily), and the fact this comes right after July's payroll report showed the economy losing 23,000 jobs outright. Several analysts read this release as a signal that Friday's August payrolls report (due Sept 4) could disappoint again. There's also now a nearly month-long gap before the next JOLTS reading (Sept 29), so this will be the freshest labor-market leading indicator in hand until then.
   </div>
   <div class="source-card" style="margin-top:12px;">
     <a href="https://www.bls.gov/news.release/jolts.htm" target="_blank">BLS — Job Openings and Labor Turnover Survey (JOLTS)</a>
     <div class="desc">Monthly openings, hires, quits, and layoffs data — the Fed's preferred forward-looking labor market read.</div>
     <span class="tag">bls.gov</span>
   </div>
-  <div class="impact"><span class="impact-label">What this means for you</span>If you're considering a job change, the flat quits rate suggests workers aren't feeling confident about finding something better right now — a sign to negotiate carefully rather than assume leverage.</div>
+  <div class="impact"><span class="impact-label">What this means for you</span>If you're considering a job change, a 1.9% quits rate is a weak signal — workers are staying put rather than testing the market, which usually means less leverage to negotiate a new offer right now.</div>
 </section>
 
 <section>
@@ -1084,11 +1099,141 @@
 
 <section>
   <h2>Get involved</h2>
-  <p class="subnote">Organizations working directly on the issues tracked in this dashboard — housing, groceries, healthcare, jobs, wildfires, elders, veterans, and youth.</p>
-  <div class="source-card">
-    <a href="get-involved.html">→ View the full Get Involved resource guide</a>
-    <div class="desc">Moved to its own page to keep this dashboard focused on data. Covers 8 issue areas with 20+ organizations, each tied to a specific stat tracked here.</div>
+  <p class="subnote">Organizations working directly on the issues tracked in this dashboard, grouped by topic. Click to expand — collapsed by default to keep this page focused on data. Included for informational purposes, not an endorsement of any group's positions.</p>
+  <details class="involve-details">
+    <summary>→ Show all 8 issue areas and 20+ organizations</summary>
+  <div class="involve-group">
+    <span class="issue-tag">Housing &amp; Shelter</span>
+    <div class="source-card">
+      <a href="https://nlihc.org" target="_blank">National Low Income Housing Coalition</a>
+      <div class="desc">National policy advocacy to preserve federally assisted housing and expand low-income housing supply.</div>
+      <span class="tag">nlihc.org</span>
+    </div>
+    <div class="source-card">
+      <a href="https://socialists.nyc" target="_blank">NYC Democratic Socialists of America</a>
+      <div class="desc">The largest DSA chapter (14,000+ members); active in tenant organizing in the region with this dashboard's highest shelter inflation (3.9% Y/Y).</div>
+      <span class="tag">socialists.nyc</span>
+    </div>
+    <div class="source-card">
+      <a href="https://massunion.org" target="_blank">Mass Union of Public Housing Tenants</a>
+      <div class="desc">Tenant-led organizing on the Massachusetts affordable housing shortage.</div>
+      <span class="tag">massunion.org</span>
+    </div>
   </div>
+
+  <div class="involve-group">
+    <span class="issue-tag">Groceries &amp; SNAP</span>
+    <div class="source-card">
+      <a href="https://www.cbpp.org" target="_blank">Center on Budget and Policy Priorities</a>
+      <div class="desc">Policy research and advocacy on SNAP and food assistance — the source behind this dashboard's SNAP figures.</div>
+      <span class="tag">cbpp.org</span>
+    </div>
+    <div class="source-card">
+      <a href="https://frac.org" target="_blank">Food Research &amp; Action Center</a>
+      <div class="desc">National anti-hunger policy advocacy and local affiliate network.</div>
+      <span class="tag">frac.org</span>
+    </div>
+  </div>
+
+  <div class="involve-group">
+    <span class="issue-tag">Healthcare &amp; Uninsured Rate</span>
+    <div class="source-card">
+      <a href="https://familiesusa.org" target="_blank">Families USA</a>
+      <div class="desc">Nonpartisan advocacy for affordable health coverage, active on ACA subsidy expiration issues.</div>
+      <span class="tag">familiesusa.org</span>
+    </div>
+    <div class="source-card">
+      <a href="https://www.communitycatalyst.org" target="_blank">Community Catalyst</a>
+      <div class="desc">Health equity advocacy, tracking Medicaid eligibility changes referenced in this dashboard.</div>
+      <span class="tag">communitycatalyst.org</span>
+    </div>
+  </div>
+
+  <div class="involve-group">
+    <span class="issue-tag">Jobs &amp; Wages</span>
+    <div class="source-card">
+      <a href="https://www.dsausa.org" target="_blank">Democratic Socialists of America</a>
+      <div class="desc">National organization (104,700+ members); local chapters organize on labor solidarity and minimum wage campaigns. Find your local chapter via the national site.</div>
+      <span class="tag">dsausa.org</span>
+    </div>
+    <div class="source-card">
+      <a href="https://www.epi.org" target="_blank">Economic Policy Institute</a>
+      <div class="desc">Nonpartisan-leaning labor and wage research; tracks real wage trends referenced in this dashboard's Unemployment section.</div>
+      <span class="tag">epi.org</span>
+    </div>
+  </div>
+
+  <div class="involve-group">
+    <span class="issue-tag">Wildfires &amp; Energy Costs</span>
+    <div class="source-card">
+      <a href="https://www.insurance.ca.gov" target="_blank">California Department of Insurance — Consumer Resources</a>
+      <div class="desc">Official state resource for wildfire-related insurance issues, including the FAIR Plan referenced in this dashboard.</div>
+      <span class="tag">insurance.ca.gov</span>
+    </div>
+  </div>
+
+  <div class="involve-group">
+    <span class="issue-tag">Elders &amp; Seniors</span>
+    <div class="source-card">
+      <a href="https://www.ncoa.org/benefitscheckup" target="_blank">National Council on Aging — BenefitsCheckUp</a>
+      <div class="desc">Free screening tool covering 2,500+ benefit programs (Medicare Savings Programs, SNAP, LIHEAP, SSI); NCOA estimates $30B in unclaimed senior benefits go unused yearly.</div>
+      <span class="tag">ncoa.org</span>
+    </div>
+    <div class="source-card">
+      <a href="https://eldercare.acl.gov" target="_blank">Eldercare Locator — 1-800-677-1116</a>
+      <div class="desc">Official U.S. Administration on Aging service connecting seniors to local Area Agency on Aging resources.</div>
+      <span class="tag">eldercare.acl.gov</span>
+    </div>
+    <div class="source-card">
+      <a href="https://www.aarp.org" target="_blank">AARP</a>
+      <div class="desc">Advocacy and resources for adults 50+, including Social Security COLA and Medicare premium tracking directly relevant to this dashboard's Chained CPI section.</div>
+      <span class="tag">aarp.org</span>
+    </div>
+  </div>
+
+  <div class="involve-group">
+    <span class="issue-tag">Veterans &amp; VA Benefits</span>
+    <div class="source-card">
+      <a href="https://www.dav.org" target="_blank">Disabled American Veterans (DAV)</a>
+      <div class="desc">Nonpartisan veterans service organization; tracks how VA disability COLA (2.8% for 2026, tied to CPI-W) compares against actual inflation.</div>
+      <span class="tag">dav.org</span>
+    </div>
+    <div class="source-card">
+      <a href="https://www.vfw.org" target="_blank">Veterans of Foreign Wars (VFW)</a>
+      <div class="desc">Advocacy on veterans' benefits, healthcare access, and cost-of-living adjustments.</div>
+      <span class="tag">vfw.org</span>
+    </div>
+    <div class="source-card">
+      <a href="https://www.va.gov" target="_blank">VA.gov — Benefits &amp; Compensation</a>
+      <div class="desc">Official source for VA disability compensation, pension, and Aid &amp; Attendance rates — automatically adjusted with the annual COLA.</div>
+      <span class="tag">va.gov</span>
+    </div>
+  </div>
+
+  <div class="involve-group">
+    <span class="issue-tag">Youth &amp; Young Adults</span>
+    <div class="source-card">
+      <a href="https://www.nokidhungry.org" target="_blank">No Kid Hungry</a>
+      <div class="desc">Directly relevant to this dashboard's SNAP section — child hunger advocacy and direct meal-access programs for the 770K-1.5M children estimated to have lost food aid.</div>
+      <span class="tag">nokidhungry.org</span>
+    </div>
+    <div class="source-card">
+      <a href="https://nyec.org" target="_blank">National Youth Employment Coalition (NYEC)</a>
+      <div class="desc">Advocacy and program support for youth economic mobility and job pathways — relevant given the labor force participation trends in this dashboard's Unemployment section.</div>
+      <span class="tag">nyec.org</span>
+    </div>
+    <div class="source-card">
+      <a href="https://younginvincibles.org" target="_blank">Young Invincibles</a>
+      <div class="desc">Policy advocacy for young adults (18-34) on healthcare access, higher education costs, and economic opportunity.</div>
+      <span class="tag">younginvincibles.org</span>
+    </div>
+  </div>
+
+  <div class="note warn" style="margin-top:6px;">
+    These groups span a real ideological range, from explicitly socialist (DSA) to nonpartisan policy organizations (CBPP, NLIHC, Families USA, EPI, NCOA, DAV). Local chapter activity and positions can shift quickly — check each group's current site directly rather than relying on this list alone.
+  </div>
+
+  </details>
 </section>
 
 <section>
@@ -1155,7 +1300,7 @@
 </main>
 
 <footer>
-  Built from live BLS/BEA/CMS/USDA/CDC/Freddie Mac/DOL/Federal Reserve/S&amp;P Case-Shiller/CBO/CBPP data, refreshed August 31, 2026. Figures are subject to revision by the issuing agency.
+  Built from live BLS/BEA/CMS/USDA/CDC/Freddie Mac/DOL/Federal Reserve/S&amp;P Case-Shiller/CBO/CBPP data, refreshed September 1, 2026. Figures are subject to revision by the issuing agency.
 </footer>
 
 <script>
