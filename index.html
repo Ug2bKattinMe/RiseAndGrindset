@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -215,7 +214,7 @@
 <header>
   <h1>U.S. Inflation Dashboard</h1>
   <p>Figures below trace directly to federal statistical agencies — click through to verify each number at its origin.</p>
-  <div class="asof">Latest official data pulled: September 17, 2026 · the Fed actually hiked rates 25bp on Sep 16 (first since 2023) · mortgage rates jumped to 6.95%, highest since January · oil remains elevated (~$97/barrel) amid ongoing Iran/Hormuz conflict</div>
+  <div class="asof">Latest official data pulled: October 6, 2026 · September jobs report (+29K, unemployment 4.2%) · August PCE (headline 3.4%, core 3.0%) · mortgage rates 7.28% (highest in about a year) · gas hit a record September average · Conference Board confidence at its lowest since 2014</div>
 </header>
 
 <main id="main-content">
@@ -263,37 +262,51 @@
 
 <section>
   <h2 id="sec-pce">PCE — the Fed's actual preferred gauge</h2>
-  <p class="subnote">Personal Consumption Expenditures price index, from BEA's Personal Income and Outlays report. This is the inflation measure the Fed's 2% target is actually defined against — not CPI. August PCE data isn't out yet; it releases later this month, after the Fed's Sept 16 decision.</p>
+  <p class="subnote">Personal Consumption Expenditures price index, from BEA's Personal Income and Outlays report. This is the inflation measure the Fed's 2% target is actually defined against — not CPI. August data is now out; September PCE is due late October. BEA also revised earlier figures, so older months may differ slightly from what this dashboard showed previously.</p>
   <table class="trend-table">
     <tr>
-      <th>Measure</th><th>Apr 2026</th><th>May 2026</th><th>Jun 2026</th><th>Jul 2026</th>
+      <th>Measure</th><th>Apr 2026</th><th>May 2026</th><th>Jun 2026</th><th>Jul 2026</th><th>Aug 2026</th>
     </tr>
     <tr>
       <td class="metric">Core PCE, 12-mo</td>
-      <td>3.3%</td><td>3.4%</td><td>3.3%</td><td>3.3%</td>
+      <td>3.3%</td><td>3.4%</td><td>3.3%</td><td>3.3%</td><td class="arrow-down">3.0%</td>
+    </tr>
+    <tr>
+      <td class="metric">Headline PCE, 12-mo</td>
+      <td>—</td><td>—</td><td>—</td><td>3.7%</td><td class="arrow-down">3.4%</td>
     </tr>
   </table>
   <div class="stat-grid" style="margin-top:14px;">
     <div class="stat">
       <div class="label">Headline PCE, 12-mo</div>
-      <div class="value" style="color:var(--up);">3.7%</div>
-      <div class="period">July 2026, above forecast</div>
+      <div class="value" style="color:var(--up);">3.4%</div>
+      <div class="period">Aug 2026, down from 3.7% in July</div>
+    </div>
+    <div class="stat">
+      <div class="label">Core PCE, 12-mo</div>
+      <div class="value" style="color:var(--flat);">3.0%</div>
+      <div class="period">Aug 2026, first real drop after four months at 3.3-3.4%</div>
     </div>
     <div class="stat">
       <div class="label">Personal income, monthly</div>
-      <div class="value" style="color:var(--up);">+0.4%</div>
-      <div class="period">July 2026</div>
+      <div class="value" style="color:var(--flat);">+0.2%</div>
+      <div class="period">Aug 2026</div>
     </div>
     <div class="stat">
-      <div class="label">Real spending, monthly</div>
-      <div class="value" style="color:var(--flat);">~0.0%</div>
-      <div class="period">barely moved despite income growth</div>
+      <div class="label">Personal spending, monthly</div>
+      <div class="value" style="color:var(--up);">+0.9%</div>
+      <div class="period">Aug 2026 (nominal), well ahead of income</div>
+    </div>
+    <div class="stat">
+      <div class="label">Q2 GDP growth</div>
+      <div class="value" style="color:var(--flat);">2.2%</div>
+      <div class="period">annualized, latest BEA estimate</div>
     </div>
   </div>
   <div class="note warn" style="margin-top:12px;">
-    This is arguably the most important number added to this dashboard so far: core PCE has now been stuck at 3.3-3.4% for four straight months (April through July) with essentially no net improvement. That stall — not any single month's CPI reading — is what pushed Fed Chair Kevin Warsh toward a notably hawkier tone at Jackson Hole this week (see the Federal Reserve section below). Separately, July's report showed incomes rising twice as fast as actual spending, an unusual combination that suggests households are saving more cautiously rather than spending freely, even as their paychecks grow.
+    <strong>The "stalled for four months" story has changed.</strong> This dashboard previously flagged core PCE stuck at 3.3-3.4% from April through July. August broke that pattern, with core easing to 3.0% and headline to 3.4%. That's a real improvement, but a single month — and it arrives right as spending jumped 0.9% against income growth of just 0.2%, the reverse of July's cautious pattern (income up, spending flat). Households spent more than they earned this month, which can't continue indefinitely and may partly reflect higher prices for gas and food rather than extra purchases. The Fed has not yet shown it considers one soft month enough (see the Federal Reserve section). September CPI is due October 14 and will be the next test.
   </div>
-  <div class="impact"><span class="impact-label">What this means for you</span>The Fed pays more attention to this number than to the CPI headlines. A stalled core PCE reading makes a September rate cut much less likely — and modestly raises the odds of a rate hike instead, which would mean borrowing costs (credit cards, auto loans, variable mortgages) stay elevated or climb further.</div>
+  <div class="impact"><span class="impact-label">What this means for you</span>August's easing is the first sign in months that the Fed's preferred gauge is cooling, which slightly lowers the odds of more rate hikes. But with spending outrunning income, watch your own budget: prices haven't fallen, they've just stopped rising as fast.</div>
   <div class="source-card" style="margin-top:12px;">
     <a href="https://www.bea.gov/data/personal-consumption-expenditures-price-index" target="_blank">BEA — Personal Consumption Expenditures Price Index</a>
     <div class="desc">Released monthly as part of the Personal Income and Outlays report; the Fed's statutory 2% inflation target is defined using this index.</div>
@@ -432,34 +445,34 @@
   <div class="stat-grid">
     <div class="stat">
       <div class="label">30-year fixed rate, current</div>
-      <div class="value" style="color:var(--up);">6.95%</div>
-      <div class="period">week of Sep 17, 2026 — highest since January</div>
+      <div class="value" style="color:var(--up);">7.28%</div>
+      <div class="period">week of Oct 1, 2026 — highest in about a year</div>
     </div>
     <div class="stat">
       <div class="label">30-year fixed, one year ago</div>
-      <div class="value" style="color:var(--down);">6.26%</div>
-      <div class="period">week of Sep 2025</div>
+      <div class="value" style="color:var(--down);">6.34%</div>
+      <div class="period">week of Oct 2025</div>
     </div>
     <div class="stat">
       <div class="label">15-year fixed rate, current</div>
-      <div class="value" style="color:var(--up);">6.26%</div>
-      <div class="period">week of Sep 17, 2026</div>
+      <div class="value" style="color:var(--up);">6.60%</div>
+      <div class="period">week of Oct 1, 2026</div>
     </div>
     <div class="stat">
-      <div class="label">Daily lender rate, peak this week</div>
-      <div class="value" style="color:var(--up);">7.24%</div>
-      <div class="period">Mortgage News Daily, before settling ~7.2%</div>
+      <div class="label">10-year Treasury yield, recent peak</div>
+      <div class="value" style="color:var(--up);">~5.3%</div>
+      <div class="period">late September; mortgage rates track this closely</div>
     </div>
   </div>
   <div class="note warn" style="margin-top:12px;">
-    <strong>Rates jumped again, now at their highest level in 8 months — but the causality is a little counterintuitive.</strong> Freddie Mac's weekly average rose to 6.95%, up sharply from 6.76% the week before, and 69 basis points above a year ago. This move happened mostly <em>before</em> the Fed's actual rate hike on Sept 16 — mortgage rates track the 10-year Treasury yield, which had already priced in the hike as bond markets anticipated it. After the Fed's announcement, the 10-year yield actually ticked down slightly (investors gained some confidence the Fed is finally acting on inflation), and daily mortgage rates eased marginally too, down from a peak of 7.24% earlier in the week. On a $300,000 loan, this rate climb adds roughly $200/month versus rates from just a few months ago. Mortgage applications fell 2.7% last week and refinance activity is down 65% year-over-year — real evidence buyers and homeowners are responding to this. Freddie Mac's next weekly update is due September 24, 2026.
+    <strong>Mortgage rates kept climbing after the Fed's September hike.</strong> Freddie Mac's weekly average is now 7.28%, up from 6.95% in mid-September and nearly a full percentage point above a year ago. Mortgage rates follow the 10-year Treasury yield, which pushed to roughly 5.3% in late September on strong growth data and hawkish Fed commentary. On a $300,000 30-year loan, 7.28% means a principal-and-interest payment of about $2,053 a month, roughly <strong>$188 more per month</strong> than at last year's 6.34% ($1,865), and about <strong>$67 more</strong> than at 6.95% just three weeks ago ($1,986). Taxes and insurance are extra. Freddie Mac's next print is Thursday, October 8.
   </div>
   <div class="source-card" style="margin-top:12px;">
     <a href="https://www.freddiemac.com/pmms" target="_blank">Freddie Mac — Primary Mortgage Market Survey</a>
     <div class="desc">Weekly average 30-year and 15-year fixed mortgage rates, updated every Thursday.</div>
     <span class="tag">freddiemac.com</span>
   </div>
-  <div class="impact"><span class="impact-label">What this means for you</span>If you're house-hunting or refinancing, this is now materially more expensive than even two weeks ago. If a lender quotes you something close to 7% today, that's not a bad deal by their error — that's genuinely where the market has moved this week.</div>
+  <div class="impact"><span class="impact-label">What this means for you</span>If you're house-hunting or refinancing, borrowing is materially more expensive than a month ago: on a $300,000 loan, about $188 a month more than a year ago. A quote near 7.3% is not a lender's error — it's where the market is.</div>
 </section>
 
 <section>
@@ -468,27 +481,22 @@
   <div class="stat-grid">
     <div class="stat">
       <div class="label">National index, 12-mo</div>
-      <div class="value" style="color:var(--up);">+1.5%</div>
-      <div class="period">June 2026, up from +1.2% in May</div>
+      <div class="value" style="color:var(--up);">+1.9%</div>
+      <div class="period">July 2026, up from +1.5% in June</div>
     </div>
     <div class="stat">
-      <div class="label">Monthly change (NSA)</div>
-      <div class="value" style="color:var(--up);">+0.4%</div>
-      <div class="period">June 2026</div>
+      <div class="label">Months of real (inflation-adjusted) decline</div>
+      <div class="value" style="color:var(--down);">14</div>
+      <div class="period">consecutive, as of July 2026</div>
     </div>
     <div class="stat">
       <div class="label">Strongest metro, 12-mo</div>
       <div class="value" style="color:var(--up);">+6.9%</div>
       <div class="period">Chicago</div>
     </div>
-    <div class="stat">
-      <div class="label">Weakest metro, 12-mo</div>
-      <div class="value" style="color:var(--down);">-2.0%</div>
-      <div class="period">Seattle</div>
-    </div>
   </div>
   <div class="note warn" style="margin-top:12px;">
-    This is the number that fills the gap flagged earlier in the Housing section: CPI shelter tracks rent and owners' equivalent rent, while Case-Shiller tracks actual home sale prices using a repeat-sales method (the gold standard for measuring true appreciation). The headline: nominal home prices are up just 1.5% year-over-year, well below the 3.4% CPI inflation rate — meaning home values have now fallen in <em>real</em> (inflation-adjusted) terms for 13 consecutive months. Regionally it's a wide spread, from Chicago's +6.9% to Seattle's -2.0%, a nearly 9-point gap that the national figure alone doesn't show.
+    This is the number that fills the gap flagged earlier in the Housing section: CPI shelter tracks rent and owners' equivalent rent, while Case-Shiller tracks actual home sale prices using a repeat-sales method (the gold standard for measuring true appreciation). The headline: nominal home prices are up 1.9% year-over-year in the July data (the latest available, due to the two-month lag), still below the CPI inflation rate — meaning home values have now fallen in <em>real</em> (inflation-adjusted) terms for 14 consecutive months. Regionally the spread is wide: Chicago leads at +6.9%, while the weakest metro in the prior (June) release was Seattle at -2.0%. August data is due the last Tuesday of October.
   </div>
   <div class="source-card" style="margin-top:12px;">
     <a href="https://www.spglobal.com/spdji/en/index-family/indicators/sp-cotality-case-shiller/sp-cotality-case-shiller-composite/" target="_blank">S&amp;P Dow Jones Indices — Case-Shiller Home Price Indices</a>
@@ -529,7 +537,27 @@
   <div class="note warn" style="margin-top:12px;">
     <strong>The cooling trend broke in August, right on schedule with the renewed Iran/Hormuz fighting.</strong> Gasoline jumped 3.9% for the month alone and is now up more than 27% year-over-year — reversing two straight months of easing — and accounted for over a third of August's entire CPI increase. The national average hit roughly $4.30/gallon, up from $3.19 a year earlier. Separately, and arguably more concerning to economists: diesel hit $6/gallon, a record high. Diesel isn't in the CPI gasoline measure, but it's a major input cost for trucking, agriculture, and freight — meaning this cost pressure is still working its way into other prices, not yet fully reflected here. And this report only captures pricing through late August; the further Iran/Kuwait escalation and Brent's climb past $96/barrel in early September likely means September's reading goes higher still.
   </div>
-  <div class="impact"><span class="impact-label">What this means for you</span>The relief at the pump this dashboard tracked through early summer is over, at least for now. If you drive regularly, budget for a real bill increase this month, and don't expect August's price to be the peak — the underlying conflict has escalated further since this data was collected.</div>
+  <div class="stat-grid" style="margin-top:14px;">
+    <div class="stat">
+      <div class="label">AAA national average gas price</div>
+      <div class="value" style="color:var(--up);">$4.41</div>
+      <div class="period">Oct 1, 2026, vs. $3.16 a year ago</div>
+    </div>
+    <div class="stat">
+      <div class="label">Year-over-year change</div>
+      <div class="value" style="color:var(--up);">+39.7%</div>
+      <div class="period">$4.41 vs. $3.16</div>
+    </div>
+    <div class="stat">
+      <div class="label">September 2026 average</div>
+      <div class="value" style="color:var(--up);">$4.33</div>
+      <div class="period">a record for any September</div>
+    </div>
+  </div>
+  <div class="note warn" style="margin-top:12px;">
+    <strong>The September pump data confirms the earlier warning.</strong> As flagged above, the August CPI reading was unlikely to be the peak. AAA's national average closed the month at $4.41 and September averaged a record $4.33. That's about 40% above a year ago. The official September CPI (due October 14) will show how much of this reaches the inflation numbers.
+  </div>
+  <div class="impact"><span class="impact-label">What this means for you</span>The relief at the pump this dashboard tracked through early summer is over, at least for now. At $4.41, a driver using 50 gallons a month pays roughly $60 more than a year ago.</div>
 </section>
 
 <section>
@@ -556,6 +584,12 @@
       <div class="value" style="color:var(--ink);">~6.5 months</div>
       <div class="period">began Feb 28, 2026 — widening, not resolving</div>
     </div>
+  </div>
+  <div class="note" style="margin-top:12px;">
+    <strong>Update, October 6 (partly unverified):</strong> reporting from late September says diplomatic talks stalled at the United Nations. WTI crude settled at $90.42 on Sept 30. One lower-confidence report put Brent in the $103-105 range in late September, and oil eased on Oct 2 on talk of European reserve releases. On Oct 5, intraday quotes put Brent at roughly $102-106 depending on the source (about $105.81 at 7 a.m. ET per Fortune; $102.31 in early Tokyo trading per Gulf News), with Gulf News citing tanker shortages, higher insurance costs and Hormuz disruption risk. <em>These are intraday readings, not official settlements; this dashboard could not verify a settlement for Oct 5 or 6.</em> Treat all Brent figures as approximate.
+  </div>
+  <div class="note warn" style="margin-top:12px;">
+    <strong>Update, Sept 23 — the first real diplomatic signal this dashboard has tracked, alongside continued volatility.</strong> U.S. and Iranian officials reportedly held a three-hour, Qatari-mediated meeting at the United Nations that President Trump called "very productive," with another round "scheduled in the very near future." Iran's stated conditions reportedly include an end to the naval blockade and the war generally, plus release of frozen Iranian assets. Brent crude fell roughly 1-2% on the news, its longest losing streak in about a year, after topping $101/barrel just the day before (Sept 22) on renewed fighting concerns. Two things worth holding at once: this is genuinely the most concrete diplomatic movement reported since this conflict began in February, and this dashboard has already had to walk back one premature "ceasefire" claim this year (see below) — a three-hour meeting and a scheduled follow-up is real progress, not a resolution, and oil prices reversing course within a single trading day shows how fragile that read still is.
   </div>
   <div class="note warn" style="margin-top:12px;">
     <strong>Update, Sept 18-19 — a second chokepoint is now compromised.</strong> Houthi forces (aligned with Iran) captured the Yemeni port city of Mokha this week, which overlooks the Bab el-Mandeb Strait — a separate waterway from Hormuz that Saudi Arabia relies on for oil exports via the Red Sea. Houthi fighters resumed targeting Saudi tankers there in solidarity with Iran's Hormuz blockade, and Saudi export traffic through the strait has fallen to under a third of this year's average. This had been a relatively contained, one-waterway crisis until this week; it no longer is. Separately, Iran claimed a new strike on an oil tanker attempting to transit Hormuz overnight (Sept 18), and reporting indicates the U.S. has asked South Korea to deploy troops near the Strait, drawing protests in Seoul — a sign the international military footprint here keeps expanding. President Trump was quoted saying the next move could be to "annihilate" the Iranian regime, a sharp escalation in rhetoric from his earlier, more measured comments about not expecting further escalation.
@@ -754,51 +788,58 @@
 
 <section>
   <h2 id="sec-unemployment">Unemployment</h2>
-  <p class="subnote">Seasonally adjusted U-3 unemployment rate, from BLS Employment Situation reports.</p>
+  <p class="subnote">Seasonally adjusted U-3 unemployment rate, from BLS Employment Situation reports. September report released October 2; next report November 6. Earlier months reflect BLS revisions.</p>
   <div class="table-wrap"><div class="scroll-hint">↔ swipe to see all columns</div><div class="table-scroll"><table class="trend-table">
     <tr>
-      <th>Measure</th><th>Jun 2026</th><th>Jul 2026</th><th>Aug 2026</th><th>Trend</th>
+      <th>Measure</th><th>Jul 2026</th><th>Aug 2026</th><th>Sep 2026</th><th>Trend</th>
     </tr>
     <tr>
       <td class="metric">Unemployment rate (U-3)</td>
-      <td>4.2%</td><td>4.1%</td><td>4.1%</td>
-      <td class="arrow-flat">↔ steady</td>
+      <td>4.1%</td><td>4.1%</td><td>4.2%</td>
+      <td class="arrow-up">↑ ticked up</td>
     </tr>
     <tr>
       <td class="metric">Labor force participation</td>
-      <td>61.5%</td><td>61.4%</td><td>61.6%</td>
-      <td class="arrow-up">↑ ticked back up</td>
+      <td>61.4%</td><td>61.6%</td><td>61.8%</td>
+      <td class="arrow-up">↑ third straight rise</td>
     </tr>
     <tr>
       <td class="metric">Nonfarm payroll growth</td>
-      <td>+31K (rev.)</td><td>+21K (rev.)</td><td>+162K</td>
-      <td class="arrow-up">↑ strongest since March</td>
+      <td>-10K (rev.)</td><td>+133K (rev.)</td><td>+29K</td>
+      <td class="arrow-down">↓ sharp slowdown</td>
     </tr>
   </table></div></div>
   <div class="stat-grid" style="margin-top:14px;">
     <div class="stat">
-      <div class="label">U-6 (broader) unemployment</div>
-      <div class="value" style="color:var(--down);">7.7%</div>
-      <div class="period">Aug 2026, lowest since June 2025</div>
+      <div class="label">Unemployed people</div>
+      <div class="value" style="color:var(--up);">7.1M</div>
+      <div class="period">Sep 2026</div>
     </div>
     <div class="stat">
-      <div class="label">Job-seekers unemployed 15+ weeks</div>
-      <div class="value" style="color:var(--up);">43%</div>
-      <div class="period">a 5-year high</div>
+      <div class="label">Black unemployment rate</div>
+      <div class="value" style="color:var(--up);">7.0%</div>
+      <div class="period">up from 6.0% (Aug 2026)</div>
     </div>
     <div class="stat">
-      <div class="label">June + July revised up, combined</div>
-      <div class="value" style="color:var(--down);">+55K</div>
-      <div class="period">July's reported job loss is now a gain</div>
+      <div class="label">3-month average payroll growth</div>
+      <div class="value" style="color:var(--flat);">~51K</div>
+      <div class="period">Jul-Sep 2026</div>
+    </div>
+    <div class="stat">
+      <div class="label">July + August revisions, combined</div>
+      <div class="value" style="color:var(--up);">-60K</div>
+      <div class="period">July cut from +21K to -10K; August from +162K to +133K</div>
+    </div>
+    <div class="stat">
+      <div class="label">Initial jobless claims, latest week</div>
+      <div class="value" style="color:var(--down);">197K</div>
+      <div class="period">DOL weekly report, low by historical standards</div>
     </div>
   </div>
   <div class="note warn" style="margin-top:12px;">
-    <strong>This is a genuine, meaningful upside surprise — but read it carefully.</strong> The economy added 162,000 jobs in August, more than triple the 53,000 economists expected and the strongest month since March. On top of that, BLS revised June up to +31,000 and, notably, revised July from a reported loss of 23,000 jobs to a <em>gain</em> of 21,000 — a 44,000-job swing on a single revision. Combined, June and July are now 55,000 jobs better than this dashboard reported last month. Labor force participation also rose, reversing several months of decline. Taken together, this significantly undercuts the "workers leaving the labor force" narrative this dashboard tracked through the summer.
+    <strong>August's job rebound did not hold.</strong> September added just 29,000 jobs, and BLS revised the prior two months down by a combined 60,000, so August's headline strength (+162K as first reported) is now +133K, and July is a small loss (-10K) rather than a gain. The three-month average is only about 51,000 jobs a month. The unemployment rate rose to 4.2% from 4.1%, while participation edged up to 61.8%, which means more people are looking for work, not fewer. The Black unemployment rate jumped a full point to 7.0%, the sharpest move in the report. Weekly jobless claims remain low (197K), so this looks more like a hiring slowdown than a wave of layoffs. The next report is November 6, three days after the election.
   </div>
-  <div class="note" style="margin-top:12px;">
-    The nuance: this doesn't mean the labor market is uniformly healthy. The share of unemployed people who've been searching 15+ weeks hit 43% in August, a five-year high — meaning once someone loses a job, it's taking longer than usual to find the next one, even as headline hiring picked up. Job gains were concentrated in food services/restaurants and local government education, while the information sector (including AI-exposed roles) lost jobs. This looks less like a uniformly strong labor market and more like a real rebound with an uneven, longer-tail unemployment problem underneath it.
-  </div>
-  <div class="source-card" style="margin-top:12px;">
+    <div class="source-card" style="margin-top:12px;">
     <a href="https://www.bls.gov/news.release/empsit.htm" target="_blank">BLS — The Employment Situation</a>
     <div class="desc">The monthly jobs report: unemployment rate, payroll growth, participation rate, and demographic detail.</div>
     <span class="tag">bls.gov</span>
@@ -808,43 +849,43 @@
     <div class="desc">Initial and continuing unemployment insurance claims, updated every Thursday — the earliest weekly signal on layoffs.</div>
     <span class="tag">dol.gov</span>
   </div>
-  <div class="impact"><span class="impact-label">What this means for you</span>If you're job-hunting, August's report is genuinely encouraging news for hiring overall — but the 43% figure means if your search has already dragged on, that's increasingly common right now, not a sign something's wrong with your approach specifically.</div>
+  <div class="impact"><span class="impact-label">What this means for you</span>If you're job-hunting, hiring slowed sharply in September, so searches may take longer than they did in the spring. Low layoff claims mean most people who have jobs are keeping them; the squeeze is on finding the next one.</div>
 </section>
 
 <section>
   <h2>Job openings &amp; labor turnover (JOLTS) — a leading indicator</h2>
-  <p class="subnote">July 2026 data, released today (Sept 1, 2026). Next JOLTS release (August data) is September 29, 2026.</p>
+  <p class="subnote">August 2026 data, released September 29, 2026. Next JOLTS release (September data) is November 3, 2026.</p>
   <div class="stat-grid">
     <div class="stat">
       <div class="label">Job openings</div>
-      <div class="value" style="color:var(--flat);">7.27M</div>
-      <div class="period">up from June's sharply revised-down 7.18M</div>
+      <div class="value" style="color:var(--flat);">7.1M</div>
+      <div class="period">down 256K from July's revised 7.3M</div>
     </div>
     <div class="stat">
       <div class="label">Hires</div>
-      <div class="value" style="color:var(--flat);">5.1M</div>
-      <div class="period">little changed</div>
+      <div class="value" style="color:var(--flat);">5.2M</div>
+      <div class="period">essentially unchanged</div>
     </div>
     <div class="stat">
       <div class="label">Quits</div>
-      <div class="value" style="color:var(--down);">3.06M</div>
-      <div class="period">quits rate down to 1.9%</div>
+      <div class="value" style="color:var(--flat);">3.1M</div>
+      <div class="period">quits rate steady at 1.9%</div>
     </div>
     <div class="stat">
       <div class="label">Layoffs &amp; discharges</div>
-      <div class="value" style="color:var(--flat);">1.7M</div>
+      <div class="value" style="color:var(--flat);">1.6M</div>
       <div class="period">little changed</div>
     </div>
   </div>
   <div class="note warn" style="margin-top:12px;">
-    Two things worth separating here. On the surface, July looks fine — openings actually rose from June. But June's originally-reported 7.36M figure was revised down to 7.18M, the largest downward revision since 2025, meaning the "rise" in July is partly an artifact of a lower starting point. The more telling numbers are the quits rate, which slipped to 1.9% (workers aren't confident enough to leave jobs voluntarily), and the fact this comes right after July's payroll report showed the economy losing 23,000 jobs outright. Several analysts read this release as a signal that Friday's August payrolls report (due Sept 4) could disappoint again. There's also now a nearly month-long gap before the next JOLTS reading (Sept 29), so this will be the freshest labor-market leading indicator in hand until then.
+    The August JOLTS report showed a labor market that is stable but not growing: openings slipped to 7.1 million, and hiring, quits and layoffs were all little changed. A 1.9% quits rate means workers still aren't confident enough to switch jobs, and layoffs remain low, which fits September's payroll slowdown (hiring is soft, but firing hasn't picked up). Note that JOLTS lags the jobs report by a month, so this describes August, before September's weak payroll number.
   </div>
-  <div class="source-card" style="margin-top:12px;">
+    <div class="source-card" style="margin-top:12px;">
     <a href="https://www.bls.gov/news.release/jolts.htm" target="_blank">BLS — Job Openings and Labor Turnover Survey (JOLTS)</a>
     <div class="desc">Monthly openings, hires, quits, and layoffs data — the Fed's preferred forward-looking labor market read.</div>
     <span class="tag">bls.gov</span>
   </div>
-  <div class="impact"><span class="impact-label">What this means for you</span>If you're considering a job change, a 1.9% quits rate is a weak signal — workers are staying put rather than testing the market, which usually means less leverage to negotiate a new offer right now.</div>
+  <div class="impact"><span class="impact-label">What this means for you</span>If you're considering a job change, a 1.9% quits rate and 7.1M openings signal a cautious market: workers are staying put, which usually means less leverage to negotiate a new offer right now.</div>
 </section>
 
 <section>
@@ -899,6 +940,45 @@
     <strong>Tariffs:</strong> multiple sources this year — including Fed commentary and economic reporting cited elsewhere on this dashboard — point to tariffs as a contributing cost pressure, particularly on construction materials (steel, aluminum, lumber) and imported goods. BLS's CPI release doesn't break out a "tariff impact" figure directly, so this dashboard can't give you a precise number the way it can for energy or shelter. Economists and political figures disagree sharply on how large the tariff effect is versus other factors (energy, labor markets, the Iran war) — treat any specific percentage-point estimate you see elsewhere with some skepticism unless it's traceable to a named economic model, the way the war impact estimate above is.
   </div>
   <div class="impact"><span class="impact-label">What this means for you</span>If you travel by air, budget noticeably more than last year, even with this month's slight easing. Tariff effects are harder to isolate, but expect continued upward pressure on imported goods and construction materials.</div>
+</section>
+
+<section>
+  <h2>Consumer sentiment — how people feel about all this</h2>
+  <p class="subnote">University of Michigan Surveys of Consumers, September 2026 (preliminary released Sept 11; final released Sept 25 — final figures noted below). October preliminary is due Oct 9 — a genuinely new leading indicator this dashboard hasn't tracked before.</p>
+  <div class="stat-grid">
+    <div class="stat">
+      <div class="label">Consumer sentiment index</div>
+      <div class="value" style="color:var(--up);">47.8</div>
+      <div class="period">down 7.5% from August, 2nd-lowest on record</div>
+    </div>
+    <div class="stat">
+      <div class="label">1-year inflation expectations</div>
+      <div class="value" style="color:var(--up);">4.6%</div>
+      <div class="period">up from 4.0% in August</div>
+    </div>
+    <div class="stat">
+      <div class="label">5-year inflation expectations</div>
+      <div class="value" style="color:var(--up);">3.4%</div>
+      <div class="period">up after holding at 3.3% for 3 months</div>
+    </div>
+    <div class="stat">
+      <div class="label">Sentiment vs. pre-war (Feb 2026)</div>
+      <div class="value" style="color:var(--up);">-16%</div>
+      <div class="period">before the Iran conflict began</div>
+    </div>
+  </div>
+  <div class="note warn" style="margin-top:12px;">
+    <strong>People feel worse about the economy than most of the hard data alone would suggest, and it's getting worse, not better.</strong> This index has now fallen for two straight months to its second-lowest reading on record (only May 2026 was lower), and is down 16% from just before the Iran war began and 13% from a year ago. The university's director of surveys, Joanne Hsu, said the decline was broad-based across political affiliation this month, with the sharpest drops among Democrats and Republicans alike (independents were little changed) — a sign this isn't a partisan-perception effect, but a genuine, broad reaction to gasoline prices and trade tensions. Perhaps most relevant for the Fed's next moves: year-ahead inflation expectations jumped a full 0.6 points to 4.6% in a single month, and five-year expectations — the number the Fed watches most closely for signs inflation psychology is becoming unanchored — also ticked up after holding steady for three straight months. Separately, the Conference Board's Leading Economic Index (a broader index combining 10 indicators) dipped 0.1% in August, also weighed down by weaker consumer expectations and declining building permits.
+  </div>
+  <div class="note" style="margin-top:12px;">
+    <strong>Update, October 6:</strong> the Conference Board's separate consumer confidence index fell to 81.9 in September, its lowest reading since 2014. It uses a different survey and method than Michigan's, but points the same direction. Michigan's <strong>final</strong> September reading was 48.1 (vs. 47.8 preliminary), down 7.0% from August and 12.7% from a year ago. Final year-ahead inflation expectations held at 4.6% and long-run at 3.4%. The cards above show the preliminary figures; the final changes the picture only slightly.
+  </div>
+  <div class="source-card" style="margin-top:12px;">
+    <a href="https://www.sca.isr.umich.edu/" target="_blank">University of Michigan — Surveys of Consumers</a>
+    <div class="desc">Monthly consumer sentiment and inflation-expectations survey, released mid-month (preliminary) and end-of-month (final).</div>
+    <span class="tag">sca.isr.umich.edu</span>
+  </div>
+  <div class="impact"><span class="impact-label">What this means for you</span>If you've been feeling more pessimistic about the economy lately, the data says you're far from alone — this is one of the lowest readings on record, and it's not just a partisan reaction. Rising inflation expectations can also become self-fulfilling: if enough people expect higher prices, businesses and workers start pricing and bargaining accordingly.</div>
 </section>
 
 <section>
@@ -958,6 +1038,9 @@
   </div>
   <div class="note warn" style="margin-top:12px;">
     <strong>The Fed actually hiked, not just talked about it.</strong> On September 16, the FOMC raised its benchmark rate by a quarter point to 3.75%-4.00% — the first increase since July 2023 — unanimously, 12-0. The Fed's post-meeting statement said inflation "remains elevated" and cited persistent price pressure from the Iran war/energy shock and other factors tracked throughout this dashboard. Fed Chair Kevin Warsh said plainly the Fed "cannot single-handedly stop price shocks on items like oil" but has a role in preventing that from spreading into broader inflation.
+  </div>
+  <div class="note warn" style="margin-top:12px;">
+    <strong>What markets expect next (Oct 6):</strong> the Fed's next meeting is October 27-28. Futures-based odds put roughly a 77% chance on a hold in October, with bets on another hike shifting toward December. The easing in August core PCE (3.0%) is part of why a near-term move looks less likely, though September CPI on October 14 could change that. These odds shift daily; check CME FedWatch for the current reading.
   </div>
   <div class="note warn" style="margin-top:12px;">
     <strong>The forecast, not just the decision:</strong> alongside the rate decision, the Fed released its quarterly Summary of Economic Projections — the "dot plot," where each official marks where they expect rates to be by year-end. This is the closest thing to an official Fed forecast that exists. Of 18 participants (Warsh does not submit a dot), 16 expect at least one more hike in 2026, and 4 of those expect two more; only 2 expect the Fed to hold here. That points to a year-end target range of roughly 4.1%-4.4%, and futures markets are now pricing continued hikes extending into 2027. This is a genuinely different trajectory than this dashboard was tracking as recently as August, when the debate was still "cut or hold."
@@ -1040,9 +1123,9 @@
   <div class="election-note"><strong>West</strong> (this dashboard's coolest inflation region, 3.0% CPI): Alaska has an open governor's race (Gov. Dunleavy is term-limited); California already held its primary June 2.</div>
 
   <div class="note" style="margin-top:12px;">
-    <strong>Registration deadlines vary widely by state.</strong> Same-day registration (register at the polls): California, Colorado, Illinois, Maryland, Michigan, Minnesota, Nevada, Virginia, and others. 30-day deadline (register by Oct 4, 2026): Georgia, Mississippi, Rhode Island, Tennessee, Virginia. 25-day deadline (Oct 9, 2026): Alabama, Florida, Louisiana, Texas. Verify your specific state and status directly — deadlines and rules are subject to change.
+    <strong>Registration deadlines vary widely by state.</strong> Same-day registration (register at the polls): California, Colorado, Illinois, Maryland, Michigan, Minnesota, Nevada, Virginia, and others. The 30-day deadline (Oct 4, 2026) has already passed in Georgia, Mississippi, Rhode Island, Tennessee and Virginia unless same-day rules apply. The 25-day deadline is this Friday, Oct 9, 2026, in Alabama, Florida, Louisiana and Texas. Verify your specific state and status directly — deadlines and rules are subject to change.
   </div>
-  <div class="impact"><span class="impact-label">What this means for you</span>If any of the cost-of-living issues tracked in this dashboard — grocery prices, SNAP, housing, healthcare access — matter to you, November is when that gets decided at the state and federal level. Check your registration status now rather than in October.</div>
+  <div class="impact"><span class="impact-label">What this means for you</span>If any of the cost-of-living issues tracked in this dashboard — grocery prices, SNAP, housing, healthcare access — matter to you, November is when that gets decided at the state and federal level. Check your registration status now — some deadlines are this week.</div>
 
   <div class="source-card" style="margin-top:12px;">
     <a href="https://www.vote.org" target="_blank">Vote.org — Registration &amp; Deadlines</a>
@@ -1264,7 +1347,7 @@
 </main>
 
 <footer>
-  Built from live BLS/BEA/CMS/USDA/CDC/Freddie Mac/DOL/Federal Reserve/S&amp;P Case-Shiller/CBO/CBPP data, refreshed September 17, 2026, including the Fed's Sep 16 rate hike and dot-plot forecast. Figures are subject to revision by the issuing agency.
+  Built from live BLS/BEA/CMS/USDA/CDC/Freddie Mac/DOL/Federal Reserve/S&amp;P Case-Shiller/CBO/CBPP/University of Michigan/U.S. Treasury data, refreshed October 6, 2026. Figures are subject to revision by the issuing agency.
 </footer>
 
 <script>
