@@ -46,6 +46,11 @@
   .trend-table th, .trend-table td{ padding:11px 12px; text-align:right; font-family:Helvetica,Arial,sans-serif; font-size:0.92rem; border-bottom:1px solid var(--line); color:var(--ink); white-space:nowrap; }
   .trend-table th:first-child, .trend-table td:first-child{ text-align:left; white-space:normal; }
   .trend-table th{ background:#2b2620; color:#f3f0e8; font-weight:bold; text-transform:uppercase; font-size:0.75rem; letter-spacing:0.04em; }
+  .trend-table.fc-table{ min-width:640px; }
+  .trend-table.fc-table th, .trend-table.fc-table td{ white-space:normal; font-size:0.84rem; padding:9px 10px; line-height:1.35; vertical-align:top; }
+  .trend-table.fc-table th{ font-size:0.7rem; }
+  .trend-table.fc-table td:first-child{ min-width:110px; }
+  .trend-table.fc-table td:last-child, .trend-table.fc-table th:last-child{ text-align:left; min-width:210px; }
   .trend-table td.metric{ font-weight:bold; }
   .trend-table tr:last-child td{ border-bottom:none; }
   .trend-table tr:nth-child(even){ background:#f5f4f1; }
@@ -248,7 +253,7 @@
 <header>
   <h1>U.S. Inflation Dashboard</h1>
   <p>Figures below trace directly to federal statistical agencies — click through to verify each number at its origin.</p>
-  <div class="asof">Latest data pulled: October 18, 2026 · September CPI 3.7% (core 2.6%) · September PPI +1.3% for the month, 6.3% for the year · mortgage rates held at 7.40% after seven straight rises · gas $4.30 · Brent hit its highest since May on Oct 16</div>
+  <div class="asof">Latest data pulled: October 26, 2026 (evening ET) · Fed meets Oct 27-28 · 30-year mortgage rate 7.32% (down from 7.40%) · initial jobless claims 194K, a three-month low · Brent back near $115 · Michigan final sentiment 48.0 · Case-Shiller (Oct 27), Q3 GDP and September PCE (Oct 29) still to come</div>
 </header>
 
 <main id="main-content">
@@ -289,7 +294,7 @@
     </tr>
   </table></div></div>
   <div class="note warn" style="margin-top:12px;">
-    <strong>September CPI (released Oct 14): inflation re-accelerated, driven by gasoline.</strong> Headline CPI rose 0.6% for the month and 3.7% over 12 months, up from 3.4% in August. Core CPI (excluding food and energy) rose 0.3% for the month and 2.6% for the year, up from 2.4%. Energy was the engine: the energy index jumped 5.2% in a month and is up 20.4% from a year ago, with gasoline up 9.1% for the month (seasonally adjusted) and 34.2% over 12 months. Food was unchanged for the month (food at home -0.1%), shelter rose 0.4%, and medical care rose 0.1%. Against forecasts: headline 3.7% was slightly above the 3.6% consensus, and core came in at 0.33% for the month versus 0.2% expected. Source: <a href="https://www.bls.gov/news.release/archives/cpi_10142026.htm" target="_blank" rel="noopener">BLS CPI release, Oct 14, 2026</a>; consensus figures from <a href="https://investinglive.com/news/us-september-cpi-vs-3-6-expected-0/" target="_blank" rel="noopener">investinglive</a>.
+    <strong>September CPI (released Oct 14): inflation re-accelerated, driven by gasoline.</strong> Headline CPI rose 0.6% for the month and 3.7% over 12 months, up from 3.4% in August. Core CPI (excluding food and energy) rose 0.3% for the month and 2.6% for the year, up from 2.4%. Energy was the engine: the energy index jumped 5.2% in a month and is up 20.4% from a year ago, with gasoline up 9.1% for the month (seasonally adjusted) and 34.2% over 12 months. Food was unchanged for the month (food at home -0.1%), shelter rose 0.4%, and medical care rose 0.1%. Source: <a href="https://www.bls.gov/news.release/archives/cpi_10142026.htm" target="_blank" rel="noopener">BLS CPI release, Oct 14, 2026</a> (core monthly change of 0.33% is the unrounded figure reported by market data providers; BLS publishes 0.3%).
   </div>
   <details class="older-updates"><summary><span class="arrow" aria-hidden="true">▼</span><span class="lbl-show">Show 1 earlier update</span><span class="lbl-hide">Hide earlier updates</span></summary>
   <div class="note warn" style="margin-top:12px;">
@@ -301,7 +306,7 @@
 
 <section>
   <h2 id="sec-pce">PCE — the Fed's actual preferred gauge</h2>
-  <p class="subnote">Personal Consumption Expenditures price index, from BEA's Personal Income and Outlays report. This is the inflation measure the Fed's 2% target is actually defined against — not CPI. August data is now out; September PCE is due late October. BEA also revised earlier figures, so older months may differ slightly from what this dashboard showed previously.</p>
+  <p class="subnote">Personal Consumption Expenditures price index, from BEA's Personal Income and Outlays report. This is the inflation measure the Fed's 2% target is actually defined against — not CPI. August data is out; September PCE is due October 29, the same day as the advance estimate of third-quarter GDP (BEA release schedule). BEA also revised earlier figures, so older months may differ slightly from what this dashboard showed previously.</p>
   <div class="table-wrap"><div class="scroll-hint">↔ swipe to see all columns</div><div class="table-scroll"><table class="trend-table">
     <tr>
       <th>Measure</th><th>Apr 2026</th><th>May 2026</th><th>Jun 2026</th><th>Jul 2026</th><th>Aug 2026</th>
@@ -345,12 +350,14 @@
   <div class="note warn" style="margin-top:12px;">
     <strong>The "stalled for four months" story has changed.</strong> This dashboard previously flagged core PCE stuck at 3.3-3.4% from April through July. August broke that pattern, with core easing to 3.0% and headline to 3.4%. That's a real improvement, but a single month — and it arrives right as spending jumped 0.9% against income growth of just 0.2%, the reverse of July's cautious pattern (income up, spending flat). Households spent more than they earned this month, which can't continue indefinitely and may partly reflect higher prices for gas and food rather than extra purchases. The Fed has not yet shown it considers one soft month enough (see the Federal Reserve section). September CPI is due October 14 and will be the next test.
   </div>
-  <div class="impact"><span class="impact-label">What this means for you</span>August's easing is the first sign in months that the Fed's preferred gauge is cooling, which slightly lowers the odds of more rate hikes. But with spending outrunning income, watch your own budget: prices haven't fallen, they've just stopped rising as fast.</div>
+  <details class="older-updates"><summary><span class="arrow" aria-hidden="true">▼</span><span class="lbl-show">Show background, earlier updates &amp; sources (1)</span><span class="lbl-hide">Hide background, earlier updates &amp; sources</span></summary>
   <div class="source-card" style="margin-top:12px;">
     <a href="https://www.bea.gov/data/personal-consumption-expenditures-price-index" target="_blank">BEA — Personal Consumption Expenditures Price Index</a>
     <div class="desc">Released monthly as part of the Personal Income and Outlays report; the Fed's statutory 2% inflation target is defined using this index.</div>
     <span class="tag">bea.gov</span>
   </div>
+  </details>
+  <div class="impact"><span class="impact-label">What this means for you</span>August's easing is the first sign in months that the Fed's preferred gauge is cooling, which slightly lowers the odds of more rate hikes. But with spending outrunning income, watch your own budget: prices haven't fallen, they've just stopped rising as fast.</div>
 </section>
 
 <section>
@@ -358,58 +365,68 @@
   <div class="stat-grid">
     <div class="stat">
       <div class="label">C-CPI-U, 12-mo</div>
-      <div class="value">3.3%</div>
-      <div class="period">July 2026 (down from 3.4% in June)</div>
+      <div class="value">3.5%</div>
+      <div class="period">September 2026, preliminary (3.3% in July); +0.5% for the month, not seasonally adjusted (BLS)</div>
     </div>
     <div class="stat">
       <div class="label">Headline CPI-U, for comparison</div>
-      <div class="value">3.4%</div>
-      <div class="period">July 2026</div>
+      <div class="value">3.7%</div>
+      <div class="period">September 2026 (3.4% in July)</div>
+    </div>
+    <div class="stat">
+      <div class="label">CPI-W, 12-mo (the COLA index)</div>
+      <div class="value">3.9%</div>
+      <div class="period">September 2026, not seasonally adjusted; +0.7% for the month (BLS)</div>
     </div>
   </div>
   <div class="note warn" style="margin-top:12px;">
-    This is the measure that's easy to miss but directly affects money in people's pockets. The Chained CPI (C-CPI-U) — not the headline CPI everyone talks about — is what the IRS uses to set tax bracket thresholds and standard deductions each year, and a closely related index sets the annual Social Security Cost-of-Living Adjustment (COLA). It's designed to run slightly below headline CPI because it accounts for consumers substituting cheaper goods when prices rise (e.g., chicken instead of beef). At 3.3%, it's tracking close to headline CPI right now, which points toward a larger-than-average COLA bump for 2027 if the pattern holds through the fall reference period the Social Security Administration uses.
+    <strong>Update, October 22: the 2027 Social Security COLA is 3.6%.</strong> The Social Security Administration announced on October 14 that benefits will rise 3.6% in 2027 (<a href="https://www.ssa.gov/oact/cola/colasummary.html" target="_blank" rel="noopener">SSA COLA summary</a>); <a href="https://www.cnbc.com/2026/10/14/social-security-cola-2027.html" target="_blank" rel="noopener">CNBC</a> reported it as the largest increase in four years. <strong>A correction to earlier text on this page:</strong> the COLA is based on the CPI-W (the index for urban wage earners and clerical workers), not the Chained CPI. The Chained CPI (C-CPI-U) is the index used to index federal income-tax brackets and the standard deduction. It is designed to run slightly below headline CPI because it accounts for consumers substituting cheaper goods when prices rise. The September C-CPI-U is now verified: BLS reported on October 14 that it rose 3.5% over 12 months (and 0.5% for the month, not seasonally adjusted), against 3.7% for the headline CPI-U and 3.9% for the CPI-W (<a href="https://www.bls.gov/news.release/cpi.nr0.htm" target="_blank" rel="noopener">BLS CPI release, September 2026</a>). C-CPI-U figures are preliminary and BLS revises them, so the 3.5% may change.
   </div>
-  <div class="impact"><span class="impact-label">What this means for you</span>If you or someone you support relies on Social Security, this number (not headline CPI) is what determines next year's benefit increase. At 3.3%, expect a larger-than-typical COLA bump announced this October.</div>
+  <div class="note" style="margin-top:12px;">
+    <strong>Did the earlier version of this dashboard call the COLA correctly?</strong> Partly. Earlier versions said the chained CPI (then 3.3% for July) "points toward a larger-than-average COLA bump for 2027." They gave no number, so there is no numeric forecast to score. The qualitative call held up against most benchmarks: the 3.6% COLA is 0.8 points above 2026's 2.8% (<a href="https://www.americanactionforum.org/insight/ssa-announces-3-6-percent-social-security-cola-for-2027/" target="_blank" rel="noopener">American Action Forum</a>), and Yahoo Finance reports it as the highest in four years and well above the 2.6% average of the past two decades (<a href="https://finance.yahoo.com/economy/article/social-security-announces-36-cola-for-2027-the-highest-in-4-years-135447865.html" target="_blank" rel="noopener">Yahoo Finance</a>). It was not above every benchmark: AAF notes it is slightly below the 3.7% average since 1975, and the two sources give different long-run averages, so "larger than average" depends on the period chosen. Two further problems with the earlier text: it used the wrong index (the COLA follows the CPI-W, not the chained CPI, corrected above), and the chained CPI understated the move. By September the C-CPI-U was 3.5% and the CPI-W 3.9%. The exact COLA is the percentage rise in the CPI-W's July-to-September average over the prior year's; I did not recompute it from index values.
+  </div>
+  <div class="impact"><span class="impact-label">What this means for you</span>If you or someone you support relies on Social Security, the 3.6% COLA is now set for 2027. Compare it with your own expenses: it is meant to match price increases for a typical household, and gas, medical and housing costs may weigh differently for you. See the Medicare section for the Part B premium that will be deducted from many checks.</div>
 </section>
 
 <section>
   <h2>Regional divergence</h2>
-  <p class="subnote">All-items CPI-U, 12-month percent change, July 2026 (Northeast/West) and June 2026 (South/Midwest, most recent available).</p>
+  <p class="subnote">All-items CPI-U, 12-month percent change, September 2026 (BLS regional releases of October 14). Core and shelter are shown where I could read them from the release.</p>
   <div class="table-wrap"><div class="scroll-hint">↔ swipe to see all columns</div><div class="table-scroll"><table class="trend-table">
     <tr>
       <th>Region</th><th>All items</th><th>Core</th><th>Shelter</th><th>Notes</th>
     </tr>
     <tr>
       <td class="metric">Northeast</td>
-      <td class="arrow-up">4.1%</td><td>3.2%</td><td>3.9%</td>
-      <td>Hottest region; airline fares, recreation elevated</td>
+      <td class="arrow-up">4.2%</td><td>—</td><td>4.4%</td>
+      <td>+0.5% for the month; gasoline +35.8% y/y</td>
     </tr>
     <tr>
-      <td class="metric">Los Angeles metro</td>
-      <td class="arrow-up">3.4%</td><td>2.5%</td><td>3.3%</td>
-      <td>Food at home +3.9% y/y, above national</td>
+      <td class="metric">Midwest</td>
+      <td class="arrow-up">4.2%</td><td>—</td><td>4.4%</td>
+      <td>+0.9% for the month, the biggest jump; gasoline +35.5% y/y</td>
     </tr>
     <tr>
       <td class="metric">South</td>
-      <td class="arrow-flat">3.2%</td><td>2.2%</td><td>2.9%</td>
-      <td>June data; cooled sharply from 3.9% in May</td>
+      <td class="arrow-up">3.4%</td><td>2.1%</td><td>2.3%</td>
+      <td>Up from 3.1% in August; gasoline +37.5% y/y</td>
     </tr>
     <tr>
-      <td class="metric">West (region-wide)</td>
-      <td class="arrow-down">3.0%</td><td>2.2%</td><td>2.5%</td>
-      <td>Coolest major region</td>
+      <td class="metric">West</td>
+      <td class="arrow-up">3.4%</td><td>2.4%</td><td>3.0%</td>
+      <td>Gasoline +27.8% y/y, the smallest rise of the four</td>
     </tr>
   </table></div></div>
   <div class="note" style="margin-top:12px;">
-    The national headline number (3.4%) hides a real geographic split. The Northeast is running 1.1 percentage points hotter than the West, driven mainly by shelter (3.9% vs. 2.5%) — New York, Boston, and other dense Northeast metros have tighter housing supply than most Western cities right now. If you live in the Northeast, "official" inflation is understating what you're likely feeling; if you're in the West, it's overstating it.
+    The national headline (3.7%) again hides a geographic split, and the picture has shifted since this table was last updated. In September the Northeast and Midwest were both running at 4.2%, about 0.8 points above the South and West (3.4% each), with shelter the clearest difference: 4.4% in the Northeast and Midwest versus 2.3% in the South and 3.0% in the West. Gasoline prices rose sharply in every region, from +27.8% in the West to +37.5% in the South, and in the South gasoline is the main reason the headline rate rose from 3.1% in August. (For the Northeast, the release's narrative gives a shelter figure of 4.1% in one place and its table gives 4.4%; I used the table.) Los Angeles metro-level data, shown in earlier versions, was not in these releases, so that row has been removed. Sources: BLS regional releases for the <a href="https://www.bls.gov/regions/mid-atlantic/news-release/2026/consumerpriceindex_northeast_20261014.htm" target="_blank" rel="noopener">Northeast</a>, <a href="https://www.bls.gov/regions/mountain-plains/news-release/2026/consumerpriceindex_midwest_20261014.htm" target="_blank" rel="noopener">Midwest</a>, <a href="https://www.bls.gov/regions/southeast/news-release/2026/consumerpriceindex_south_20261014.htm" target="_blank" rel="noopener">South</a> and <a href="https://www.bls.gov/regions/west/news-release/2026/consumerpriceindex_west_20261014.htm" target="_blank" rel="noopener">West</a>.
   </div>
+  <details class="older-updates"><summary><span class="arrow" aria-hidden="true">▼</span><span class="lbl-show">Show background, earlier updates &amp; sources (1)</span><span class="lbl-hide">Hide background, earlier updates &amp; sources</span></summary>
   <div class="source-card" style="margin-top:12px;">
-    <a href="https://www.bls.gov/regions/" target="_blank">BLS — Regional and Metro CPI Data</a>
+    <a href="https://www.bls.gov/regions/" target="_blank" rel="noopener">BLS — Regional and Metro CPI Data</a>
     <div class="desc">Monthly CPI broken out by Census region (Northeast, South, Midwest, West) and major metro areas.</div>
     <span class="tag">bls.gov</span>
   </div>
-  <div class="impact"><span class="impact-label">What this means for you</span>The national number may not describe your actual cost of living. If you're in the Northeast, budget as if inflation is closer to 4%, not 3.4%. If you're in the West, the squeeze is genuinely lighter than headlines suggest.</div>
+  </details>
+  <div class="impact"><span class="impact-label">What this means for you</span>The national number may not describe your actual cost of living. If you're in the Northeast or Midwest, budget as if inflation is closer to 4%, not 3.7%. In the South and West, the squeeze is lighter, though gas prices are rising everywhere.</div>
 </section>
 
 <section>
@@ -439,11 +456,16 @@
   <div class="note" style="margin-top:12px;">
     Grocery inflation continues to cool even as fuel costs surge. In September the food index was unchanged for the month and is up 2.5% from a year ago, down from 3.0% in July. Food at home (groceries) fell 0.1% for the month and is up just 1.8% over 12 months. Within groceries, meats, poultry, fish and eggs fell 0.5% for the month, dairy fell 0.9%, and fruits and vegetables rose 0.5%. The risk to watch: diesel and freight costs, which push up delivered food prices with a lag (see the PPI section). USDA's Economic Research Service, which tracks food prices separately, has forecast all-food prices to rise about 3.1% for 2026 (as of its earlier outlook; I did not re-check the latest ERS update). Source: <a href="https://www.bls.gov/news.release/archives/cpi_10142026.htm" target="_blank" rel="noopener">BLS CPI release, Oct 14, 2026</a>.
   </div>
+  <details class="older-updates"><summary><span class="arrow" aria-hidden="true">▼</span><span class="lbl-show">Show background, earlier updates &amp; sources (2)</span><span class="lbl-hide">Hide background, earlier updates &amp; sources</span></summary>
+  <div class="note" style="margin-top:12px;">
+    <strong>USDA Economic Research Service Food Price Outlook (September 25 update, based on August CPI/PPI data):</strong> ERS forecasts all-food prices up 2.9% in 2026 (interval 2.5% to 3.2%) and 2.0% in 2027 (a very wide -2.7% to 7.0%). Food at home is forecast at +2.4% for 2026 (1.8% to 3.0%) and +1.8% for 2027; food away from home at +3.5% for 2026 and +2.6% for 2027. Among 2026 grocery categories, beef and veal are forecast up 9.4%, sugar and sweets 6.6%, fresh vegetables 5.7% and nonalcoholic beverages 4.2%, while eggs are forecast down 29.4%. These are annual-average forecasts, not month-to-month readings, and ERS gives no category forecasts for 2027. Source: <a href="https://www.ers.usda.gov/data-products/food-price-outlook/summary-findings" target="_blank" rel="noopener">USDA ERS, Food Price Outlook</a>. ERS publishes monthly, and the next update (using September CPI) was not out when I checked, so these figures predate September's 1.8% food-at-home reading.
+  </div>
   <div class="source-card" style="margin-top:12px;">
     <a href="https://www.ers.usda.gov/data-products/food-price-outlook/summary-findings" target="_blank">USDA ERS — Food Price Outlook</a>
     <div class="desc">Category-by-category grocery price forecasts and monthly actuals, separate from and complementary to the BLS CPI.</div>
     <span class="tag">ers.usda.gov</span>
   </div>
+  </details>
   <div class="impact"><span class="impact-label">What this means for you</span>Grocery prices are rising far more slowly than gas, about 1.8% a year for groceries, so the squeeze on food budgets is currently easing. If you or someone you know relies on SNAP, this is the exact cost pressure landing at the same time benefits are shrinking — a real, compounding hit to food budgets.</div>
 </section>
 
@@ -473,9 +495,11 @@
   <div class="note" style="margin-top:12px;">
     Shelter, the largest component of CPI (about a third of the index), rose 0.4% in September and is up 3.2% over 12 months, a step back up from August's 3.0%, which had been its slowest pace in some time. Rent of primary residence rose 0.2% for the month (2.8% over 12 months), and owners' equivalent rent, what a homeowner would pay to rent their own home, rose 0.3% (3.3% over 12 months). One month does not reverse the broader slowing, but it is a reminder that shelter costs move slowly and unevenly. Source: <a href="https://www.bls.gov/news.release/archives/cpi_10142026.htm" target="_blank" rel="noopener">BLS CPI release, Oct 14, 2026</a> (12-month rent and OER figures are from its tables).
   </div>
+  <details class="older-updates"><summary><span class="arrow" aria-hidden="true">▼</span><span class="lbl-show">Show background, earlier updates &amp; sources (1)</span><span class="lbl-hide">Hide background, earlier updates &amp; sources</span></summary>
   <div class="note" style="margin-top:12px;">
     Worth noting for context: Realtor.com's midyear 2026 forecast puts actual home price growth at just 1.2% for the year — well below CPI inflation. That means home prices are effectively falling in real, inflation-adjusted terms even as CPI shelter costs (which track rent and OER, not sale prices) keep climbing. The two measures capture different things and can move in opposite directions.
   </div>
+  </details>
   <div class="impact"><span class="impact-label">What this means for you</span>Rent growth remains modest (about 2.8% a year), which is the steadier part of this month's update. But shelter ticked back up in September, so don't count on big rent relief at your next lease renewal.</div>
 </section>
 
@@ -484,34 +508,39 @@
   <div class="stat-grid">
     <div class="stat">
       <div class="label">30-year fixed rate, current</div>
-      <div class="value" style="color:var(--up);">7.40%</div>
-      <div class="period">week of Oct 15, 2026 — unchanged after 7 straight rises; highest since Nov 2023 (Freddie Mac)</div>
+      <div class="value" style="color:var(--up);">7.32%</div>
+      <div class="period">week of Oct 22, 2026 — down from 7.40% (Freddie Mac)</div>
     </div>
     <div class="stat">
       <div class="label">30-year fixed, one year ago</div>
-      <div class="value" style="color:var(--down);">6.27%</div>
-      <div class="period">week of Oct 2025 (Freddie Mac)</div>
+      <div class="value" style="color:var(--down);">6.19%</div>
+      <div class="period">year-earlier figure in the Oct 22 release (Freddie Mac)</div>
     </div>
     <div class="stat">
       <div class="label">15-year fixed rate, current</div>
-      <div class="value" style="color:var(--up);">6.71%</div>
-      <div class="period">week of Oct 15, 2026 (6.73% prior week; 5.52% a year ago)</div>
+      <div class="value" style="color:var(--up);">6.68%</div>
+      <div class="period">week of Oct 22, 2026 (6.71% prior week; 5.44% a year ago)</div>
     </div>
     <div class="stat">
       <div class="label">10-year Treasury yield</div>
-      <div class="value" style="color:var(--flat);">~5.10%</div>
-      <div class="period">Oct 15, pulled back from above 5.30% earlier in October (AP)</div>
+      <div class="value" style="color:var(--flat);">5.13%</div>
+      <div class="period">Oct 21 (U.S. Treasury); peaked at 5.31% on Oct 5</div>
     </div>
   </div>
   <div class="note warn" style="margin-top:12px;">
-    <strong>Mortgage rates paused at 7.40%, ending a seven-week climb, but remain near a three-year high.</strong> Freddie Mac's 30-year average held at 7.40% on October 15, unchanged from the prior week, and is about 1.1 points above the 6.27% of a year ago. It is the highest level since November 2023, when it was 7.44%. The 15-year average edged down to 6.71% from 6.73%. The 10-year Treasury yield, the benchmark lenders follow, pulled back to about 5.10% after topping 5.30% earlier in the month. On a $300,000 30-year loan, 7.40% means a principal-and-interest payment of about $2,077 a month, roughly <strong>$226 more per month</strong> than at last year's 6.27% ($1,851) and about <strong>$91 more</strong> than at 6.95% in mid-September ($1,986). Taxes and insurance are extra. Realtor.com's economist told AP rates are "unlikely to ease anytime soon," and Fannie Mae projects the 30-year averaging 7.4% in the fourth quarter. The next print is Thursday, October 22. Sources: <a href="https://www.freddiemac.com/pmms" target="_blank" rel="noopener">Freddie Mac PMMS</a>; <a href="https://www.news4jax.com/news/2026/10/15/average-long-term-us-mortgage-rate-holds-at-74-remaining-at-highest-level-in-nearly-3-years/" target="_blank" rel="noopener">AP via News4Jax, Oct 15</a>.
+    <strong>Update, October 22: the 30-year rate slipped to 7.32% from 7.40%.</strong> Freddie Mac's weekly average fell 8 basis points, its first decline in this tracking period, and the 15-year fell to 6.68% from 6.71% (<a href="https://freddiemac.gcs-web.com/news-releases/news-release-details/mortgage-rates-decrease-732" target="_blank" rel="noopener">Freddie Mac release</a>). A year earlier the 30-year was 6.19% and the 15-year 5.44%. Chief Economist Sam Khater said the decline "offer[s] some relief to prospective homebuyers." The rate is still about 1.1 points above last year. The 10-year Treasury yield figure on this page (5.13%) is from October 21 and I did not re-check it. The next Freddie Mac reading is Thursday, October 29.
+  </div>
+  <details class="older-updates"><summary><span class="arrow" aria-hidden="true">▼</span><span class="lbl-show">Show background, earlier updates &amp; sources (2)</span><span class="lbl-hide">Hide background, earlier updates &amp; sources</span></summary>
+  <div class="note warn" style="margin-top:12px;">
+    <strong>October 15: Mortgage rates paused at 7.40%, ending a seven-week climb, but remain near a three-year high.</strong> Freddie Mac's 30-year average held at 7.40% on October 15, unchanged from the prior week, and is about 1.1 points above the 6.27% of a year ago. It is the highest level since November 2023, when it was 7.44%. The 15-year average edged down to 6.71% from 6.73%. The 10-year Treasury yield, the benchmark lenders follow, peaked at 5.31% on October 5, fell to 5.09% on October 16 and stood at 5.13% on October 21 (<a href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202610" target="_blank" rel="noopener">U.S. Treasury daily par yield curve</a>). On a $300,000 30-year loan, 7.40% means a principal-and-interest payment of about $2,077 a month, roughly <strong>$226 more per month</strong> than at last year's 6.27% ($1,851) and about <strong>$91 more</strong> than at 6.95% in mid-September ($1,986). Taxes and insurance are extra. Realtor.com's economist told AP rates are "unlikely to ease anytime soon," and Fannie Mae projects the 30-year averaging 7.4% in the fourth quarter. The next print is Thursday, October 22. Sources: <a href="https://www.freddiemac.com/pmms" target="_blank" rel="noopener">Freddie Mac PMMS</a>; <a href="https://www.news4jax.com/news/2026/10/15/average-long-term-us-mortgage-rate-holds-at-74-remaining-at-highest-level-in-nearly-3-years/" target="_blank" rel="noopener">AP via News4Jax, Oct 15</a>.
   </div>
   <div class="source-card" style="margin-top:12px;">
     <a href="https://www.freddiemac.com/pmms" target="_blank">Freddie Mac — Primary Mortgage Market Survey</a>
     <div class="desc">Weekly average 30-year and 15-year fixed mortgage rates, updated every Thursday.</div>
     <span class="tag">freddiemac.com</span>
   </div>
-  <div class="impact"><span class="impact-label">What this means for you</span>If you're house-hunting or refinancing, borrowing is materially more expensive than a year ago: on a $300,000 loan, about $226 a month more. A quote near 7.4% is not a lender's error, it's where the market is, though the pause is a small sign rates may be stabilizing.</div>
+  </details>
+  <div class="impact"><span class="impact-label">What this means for you</span>If you're house-hunting or refinancing, borrowing is materially more expensive than a year ago: on a $300,000 loan at 7.32% versus 6.19% a year ago, about $225 a month more (about $2,061 versus $1,835, principal and interest only). A quote near 7.4% is not a lender's error, it's where the market is, though the pause is a small sign rates may be stabilizing.</div>
 </section>
 
 <section>
@@ -537,6 +566,7 @@
   <div class="note warn" style="margin-top:12px;">
     This is the number that fills the gap flagged earlier in the Housing section: CPI shelter tracks rent and owners' equivalent rent, while Case-Shiller tracks actual home sale prices using a repeat-sales method (the gold standard for measuring true appreciation). The headline: nominal home prices are up 1.9% year-over-year in the July data (the latest available, due to the two-month lag), still below the CPI inflation rate — meaning home values have now fallen in <em>real</em> (inflation-adjusted) terms for 14 consecutive months. Regionally the spread is wide: Chicago leads at +6.9%, while the weakest metro in the prior (June) release was Seattle at -2.0%. August data is due the last Tuesday of October.
   </div>
+  <details class="older-updates"><summary><span class="arrow" aria-hidden="true">▼</span><span class="lbl-show">Show background, earlier updates &amp; sources (2)</span><span class="lbl-hide">Hide background, earlier updates &amp; sources</span></summary>
   <div class="source-card" style="margin-top:12px;">
     <a href="https://www.spglobal.com/spdji/en/index-family/indicators/sp-cotality-case-shiller/sp-cotality-case-shiller-composite/" target="_blank">S&amp;P Dow Jones Indices — Case-Shiller Home Price Indices</a>
     <div class="desc">Official monthly release, national and 20-city composite, published on the last Tuesday of each month with a two-month lag.</div>
@@ -547,6 +577,7 @@
     <div class="desc">Full historical series back to 1987, downloadable, hosted by the St. Louis Fed.</div>
     <span class="tag">fred.stlouisfed.org</span>
   </div>
+  </details>
   <div class="impact"><span class="impact-label">What this means for you</span>If you own a home, don't assume rising list prices mean rising real wealth — adjusted for inflation, typical home equity has been shrinking for over a year. If you're buying, this modest price growth is one of the more buyer-friendly signals on this page.</div>
 </section>
 
@@ -569,18 +600,15 @@
     </tr>
     <tr>
       <td class="metric">Diesel</td>
-      <td>—</td><td>$6.00/gal</td><td>— (not verified)</td>
-      <td class="arrow-up">↑ record high in Aug</td>
+      <td>—</td><td>$6.00/gal</td><td>$6.28/gal (Oct 19, EIA)</td>
+      <td class="arrow-up">↑ still rising</td>
     </tr>
   </table></div></div>
-  <div class="note warn" style="margin-top:12px;">
-    <strong>The cooling trend broke in August, right on schedule with the renewed Iran/Hormuz fighting.</strong> Gasoline jumped 3.9% for the month alone and is now up more than 27% year-over-year — reversing two straight months of easing — and accounted for over a third of August's entire CPI increase. The national average hit roughly $4.30/gallon, up from $3.19 a year earlier. Separately, and arguably more concerning to economists: diesel hit $6/gallon, a record high. Diesel isn't in the CPI gasoline measure, but it's a major input cost for trucking, agriculture, and freight — meaning this cost pressure is still working its way into other prices, not yet fully reflected here. And this report only captures pricing through late August; the further Iran/Kuwait escalation and Brent's climb past $96/barrel in early September likely means September's reading goes higher still.
-  </div>
   <div class="stat-grid" style="margin-top:14px;">
     <div class="stat">
       <div class="label">AAA national average gas price</div>
       <div class="value" style="color:var(--up);">$4.41</div>
-      <div class="period">Oct 1, 2026, vs. $3.16 a year ago ($4.30 on Oct 18, easing)</div>
+      <div class="period">Oct 1, 2026, vs. $3.16 a year ago ($4.27 on Oct 22, $4.29 on Oct 25)</div>
     </div>
     <div class="stat">
       <div class="label">Year-over-year change</div>
@@ -593,10 +621,18 @@
       <div class="period">a record for any September</div>
     </div>
   </div>
-  <div class="note warn" style="margin-top:12px;">
-    <strong>September CPI confirmed the pump spike, and October is easing it slightly.</strong> The official CPI shows gasoline up 9.1% in September (seasonally adjusted) and 34.2% over 12 months, with the energy index up 5.2% for the month and 20.4% over 12 months. AAA's national average has since slipped: $4.30 on October 18, versus $4.36 a week earlier, $4.47 a month ago and $3.04 a year ago (about 41% higher). Crude, however, climbed again late in the week (see the Iran section), so the pullback at the pump may not last. Sources: <a href="https://www.bls.gov/news.release/archives/cpi_10142026.htm" target="_blank" rel="noopener">BLS CPI release</a>; <a href="https://gasprices.aaa.com/" target="_blank" rel="noopener">AAA gas prices</a>.
+  <div class="note" style="margin-top:12px;">
+    <strong>Update, October 26:</strong> AAA's national average was $4.27 on October 22, down 6 cents from the prior week, which AAA attributed to the seasonal switch to cheaper-to-produce winter-blend gasoline; its daily figure on October 25 was $4.29, a small uptick. AAA noted crude was nearing $100 a barrel at that point. Brent has since risen to about $115 (see the Iran section), and gasoline usually follows crude with a lag, so the easing of the last three weeks is not guaranteed to continue. Source: <a href="https://gasprices.aaa.com/2026/10/" target="_blank" rel="noopener">AAA Fuel Prices</a>. I did not find a verified EIA weekly retail price for this week.
   </div>
-  <div class="impact"><span class="impact-label">What this means for you</span>The relief at the pump this dashboard tracked through early summer is over, at least for now. At $4.30, a driver using 50 gallons a month pays roughly $63 more than a year ago, a little less than at the Oct 1 peak.</div>
+  <details class="older-updates"><summary><span class="arrow" aria-hidden="true">▼</span><span class="lbl-show">Show background, earlier updates &amp; sources (2)</span><span class="lbl-hide">Hide background, earlier updates &amp; sources</span></summary>
+  <div class="note warn" style="margin-top:12px;">
+    <strong>The cooling trend broke in August, right on schedule with the renewed Iran/Hormuz fighting.</strong> Gasoline jumped 3.9% for the month alone and is now up more than 27% year-over-year — reversing two straight months of easing — and accounted for over a third of August's entire CPI increase. The national average hit roughly $4.30/gallon, up from $3.19 a year earlier. Separately, and arguably more concerning to economists: diesel hit $6/gallon, a record high. Diesel isn't in the CPI gasoline measure, but it's a major input cost for trucking, agriculture, and freight — meaning this cost pressure is still working its way into other prices, not yet fully reflected here. And this report only captures pricing through late August; the further Iran/Kuwait escalation and Brent's climb past $96/barrel in early September likely means September's reading goes higher still.
+  </div>
+  <div class="note warn" style="margin-top:12px;">
+    <strong>September CPI confirmed the pump spike, and October is easing it slightly.</strong> The official CPI shows gasoline up 9.1% in September (seasonally adjusted) and 34.2% over 12 months, with the energy index up 5.2% for the month and 20.4% over 12 months. AAA's national average has since slipped: $4.26 on October 21, versus $4.33 a week earlier, $4.48 a month ago and $3.05 a year ago (about 40% higher). The EIA's weekly survey agrees on direction: regular gasoline $4.284 on October 19, down 4.7 cents in a week. <strong>Diesel is moving the other way:</strong> EIA's on-highway diesel average was $6.276 on October 19, up 9.7 cents in a week and roughly $2.65 above a year ago (the year-ago level is derived from EIA's reported change). Crude also reached five-month highs this week (see the Iran section), so the pullback at the pump may not last. Sources: <a href="https://www.bls.gov/news.release/archives/cpi_10142026.htm" target="_blank" rel="noopener">BLS CPI release</a>; <a href="https://gasprices.aaa.com/" target="_blank" rel="noopener">AAA gas prices</a>; <a href="https://www.eia.gov/petroleum/gasdiesel/" target="_blank" rel="noopener">EIA gasoline and diesel fuel update</a>.
+  </div>
+  </details>
+  <div class="impact"><span class="impact-label">What this means for you</span>The relief at the pump this dashboard tracked through early summer is over, at least for now. At about $4.27, a driver using 50 gallons a month pays roughly $60 more than a year ago, a little less than at the Oct 1 peak. Diesel users (trucking, farming, delivery) are not seeing the same relief.</div>
 </section>
 
 <section>
@@ -620,17 +656,26 @@
     </div>
     <div class="stat">
       <div class="label">Conflict duration, as of today</div>
-      <div class="value" style="color:var(--ink);">~6.5 months</div>
+      <div class="value" style="color:var(--ink);">~8 months</div>
       <div class="period">began Feb 28, 2026 — widening, not resolving</div>
     </div>
   </div>
   <div class="note warn" style="margin-top:12px;">
-    <strong>Update, October 18 — crude climbed again late last week.</strong> Brent reached its highest level since May on Friday, October 16, trading as high as roughly $110 intraday, on Middle East supply worries and attacks on Russian energy facilities. WTI was about $97.59 on October 15 and roughly $101 by the Friday close in one report (sources conflict on the exact close). Offsetting that, the U.S. Department of Energy said on October 16 it is seeking proposals to exchange up to 17 million barrels from the Strategic Petroleum Reserve, part of a global release agreed in March. <em>I could not verify official settlement prices for October 16, so treat all oil figures here as approximate.</em> Sources: <a href="https://baolaocai.vn/gia-xang-dau-hom-nay-1710-dau-the-gioi-tang-vot-phien-giao-dich-cuoi-tuan-post912153.html" target="_blank" rel="noopener">Bao Lao Cai market report (citing Reuters), Oct 17</a>; <a href="https://investinglive.com/news/investinglive-americas-market-news-wrap-yields-continue-to-fall-even-after-hot-ppi-data/" target="_blank" rel="noopener">investinglive, Oct 15</a>; <a href="https://www.devdiscourse.com/article/international/3993879-us-solicits-exchange-of-up-to-17-million-barrels-of-oil-from-strategic-reserve" target="_blank" rel="noopener">Devdiscourse, Oct 17</a>.
+    <strong>Update, October 26: oil is back near its six-month high while talks and attacks run in parallel.</strong> Reuters reports (<a href="https://gvwire.com/2026/10/26/oil-slips-2-a-barrel-but-stays-near-six-month-highs-on-saudi-attacks/" target="_blank" rel="noopener">via GV Wire</a>) that at about 10:37 a.m. ET Monday Brent was down $2.03 (1.7%) at $114.70 a barrel and WTI down $2.60 (2.5%) at $100.71, after both settled more than $3 higher on Friday; Brent rose 6% on the week and WTI 2.3%. The Monday dip was attributed to easing U.S.-Iran tension. Over the weekend the Houthis said they struck pumping stations on Saudi Arabia's East-West crude pipeline and Riyadh airport, and Saudi Arabia said it intercepted more missiles and drones. Qatari mediators traveled to Tehran, and Saudi, Turkish and Pakistani officials were due to meet Iranian officials there. A <a href="https://www.foxnews.com/live-news/iran-war-news-trump-israel-saudi-october-26" target="_blank" rel="noopener">Fox News live blog</a> (citing Reuters, CNN, IRNA and others) adds that President Trump was weighing a deal versus further military action, the State Department ordered non-emergency U.S. personnel out of Saudi Arabia, Iran's military chief warned ships against leaving designated routes in Hormuz (Iran has imposed transit restrictions and tolls), and a ship was reported on fire southeast of Al-Faw, Iraq. The same blog quotes a Brent settlement of $115.81; I could not reconcile that with the intraday Reuters figure, so treat all oil prices here as approximate. These are intraday and futures quotes, not EIA spot prices, which I did not re-check.
+  </div>
+  <div class="note warn" style="margin-top:12px;">
+    <strong>Update, October 21 — oil near five-month highs; shipping attacks spreading.</strong> Reuters reports that on Wednesday Brent traded around $109 a barrel and WTI around $97.70 (intraday, about 10:50 a.m. ET), after both had touched multi-month highs the prior session (Brent a five-month high, WTI a six-month high). Reuters, citing ship-tracking firm Kpler, counted at least 18 vessel attacks in two weeks and, citing LSEG, said Iran is targeting tankers beyond the Strait of Hormuz, reaching the Gulf of Oman. Iran's president said the U.S. cannot expect dialogue while blockading and threatening Iran, so there is no active U.S.-Iran dialogue. On the supply side, the Kremlin said Putin agreed to resume U.S.-mediated talks with Ukraine as soon as next month, which an analyst said could ease tight diesel supply; the U.S. is offering to loan up to nearly a third of its 1-million-barrel heating-oil reserve; and EIA data showed crude stocks fell more than expected while distillate stocks rose. Source: <a href="https://www.brecorder.com/news/40445237/oil-rises-on-middle-east-supply-worries" target="_blank" rel="noopener">Reuters via Business Recorder, Oct 21</a>. <em>These are intraday quotes, not settlements; I did not find an official settlement for Oct 21.</em>
+  </div>
+  <details class="older-updates"><summary><span class="arrow" aria-hidden="true">▼</span><span class="lbl-show">Show 11 earlier updates</span><span class="lbl-hide">Hide earlier updates</span></summary>
+  <div class="note" style="margin-top:12px;">
+    <strong>Official-data check (Oct 21):</strong> the EIA's daily spot prices show WTI at $101.91 and Brent (physical, Europe) at $126.55 on October 14, the latest dates it had posted (<a href="https://www.eia.gov/dnav/pet/pet_pri_spt_s1_d.htm" target="_blank" rel="noopener">EIA spot prices</a>). Physical Brent has traded roughly $20-30 above the futures prices quoted in news reports, a sign that supply of physical barrels is tighter than futures suggest. On reserves, the Energy Department's September 29 announcement covered an exchange of up to 40 million barrels as part of the 172-million-barrel U.S. contribution to the IEA's 400-million-barrel release (<a href="https://www.energy.gov/node/4860435" target="_blank" rel="noopener">Energy Department release</a>); a Reuters-sourced report says a further solicitation for up to 17 million barrels followed on October 16 (<a href="https://boereport.com/2026/10/16/us-solicits-exchange-of-up-to-17-million-barrels-of-oil-from-strategic-reserve/amp/" target="_blank" rel="noopener">BOE Report</a>). <strong>Correction:</strong> some older oil prices in the collapsed updates below came from market-news sites that I have since found do not match the EIA's official series (for example, WTI quotes near $89-91 in early October versus the EIA's $95-102 spot). Where they differ, prefer the EIA figures.
+  </div>
+  <div class="note warn" style="margin-top:12px;">
+    <strong>Update, October 18 — crude climbed again late last week.</strong> Brent reached its highest level since May on Friday, October 16, trading as high as roughly $110 intraday, on Middle East supply worries and attacks on Russian energy facilities. WTI was about $97.59 on October 15 and roughly $101 by the Friday close in one report (sources conflict on the exact close). Offsetting that, the U.S. Department of Energy said on October 16 it is seeking proposals to exchange up to 17 million barrels from the Strategic Petroleum Reserve, part of a global release agreed in March. <em>I could not verify official settlement prices for October 16, so treat all oil figures here as approximate.</em> <em>(The sources originally cited for this note were market-news sites that I have since downgraded; see the Oct 21 official-data check above for verified oil and reserve figures.)</em>
   </div>
   <div class="note warn" style="margin-top:12px;">
     <strong>Update, October 13 — the conflict widened over the weekend, while a separate energy truce eased diesel pressure.</strong> Houthi forces (Yemen-based, Iran-backed) fired ballistic and cruise missiles at King Khalid International Airport in Riyadh on Saturday and again Sunday, killing 14 people in total, according to oil-market reporting. The attacks reportedly did not target energy infrastructure, but a tanker was also reported hit by a drone near Oman's Sohar anchorage and a vessel damaged near the Strait of Hormuz, and analysts warn the fighting could spread around Bab el-Mandeb. On the other side of the ledger: on Sunday President Trump announced an "energy ceasefire" between Russia and Ukraine, which Ukraine's president called news to him and Moscow had not publicly confirmed, alongside a U.S.-Russia deal for Russian diesel (reported as 300,000+ tonnes at first, 500,000 more in November) in exchange for temporary sanctions relief. Analysts at ING said the diesel deal will not end tightness in fuel markets but is pushing diesel margins lower. Oil: Brent settled at $104.72 on Friday Oct 9 (AP), and on Monday Oct 12 Brent was quoted around $103-104 and WTI around $90-91 in intraday reports. <em>Those Monday figures are intraday and sources differ slightly; I could not verify an official Oct 12 settlement.</em>
   </div>
-  <details class="older-updates"><summary><span class="arrow" aria-hidden="true">▼</span><span class="lbl-show">Show 8 earlier updates</span><span class="lbl-hide">Hide earlier updates</span></summary>
   <div class="note" style="margin-top:12px;">
     <strong>Update, October 9:</strong> diplomatic talks stalled at the United Nations in late September, and Hormuz risk keeps a premium on Brent. Prices have eased this week: the International Energy Agency sped up plans to release about 100 million barrels of strategic reserves, and U.S. crude inventories fell 3.2 million barrels. On the morning of Oct 8, WTI was about $89 and Brent about $101 (intraday quotes from a Vietnamese market-news site; earlier in the week Brent was quoted from roughly $102 to $106). <em>These are intraday readings, not official settlements; I could not verify an official settlement for any day this week.</em> Treat all oil figures as approximate.
   </div>
@@ -665,36 +710,6 @@
 </section>
 
 <section>
-  <h2>Wildfires &amp; "climateflation"</h2>
-  <div class="stat-grid">
-    <div class="stat">
-      <div class="label">2025 LA wildfires, insured losses</div>
-      <div class="value" style="color:var(--up);">~$40B</div>
-      <div class="period">costliest wildfire event in U.S. history</div>
-    </div>
-    <div class="stat">
-      <div class="label">2026 acreage burned (by May 1)</div>
-      <div class="value" style="color:var(--up);">1.8M acres</div>
-      <div class="period">highest year-to-date since 2017</div>
-    </div>
-    <div class="stat">
-      <div class="label">CA utility bills, wildfire-related</div>
-      <div class="value" style="color:var(--up);">+20%</div>
-      <div class="period">CA Earthquake Authority study</div>
-    </div>
-  </div>
-  <div class="note warn" style="margin-top:12px;">
-    Wildfires don't move the national CPI the way oil shocks do, but they're a real, growing, and localized cost pressure — economists are calling the phenomenon "climateflation." The January 2025 Palisades and Eaton fires destroyed over 16,000 structures and produced roughly $40 billion in insured losses; nearly 400,000 California home insurance policies have been canceled since 2021, and FAIR Plan (the state's insurer of last resort) enrollment is up 43% in 15 months. Rebuilding costs are compounding the problem: construction material and skilled-labor shortages pushed residential construction wages up more than 9% in 2025, far outpacing overall inflation. The 2026 fire season is already tracking worse than most recent years, with Florida and Georgia in extreme drought and Colorado closing its worst snowpack year on record — meaning this cost pressure is not behind us. It shows up in this dashboard mainly through shelter and insurance costs in fire-prone regions, not the national CPI headline.
-  </div>
-  <div class="source-card" style="margin-top:12px;">
-    <a href="https://www.insurancejournal.com/news/west/2026/04/13/865378.htm" target="_blank">Insurance Journal — California Utility Bills 20% Higher Due to Wildfires</a>
-    <div class="desc">Reporting on a California Earthquake Authority study quantifying wildfire cost pass-through to consumers.</div>
-    <span class="tag">insurancejournal.com</span>
-  </div>
-  <div class="impact"><span class="impact-label">What this means for you</span>If you live in a fire-prone area (California especially), expect insurance premiums and utility bills to keep climbing regardless of what national CPI shows — this cost pressure is regional and largely invisible in the headline numbers.</div>
-</section>
-
-<section>
   <h2 id="sec-medical">Health insurance &amp; medical care</h2>
   <div class="stat-grid">
     <div class="stat">
@@ -704,8 +719,8 @@
     </div>
     <div class="stat">
       <div class="label">Chained CPI (C-CPI-U), 12-mo</div>
-      <div class="value" style="color:var(--flat);">3.3%</div>
-      <div class="period">unchanged — see Chained CPI section</div>
+      <div class="value" style="color:var(--up);">3.5%</div>
+      <div class="period">September 2026, preliminary (3.3% in July) — see Chained CPI section</div>
     </div>
     <div class="stat">
       <div class="label">Medical care commodities, 12-mo</div>
@@ -716,6 +731,7 @@
   <div class="note" style="margin-top:12px;">
     Medical care has now cooled for five straight months on a year-over-year basis: 2.6% in May, 2.0% in June, 1.7% in July, 1.6% in August and 1.5% in September, its lowest annual reading of 2026. The monthly picture was mixed: the medical care index rose 0.1% in September, and medical care services rose 0.3% (2.5% over 12 months). Source: <a href="https://www.bls.gov/news.release/archives/cpi_10142026.htm" target="_blank" rel="noopener">BLS CPI release, Oct 14, 2026</a>.
   </div>
+  <details class="older-updates"><summary><span class="arrow" aria-hidden="true">▼</span><span class="lbl-show">Show background, earlier updates &amp; sources (2)</span><span class="lbl-hide">Hide background, earlier updates &amp; sources</span></summary>
   <div class="note warn" style="margin-top:12px;">
     <strong>Important methodology note:</strong> BLS does not price health insurance policies directly. It uses an "indirect method" — measuring insurers' retained earnings (premiums minus benefits paid) rather than premium prices themselves — because it can't reliably control for changes in plan quality across insurers. There is no standalone monthly "health insurance inflation rate" published the way there is for, say, groceries or gasoline. Health insurance is folded into the broader "medical care services" category above.
   </div>
@@ -724,6 +740,7 @@
     <div class="desc">Explains the indirect pricing method for health insurance and why Medicaid isn't included in the CPI at all.</div>
     <span class="tag">bls.gov</span>
   </div>
+  </details>
   <div class="impact"><span class="impact-label">What this means for you</span>Medical costs are cooling, which is good news for your wallet if you pay out of pocket. But remember: there's no clean way to track your specific health insurance premium trend nationally — your plan's renewal could still rise more than this number suggests.</div>
 </section>
 
@@ -736,6 +753,11 @@
       <div class="period">up 9.7% from $185.00 in 2025</div>
     </div>
     <div class="stat">
+      <div class="label">Part B standard premium, 2027 (projected)</div>
+      <div class="value" style="color:var(--up);">$209.50/mo</div>
+      <div class="period">+$6.60 (about 3.25%); deductible projected $292. CMS has not yet announced final figures.</div>
+    </div>
+    <div class="stat">
       <div class="label">Part A inpatient deductible, 2026</div>
       <div class="value">$1,736</div>
       <div class="period">up from $1,676 in 2025</div>
@@ -746,6 +768,10 @@
       <div class="period">grew to $1.12 trillion (CMS NHE)</div>
     </div>
   </div>
+  <div class="note warn" style="margin-top:12px;">
+    <strong>Update, October 22:</strong> <a href="https://www.aarp.org/medicare/medicare-part-b-premium-2027/" target="_blank" rel="noopener">AARP reports</a> (October 5), citing the Medicare Trustees' projections, that the 2027 Part B standard premium is projected at $209.50 a month, up $6.60 from $202.90, with the deductible rising from $283 to $292. CMS typically confirms the final amounts later in the fall, so these are projections, not final numbers. For comparison, the 2027 Social Security COLA is 3.6% (see the Chained CPI section), slightly more than the projected 3.25% premium rise.
+  </div>
+  <details class="older-updates"><summary><span class="arrow" aria-hidden="true">▼</span><span class="lbl-show">Show background, earlier updates &amp; sources (2)</span><span class="lbl-hide">Hide background, earlier updates &amp; sources</span></summary>
   <div class="note" style="margin-top:12px;">
     CMS attributes the 2026 Part B premium jump mainly to projected price increases and higher utilization. CMS says the increase would have been larger if it hadn't acted to curb spending on "skin substitutes," a billing category flagged for fraud risk. This is a program-cost figure (what CMS spends and charges), not a CPI inflation rate.
   </div>
@@ -754,6 +780,7 @@
     <div class="desc">Official fact sheet with every 2026 premium, deductible, and coinsurance figure, and the reasoning behind them.</div>
     <span class="tag">cms.gov</span>
   </div>
+  </details>
   <div class="impact"><span class="impact-label">What this means for you</span>If you're on Medicare, your Part B premium already rose nearly 10% for 2026 — that's locked in regardless of what happens with broader inflation. Budget for continued increases; program spending is growing faster than general prices.</div>
 </section>
 
@@ -779,11 +806,13 @@
   <div class="note warn" style="margin-top:12px;">
     <strong>Medicaid is not part of the CPI.</strong> BLS explicitly excludes Medicaid from CPI medical-care pricing because enrollees generally make no out-of-pocket payment to participate — there's no consumer "price" to track. What's shown here instead is CMS's National Health Expenditure (NHE) data, which measures total program spending growth, not a price index. Spending growth reflects both prices and how much care people used, so it isn't directly comparable to a CPI percentage.
   </div>
+  <details class="older-updates"><summary><span class="arrow" aria-hidden="true">▼</span><span class="lbl-show">Show background, earlier updates &amp; sources (1)</span><span class="lbl-hide">Hide background, earlier updates &amp; sources</span></summary>
   <div class="source-card" style="margin-top:12px;">
     <a href="https://www.cms.gov/data-research/statistics-trends-and-reports/national-health-expenditure-data/nhe-fact-sheet" target="_blank">CMS — National Health Expenditure Fact Sheet</a>
     <div class="desc">Official annual spending totals and growth rates by payer (Medicare, Medicaid, private insurance, out-of-pocket).</div>
     <span class="tag">cms.gov</span>
   </div>
+  </details>
   <div class="impact"><span class="impact-label">What this means for you</span>If you or a family member relies on Medicaid, program spending is growing quickly, but that doesn't guarantee your own benefits or provider access will improve — eligibility rules are tightening even as total spending rises.</div>
 </section>
 
@@ -811,6 +840,10 @@
       <div class="period">-20%, per CBO</div>
     </div>
   </div>
+  <div class="note" style="margin-top:12px;">
+    <strong>Update, October 22:</strong> USDA's cost-of-living adjustment for fiscal year 2027 took effect October 1, 2026. Maximum monthly SNAP allotments in the 48 states and D.C. are $306 for a household of one and $1,023 for a household of four (<a href="https://www.fna.usda.gov/snap/allotment/COLA" target="_blank" rel="noopener">USDA Food and Nutrition Service, SNAP COLA page</a>, dated October 21). I did not compare these to the fiscal 2026 amounts, so I am not stating the size of the increase. Enrollment figures above are from earlier data (through April 2026); I did not find a newer verified participation number this week.
+  </div>
+  <details class="older-updates"><summary><span class="arrow" aria-hidden="true">▼</span><span class="lbl-show">Show background, earlier updates &amp; sources (5)</span><span class="lbl-hide">Hide background, earlier updates &amp; sources</span></summary>
   <div class="note warn" style="margin-top:12px;">
     This is one of the steepest SNAP enrollment drops in about three decades — comparable to the 1996 welfare reform cuts. The cause is the "One Big Beautiful Bill" (H.R. 1), signed July 2025, which expanded work requirements and tightened eligibility, including for some immigrants with lawful status. The decline accelerated sharply after the law took effect: only about 744,000 people lost benefits in the first six months, versus millions in the months since. It's landed in every state except Alaska, with drops of 10%+ in 23 states.
   </div>
@@ -818,7 +851,7 @@
     The cause is genuinely disputed. USDA Secretary Brooke Rollins has attributed much of the decline to a strong economy and reduced fraud. Food-security researchers, and the Center on Budget and Policy Priorities (a left-leaning think tank that produces the most detailed state-level tracking), attribute it primarily to the program becoming harder to access — more paperwork, stricter work-requirement verification. This dashboard can't adjudicate that dispute, but the enrollment numbers themselves are drawn from USDA administrative data and aren't contested.
   </div>
   <div class="note" style="margin-top:12px;">
-    Why it belongs here: SNAP covers roughly 1 in 8 Americans, and its recipients are disproportionately exposed to the food-at-home inflation tracked in the Groceries section above. Losing benefits while grocery CPI is still running at 3.0% year-over-year compounds financial pressure for millions of households in a way the topline inflation numbers don't capture.
+    Why it belongs here: SNAP covers roughly 1 in 8 Americans, and its recipients are disproportionately exposed to the food-at-home inflation tracked in the Groceries section above. Losing benefits while food prices are still rising (food up 2.5% and groceries up 1.8% over 12 months in the September CPI, per BLS) compounds financial pressure for millions of households in a way the topline inflation numbers don't capture.
   </div>
   <div class="source-card" style="margin-top:12px;">
     <a href="https://www.cbpp.org/research/food-assistance/snap-tracker-people-are-losing-food-assistance-as-the-republican-megabill" target="_blank">CBPP — SNAP Participation Tracker</a>
@@ -830,6 +863,7 @@
     <div class="desc">Official USDA participation and benefit data, the underlying source for enrollment figures nationwide.</div>
     <span class="tag">fns.usda.gov</span>
   </div>
+  </details>
   <div class="impact"><span class="impact-label">What this means for you</span>If you or someone you know is on SNAP, this is the most direct and immediate hit on this entire dashboard — millions have already lost benefits while food prices keep climbing. Check eligibility rules directly if your status may have changed.</div>
 </section>
 
@@ -879,14 +913,18 @@
     </div>
     <div class="stat">
       <div class="label">Initial jobless claims, latest week</div>
-      <div class="value" style="color:var(--down);">199K</div>
-      <div class="period">week ending Oct 10 (DOL); 4-week avg 198.5K, continuing claims 1.710M</div>
+      <div class="value" style="color:var(--down);">194K</div>
+      <div class="period">week ending Oct 17 (DOL); 4-week avg 197,750, continuing claims 1.728M</div>
     </div>
   </div>
+    <div class="note" style="margin-top:12px;">
+    <strong>Update, October 26:</strong> The Department of Labor's October 22 release put initial jobless claims at 194,000 for the week ended October 17, down 6,000 from a prior week revised up 1,000 to 200,000; Bloomberg's headline called it a three-month low. The four-week average was 197,750. Continuing claims (week ended October 10) rose 25,000 to 1.728 million, and the insured unemployment rate was 1.1%. Layoffs remain low, but the rise in continuing claims fits the pattern in this section of slow hiring rather than firing. Sources: <a href="https://www.pymnts.com/economy/2026/dol-data-shows-jobless-claims-drop-to-near-1960s-lows/" target="_blank" rel="noopener">PYMNTS, reporting DOL data</a>; <a href="https://www.bloomberg.com/news/articles/2026-10-22/us-initial-jobless-claims-fall-to-three-month-low" target="_blank" rel="noopener">Bloomberg</a>. I read the figures from PYMNTS' report rather than the DOL release itself. The next jobs report is November 6.
+  </div>
+  <details class="older-updates"><summary><span class="arrow" aria-hidden="true">▼</span><span class="lbl-show">Show background, earlier updates &amp; sources (3)</span><span class="lbl-hide">Hide background, earlier updates &amp; sources</span></summary>
   <div class="note warn" style="margin-top:12px;">
     <strong>August's job rebound did not hold.</strong> September added just 29,000 jobs, and BLS revised the prior two months down by a combined 60,000, so August's headline strength (+162K as first reported) is now +133K, and July is a small loss (-10K) rather than a gain. The three-month average is only about 51,000 jobs a month. The unemployment rate rose to 4.2% from 4.1%, while participation edged up to 61.8%, which means more people are looking for work, not fewer. The Black unemployment rate jumped a full point to 7.0%, the sharpest move in the report. Weekly jobless claims remain low (197K), so this looks more like a hiring slowdown than a wave of layoffs. The next report is November 6, three days after the election.
   </div>
-    <div class="source-card" style="margin-top:12px;">
+  <div class="source-card" style="margin-top:12px;">
     <a href="https://www.bls.gov/news.release/empsit.htm" target="_blank">BLS — The Employment Situation</a>
     <div class="desc">The monthly jobs report: unemployment rate, payroll growth, participation rate, and demographic detail.</div>
     <span class="tag">bls.gov</span>
@@ -896,6 +934,7 @@
     <div class="desc">Initial and continuing unemployment insurance claims, updated every Thursday — the earliest weekly signal on layoffs.</div>
     <span class="tag">dol.gov</span>
   </div>
+  </details>
   <div class="impact"><span class="impact-label">What this means for you</span>If you're job-hunting, hiring slowed sharply in September, so searches may take longer than they did in the spring. Low layoff claims mean most people who have jobs are keeping them; the squeeze is on finding the next one.</div>
 </section>
 
@@ -927,11 +966,13 @@
   <div class="note warn" style="margin-top:12px;">
     The August JOLTS report showed a labor market that is stable but not growing: openings slipped to 7.1 million, and hiring, quits and layoffs were all little changed. A 1.9% quits rate means workers still aren't confident enough to switch jobs, and layoffs remain low, which fits September's payroll slowdown (hiring is soft, but firing hasn't picked up). Note that JOLTS lags the jobs report by a month, so this describes August, before September's weak payroll number.
   </div>
-    <div class="source-card" style="margin-top:12px;">
+  <details class="older-updates"><summary><span class="arrow" aria-hidden="true">▼</span><span class="lbl-show">Show background, earlier updates &amp; sources (1)</span><span class="lbl-hide">Hide background, earlier updates &amp; sources</span></summary>
+  <div class="source-card" style="margin-top:12px;">
     <a href="https://www.bls.gov/news.release/jolts.htm" target="_blank">BLS — Job Openings and Labor Turnover Survey (JOLTS)</a>
     <div class="desc">Monthly openings, hires, quits, and layoffs data — the Fed's preferred forward-looking labor market read.</div>
     <span class="tag">bls.gov</span>
   </div>
+  </details>
   <div class="impact"><span class="impact-label">What this means for you</span>If you're considering a job change, a 1.9% quits rate and 7.1M openings signal a cautious market: workers are staying put, which usually means less leverage to negotiate a new offer right now.</div>
 </section>
 
@@ -961,13 +1002,15 @@
     </div>
   </div>
   <div class="note warn" style="margin-top:12px;">
-    <strong>One of the hottest producer-price reports on record, and energy is again the story.</strong> Final demand prices rose 1.3% in September (after +0.5% in August) and are up 6.3% over 12 months, well above the 5.3% economists expected. Goods prices jumped 2.6%, the largest increase since the series began in 2009, and energy prices drove more than 80% of that rise: final demand energy was up 10.8% and gasoline 20.3% for the month. Services rose 0.8%, helped by a 1.4% jump in trade margins. Excluding food, energy and trade, prices rose 0.5% for the month and 5.0% over 12 months, so some pressure extends beyond fuel. Producer prices often feed into consumer prices with a lag, which makes this a caution flag for the October and November CPI readings. Sources: <a href="https://www.bls.gov/news.release/archives/ppi_10152026.htm" target="_blank" rel="noopener">BLS PPI release, Oct 15, 2026</a>; consensus from <a href="https://investinglive.com/news/us-september-ppi-6-3-vs-5-3-expected/" target="_blank" rel="noopener">investinglive</a>. (I could not verify September diesel prices, so the earlier diesel figure has been removed.)
+    <strong>One of the hottest producer-price reports on record, and energy is again the story.</strong> Final demand prices rose 1.3% in September (after +0.5% in August) and are up 6.3% over 12 months, the largest 12-month increase since December 2022. Goods prices jumped 2.6%, the largest increase since the series began in 2009, and energy prices drove more than 80% of that rise: final demand energy was up 10.8% and gasoline 20.3% for the month. Services rose 0.8%, helped by a 1.4% jump in trade margins. Excluding food, energy and trade, prices rose 0.5% for the month and 5.0% over 12 months, so some pressure extends beyond fuel. Producer prices often feed into consumer prices with a lag, which makes this a caution flag for the October and November CPI readings. Sources: <a href="https://www.bls.gov/news.release/archives/ppi_10152026.htm" target="_blank" rel="noopener">BLS PPI release, Oct 15, 2026</a>. (I could not verify September diesel prices, so the earlier diesel figure has been removed.)
   </div>
+  <details class="older-updates"><summary><span class="arrow" aria-hidden="true">▼</span><span class="lbl-show">Show background, earlier updates &amp; sources (1)</span><span class="lbl-hide">Hide background, earlier updates &amp; sources</span></summary>
   <div class="source-card" style="margin-top:12px;">
     <a href="https://www.bls.gov/ppi/" target="_blank">BLS — Producer Price Index (PPI)</a>
     <div class="desc">Monthly wholesale/producer-level price data, often a leading indicator for future consumer inflation.</div>
     <span class="tag">bls.gov</span>
   </div>
+  </details>
   <div class="impact"><span class="impact-label">What this means for you</span>This won't hit your wallet directly today, but it's an early warning system, and September's reading was alarming. If you run a business that relies on trucking or freight, expect input costs to stay high, and expect some of it to reach shelf prices over the coming months.</div>
 </section>
 
@@ -988,48 +1031,55 @@
   <div class="note" style="margin-top:12px;">
     Airline fares eased again, from July's 25.5% to 23.4% in August and 22.4% in September (BLS CPI), but remain one of the biggest year-over-year movers in the entire CPI basket — likely tied to jet fuel costs from the same oil disruption driving gasoline prices. It doesn't get the attention gasoline does because far fewer people buy plane tickets in a given month, but it's a real cost for anyone traveling.
   </div>
+  <details class="older-updates"><summary><span class="arrow" aria-hidden="true">▼</span><span class="lbl-show">Show background, earlier updates &amp; sources (1)</span><span class="lbl-hide">Hide background, earlier updates &amp; sources</span></summary>
   <div class="note warn" style="margin-top:12px;">
     <strong>Tariffs:</strong> multiple sources this year — including Fed commentary and economic reporting cited elsewhere on this dashboard — point to tariffs as a contributing cost pressure, particularly on construction materials (steel, aluminum, lumber) and imported goods. BLS's CPI release doesn't break out a "tariff impact" figure directly, so this dashboard can't give you a precise number the way it can for energy or shelter. Economists and political figures disagree sharply on how large the tariff effect is versus other factors (energy, labor markets, the Iran war) — treat any specific percentage-point estimate you see elsewhere with some skepticism unless it's traceable to a named economic model, the way the war impact estimate above is.
   </div>
+  </details>
   <div class="impact"><span class="impact-label">What this means for you</span>If you travel by air, budget noticeably more than last year, even with this month's slight easing. Tariff effects are harder to isolate, but expect continued upward pressure on imported goods and construction materials.</div>
 </section>
 
 <section>
   <h2>Consumer sentiment — how people feel about all this</h2>
-  <p class="subnote">University of Michigan Surveys of Consumers, October 2026 preliminary (released Oct 9). The final October reading is due Oct 23. Narrative below was written on the September data — a genuinely new leading indicator this dashboard hasn't tracked before.</p>
+  <p class="subnote">University of Michigan Surveys of Consumers, October 2026 final reading (released Oct 23); the preliminary reading (Oct 9) is described in the update below. The next preliminary reading is due in November.</p>
   <div class="stat-grid">
     <div class="stat">
       <div class="label">Consumer sentiment index</div>
-      <div class="value" style="color:var(--up);">46.3</div>
-      <div class="period">Oct 2026 preliminary, down from 48.1 in Sept; five-month low</div>
+      <div class="value" style="color:var(--up);">48.0</div>
+      <div class="period">Oct 2026 final, vs. 48.1 in Sept (preliminary was 46.3); five-month low</div>
     </div>
     <div class="stat">
       <div class="label">1-year inflation expectations</div>
       <div class="value" style="color:var(--up);">4.7%</div>
-      <div class="period">Oct preliminary, up from 4.6% in Sept</div>
+      <div class="period">Oct final, up from 4.6% in Sept</div>
     </div>
     <div class="stat">
       <div class="label">5-year inflation expectations</div>
       <div class="value" style="color:var(--up);">3.5%</div>
-      <div class="period">Oct preliminary, up from 3.4%</div>
+      <div class="period">Oct final, up from 3.4%</div>
     </div>
     <div class="stat">
       <div class="label">Current conditions index</div>
-      <div class="value" style="color:var(--up);">44.7</div>
-      <div class="period">Oct preliminary; economists expected 51.0</div>
+      <div class="value" style="color:var(--up);">46.7</div>
+      <div class="period">Oct final (preliminary 44.7), down 8.3% from September</div>
     </div>
   </div>
+  <div class="note" style="margin-top:12px;">
+    <strong>Update, October 26: the final October reading was revised up to 48.0 from 46.3.</strong> That is 0.1 point below September's 48.1, so sentiment was essentially flat month to month rather than falling further, though it remains a five-month low and near the bottom of the survey's history. Current conditions came in at 46.7 (the preliminary was 44.7) and the expectations index rose 5.4% to 48.8. Year-ahead inflation expectations rose to 4.7% from 4.6%, and long-run expectations to 3.5% from 3.4%. The revision does not change the main finding: consumers are far more worried about prices than the jobless-claims data would suggest. Source: <a href="https://www.advisorperspectives.com/dshort/updates/2026/10/23/consumer-sentiment-at-five-month-low" target="_blank" rel="noopener">Advisor Perspectives, summarizing the Michigan release</a>; official data at <a href="https://www.sca.isr.umich.edu/" target="_blank" rel="noopener">Michigan Surveys of Consumers</a>. I did not read Michigan's own release page.
+  </div>
+  <details class="older-updates"><summary><span class="arrow" aria-hidden="true">▼</span><span class="lbl-show">Show background, earlier updates &amp; sources (3)</span><span class="lbl-hide">Hide background, earlier updates &amp; sources</span></summary>
   <div class="note warn" style="margin-top:12px;">
-    <strong>People feel worse about the economy than most of the hard data alone would suggest, and it's getting worse, not better.</strong> This index has now fallen for three straight months (51.7 in August, 48.1 in September, 46.3 in the October preliminary) to a five-month low, near the lowest readings on record. The university's director of surveys, Joanne Hsu, said the decline was broad-based across political affiliation this month, with the sharpest drops among Democrats and Republicans alike (independents were little changed) — a sign this isn't a partisan-perception effect, but a genuine, broad reaction to gasoline prices and trade tensions. Perhaps most relevant for the Fed's next moves: year-ahead inflation expectations jumped a full 0.6 points to 4.6% in a single month, and five-year expectations — the number the Fed watches most closely for signs inflation psychology is becoming unanchored — also ticked up after holding steady for three straight months. Separately, the Conference Board's Leading Economic Index (a broader index combining 10 indicators) dipped 0.1% in August, also weighed down by weaker consumer expectations and declining building permits.
+    <strong>People feel worse about the economy than most of the hard data alone would suggest, and it's getting worse, not better.</strong> This index fell from 51.7 in August to 48.1 in September and 48.0 in the final October reading (46.3 in the October preliminary), a five-month low, near the lowest readings on record. The university's director of surveys, Joanne Hsu, said the decline was broad-based across political affiliation this month, with the sharpest drops among Democrats and Republicans alike (independents were little changed) — a sign this isn't a partisan-perception effect, but a genuine, broad reaction to gasoline prices and trade tensions. Perhaps most relevant for the Fed's next moves: year-ahead inflation expectations jumped a full 0.6 points to 4.6% in a single month, and five-year expectations — the number the Fed watches most closely for signs inflation psychology is becoming unanchored — also ticked up after holding steady for three straight months. Separately, the Conference Board's Leading Economic Index (a broader index combining 10 indicators) dipped 0.1% in August, also weighed down by weaker consumer expectations and declining building permits.
   </div>
   <div class="note" style="margin-top:12px;">
-    <strong>Update, October 9:</strong> Michigan's October preliminary fell to 46.3 from 48.1, below the 47.8 economists expected, with current conditions (44.7) far below the 51.0 forecast, while the expectations component (47.3) beat forecasts. Year-ahead inflation expectations edged up to 4.7% and long-run to 3.5%. (Source: investinglive; I did not open Michigan's own release.) Earlier, the Conference Board's separate consumer confidence index fell to 81.9 in September, its lowest reading since 2014. It uses a different survey and method than Michigan's, but points the same direction. Michigan's <strong>final</strong> September reading was 48.1 (vs. 47.8 preliminary), down 7.0% from August and 12.7% from a year ago. Final year-ahead inflation expectations held at 4.6% and long-run at 3.4%. The cards above now show the newer October preliminary figures.
+    <strong>Update, October 9:</strong> Michigan's October preliminary fell to 46.3 from 48.1, below the 47.8 economists expected, with current conditions (44.7) far below the 51.0 forecast, while the expectations component (47.3) beat forecasts. Year-ahead inflation expectations edged up to 4.7% and long-run to 3.5%. (Source: <a href="https://www.sca.isr.umich.edu/" target="_blank" rel="noopener">University of Michigan Surveys of Consumers</a>, which I read directly.) Earlier, the Conference Board's separate consumer confidence index fell to 81.9 in September, its lowest reading since 2014. It uses a different survey and method than Michigan's, but points the same direction. Michigan's <strong>final</strong> September reading was 48.1 (vs. 47.8 preliminary), down 7.0% from August and 12.7% from a year ago. Final year-ahead inflation expectations held at 4.6% and long-run at 3.4%. The cards above now show the newer October preliminary figures.
   </div>
   <div class="source-card" style="margin-top:12px;">
     <a href="https://www.sca.isr.umich.edu/" target="_blank">University of Michigan — Surveys of Consumers</a>
     <div class="desc">Monthly consumer sentiment and inflation-expectations survey, released mid-month (preliminary) and end-of-month (final).</div>
     <span class="tag">sca.isr.umich.edu</span>
   </div>
+  </details>
   <div class="impact"><span class="impact-label">What this means for you</span>If you've been feeling more pessimistic about the economy lately, the data says you're far from alone — this is one of the lowest readings on record, and it's not just a partisan reaction. Rising inflation expectations can also become self-fulfilling: if enough people expect higher prices, businesses and workers start pricing and bargaining accordingly.</div>
 </section>
 
@@ -1059,6 +1109,10 @@
     </div>
   </div>
   <div class="note" style="margin-top:12px;">
+    <strong>Update, October 22:</strong> CBO's monthly budget review (covering August, published September 12) put the federal deficit at about $2 trillion for the first 11 months of fiscal 2026, roughly in line with the prior year ($6 billion lower, or $82 billion higher after adjusting for payment-timing shifts). Net interest on the debt rose $111 billion (12%), and corporate income tax receipts fell 25%. Tariff revenue rose only 1%. Source: <a href="https://www.fox5dc.com/news/federal-budget-deficit-hits-2t-cbo" target="_blank" rel="noopener">Fox local-station report of CBO's review</a>; see <a href="https://www.cbo.gov/about/products/major-recurring-reports#9" target="_blank" rel="noopener">CBO's monthly budget reviews</a>. I did not find CBO's full-year fiscal 2026 result or a new Budget and Economic Outlook this week.
+  </div>
+  <details class="older-updates"><summary><span class="arrow" aria-hidden="true">▼</span><span class="lbl-show">Show background, earlier updates &amp; sources (2)</span><span class="lbl-hide">Hide background, earlier updates &amp; sources</span></summary>
+  <div class="note" style="margin-top:12px;">
     Why this belongs here: everything else on this dashboard is a snapshot of where prices and employment stand right now. CBO's outlook is the closest thing to an official forward-looking baseline — it's what Congress itself uses to evaluate legislation, updated to reflect current law (including 2025's tax and spending law, tariffs, and immigration policy changes). CBO's own inflation forecast (2.7% PCE for 2026) is notably below where actual CPI has been running most of this year, largely because their forecast predates the Iran conflict's energy-price effects. Worth watching whether CBO revises that projection upward when its next outlook is published.
   </div>
   <div class="source-card" style="margin-top:12px;">
@@ -1066,6 +1120,7 @@
     <div class="desc">CBO's official 10-year baseline projections for the federal budget and economy, updated regularly.</div>
     <span class="tag">cbo.gov</span>
   </div>
+  </details>
   <div class="impact"><span class="impact-label">What this means for you</span>This doesn't affect your budget today, but it shapes the environment your taxes, interest rates, and benefits sit in for the next decade. Rising federal debt tends to put upward pressure on borrowing costs over time, including mortgage rates.</div>
 </section>
 
@@ -1089,19 +1144,15 @@
     </div>
   </div>
   <div class="note warn" style="margin-top:12px;">
-    <strong>What markets expect next (Oct 18):</strong> the Fed meets October 27-28, and odds have swung sharply this week. Reports put the odds of an October hike near 22% before September CPI, then at roughly 52% right after the release, and 41.5% on CME's FedWatch at midday October 14. By the evening of October 15, one market wrap showed about 27%, and traders trimmed them further after Fed Chair Warsh, speaking at an IMF event in Bangkok on October 16, declined to signal the outcome, saying hotter-than-expected inflation had not changed his read of the economy. AP reported December hike odds at 64.6% (up from 49.9% a month ago). These are market estimates from different trackers and times, not Fed decisions. Sources: <a href="https://247wallst.com/investing/2026/10/15/traders-give-warsh-a-42-chance-of-doing-something-this-month-that-has-only-happened-once-in-the-past-36-years/" target="_blank" rel="noopener">247WallSt (CME FedWatch, Oct 14)</a>; <a href="https://www.roic.ai/news/all-eyes-on-warsh-as-september-inflation-surprise-rattles-markets-10-14-2026" target="_blank" rel="noopener">roic.ai (Oct 14)</a>; <a href="https://investinglive.com/news/investinglive-americas-market-news-wrap-yields-continue-to-fall-even-after-hot-ppi-data/" target="_blank" rel="noopener">investinglive (Oct 15)</a>; <a href="https://tradingeconomics.com/united-states/interest-rate/news/592678" target="_blank" rel="noopener">Trading Economics (Oct 16)</a>; <a href="https://www.news4jax.com/news/2026/10/15/average-long-term-us-mortgage-rate-holds-at-74-remaining-at-highest-level-in-nearly-3-years/" target="_blank" rel="noopener">AP (Oct 15)</a>.
+    <strong>Update, October 26: economists expect a hold this week and a hike in December.</strong> A Reuters poll of 100 economists taken October 16-20 found 94 expecting the Fed to leave rates unchanged at the October 27-28 meeting and all 100 expecting a rate increase at the December 8-9 meeting (<a href="https://en.sedaily.com/international/2026/10/26/us-economists-see-fed-holding-rates-on-the-28th-hiking-in" target="_blank" rel="noopener">as reported by the Seoul Economic Daily</a>; I could not open Reuters' own story). I could not retrieve current CME FedWatch odds, so the October 16 market figure below is the latest market-implied number I have. The decision is announced Wednesday, October 28.
+  </div>
+  <details class="older-updates"><summary><span class="arrow" aria-hidden="true">▼</span><span class="lbl-show">Show background, earlier updates &amp; sources</span><span class="lbl-hide">Hide background, earlier updates &amp; sources</span></summary>
+  <div class="note warn" style="margin-top:12px;">
+    <strong>What markets expect next (as of Oct 16; I could not retrieve newer odds):</strong> the Fed meets October 27-28. According to <a href="https://www.axios.com/2026/10/16/warsh-federal-reserve-interest-rates" target="_blank" rel="noopener">Axios (citing CME FedWatch)</a>, market odds of an October hike jumped from 22% to 50% after the hotter-than-expected September CPI report, then fell back to 28% by Thursday afternoon, October 15. The same report quotes Fed Chair Warsh, speaking in Bangkok on October 16, as saying he does not believe in saying now what he might do at the meetings remaining this year; he said the economy has mostly played out as the Fed expected since its September hike. The Fed is weighing another increase at the October meeting. Market odds change daily, so check <a href="https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html" target="_blank" rel="noopener">CME FedWatch</a> for the current reading. (Earlier versions of this note cited December hike odds and other trackers from secondary sources; I removed figures I could not confirm with a reputable source.)
   </div>
   <div class="note warn" style="margin-top:12px;">
     <strong>The Fed actually hiked, not just talked about it.</strong> On September 16, the FOMC raised its benchmark rate by a quarter point to 3.75%-4.00% — the first increase since July 2023 — unanimously, 12-0. The Fed's post-meeting statement said inflation "remains elevated" and cited persistent price pressure from the Iran war/energy shock and other factors tracked throughout this dashboard. Fed Chair Kevin Warsh said plainly the Fed "cannot single-handedly stop price shocks on items like oil" but has a role in preventing that from spreading into broader inflation.
   </div>
-  <details class="older-updates"><summary><span class="arrow" aria-hidden="true">▼</span><span class="lbl-show">Show 2 earlier updates</span><span class="lbl-hide">Hide earlier updates</span></summary>
-  <div class="note warn" style="margin-top:12px;">
-    <strong>The forecast, not just the decision:</strong> alongside the rate decision, the Fed released its quarterly Summary of Economic Projections — the "dot plot," where each official marks where they expect rates to be by year-end. This is the closest thing to an official Fed forecast that exists. Of 18 participants (Warsh does not submit a dot), 16 expect at least one more hike in 2026, and 4 of those expect two more; only 2 expect the Fed to hold here. That points to a year-end target range of roughly 4.1%-4.4%, and futures markets are now pricing continued hikes extending into 2027. This is a genuinely different trajectory than this dashboard was tracking as recently as August, when the debate was still "cut or hold."
-  </div>
-  <div class="note" style="margin-top:12px;">
-    Context for how we got here: three regional bank presidents (Cleveland's Beth Hammack, Minneapolis's Neel Kashkari, Dallas's Lorie Logan) dissented in favor of a hike back in July. By September, the full committee agreed with them — driven by stalled core PCE (see PCE section above) and the hot August CPI report, both pointing the same direction.
-  </div>
-  </details>
   <div class="source-card" style="margin-top:12px;">
     <a href="https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm" target="_blank">Federal Reserve — FOMC Meeting Calendar &amp; Statements</a>
     <div class="desc">Official rate decisions, statements, and the quarterly Summary of Economic Projections ("dot plot").</div>
@@ -1112,12 +1163,19 @@
     <div class="desc">The official statement announcing the rate hike.</div>
     <span class="tag">federalreserve.gov</span>
   </div>
+  <div class="note warn" style="margin-top:12px;">
+    <strong>The forecast, not just the decision:</strong> alongside the rate decision, the Fed released its quarterly Summary of Economic Projections — the "dot plot," where each official marks where they expect rates to be by year-end. This is the closest thing to an official Fed forecast that exists. Of 18 participants (Warsh does not submit a dot), 16 expect at least one more hike in 2026, and 4 of those expect two more; only 2 expect the Fed to hold here. That points to a year-end target range of roughly 4.1%-4.4%, and futures markets are now pricing continued hikes extending into 2027. This is a genuinely different trajectory than this dashboard was tracking as recently as August, when the debate was still "cut or hold."
+  </div>
+  <div class="note" style="margin-top:12px;">
+    Context for how we got here: three regional bank presidents (Cleveland's Beth Hammack, Minneapolis's Neel Kashkari, Dallas's Lorie Logan) dissented in favor of a hike back in July. By September, the full committee agreed with them — driven by stalled core PCE (see PCE section above) and the hot August CPI report, both pointing the same direction.
+  </div>
+  </details>
   <div class="impact"><span class="impact-label">What this means for you</span>If you carry variable-rate debt (credit cards, some mortgages, HELOCs), rates just went up, not down, and the Fed's own forecast points to more hikes before year-end. If you were hoping to refinance on a rate cut, that scenario looks unlikely for the rest of 2026.</div>
 </section>
 
 <section id="sec-forecast">
   <h2>Forecast ranges — 95% estimates for the next few weeks</h2>
-  <p class="subnote">Added October 13, 2026; first results scored October 18 (5 of 5 resolved estimates landed inside their 95% ranges, but core CPI ran hotter than my central estimates). Each bar shows where I expect the figure to land 95% of the time (about a 1-in-20 chance it falls outside). These are <strong>my own estimates</strong>, built from published forecasts plus assumed volatility. They are not official forecasts, and the volatility assumptions were not backtested. Hover or tap a bar for details.</p>
+  <p class="subnote">Added October 13, 2026; first results scored October 18, updated October 26 (5 of 5 resolved estimates landed inside their 95% ranges, but core CPI ran hotter than my central estimates). Each bar shows where I expect the figure to land 95% of the time (about a 1-in-20 chance it falls outside). These are <strong>my own estimates</strong>, built from published forecasts plus assumed volatility. They are not official forecasts, and the volatility assumptions were not backtested. Hover or tap a bar for details.</p>
   <div class="fc">
 
     <div class="fc-card">
@@ -1156,7 +1214,7 @@
       <h3>Federal Reserve, Oct 27-28 meeting</h3>
       <p class="fc-sub">A decision is a choice among outcomes, not a range, so this uses probabilities. This is my judgment, not market-implied odds (the 77% hold figure cited earlier is a market estimate from Oct 6 and may have moved).</p>
       <div id="fc-fed"></div>
-      <p class="fc-sub" style="margin-top:12px;"><strong>How the September CPI result could move the hike probability</strong> (scenarios written Oct 13, before the release; actual CPI came in at 3.7%, which fits the middle scenario, and market-implied October hike odds ended the week near 27%, somewhat above my 23% point estimate):</p>
+      <p class="fc-sub" style="margin-top:12px;"><strong>How the September CPI result could move the hike probability</strong> (scenarios written Oct 13, before the release; actual CPI came in at 3.7%, which fits the middle scenario, and CME-implied October hike odds were 28% on Oct 15 per Axios, somewhat above my 23% point estimate):</p>
       <div id="fc-fed2"></div>
       <div class="fc-legend" aria-hidden="true">
         <span><svg class="k" width="12" height="12"><rect width="12" height="12" fill="#2a78d6"/></svg>Hold</span>
@@ -1169,24 +1227,28 @@
   </div>
 
   <h3 style="font-size:1rem;margin:18px 0 6px;">Table view of the same estimates</h3>
-  <div class="table-wrap"><div class="scroll-hint">↔ swipe to see all columns</div><div class="table-scroll"><table class="trend-table">
+  <div class="table-wrap"><div class="scroll-hint">↔ swipe to see all columns</div><div class="table-scroll"><table class="trend-table fc-table">
     <tr><th>Metric</th><th>Baseline when made</th><th>Central</th><th>95% range</th><th>Resolves</th><th>Actual result</th></tr>
     <tr><td class="metric">CPI headline, monthly</td><td>+0.4% (Aug)</td><td>+0.55%</td><td>+0.35% to +0.75%</td><td>Oct 14</td><td><strong>+0.6%</strong> — inside</td></tr>
     <tr><td class="metric">CPI headline, annual</td><td>3.4% (Aug)</td><td>3.6-3.7%</td><td>3.4% to 3.9%</td><td>Oct 14</td><td><strong>3.7%</strong> — inside, on the central estimate</td></tr>
     <tr><td class="metric">CPI core, monthly</td><td>+0.3% (Aug)</td><td>+0.20%</td><td>+0.05% to +0.35%</td><td>Oct 14</td><td><strong>+0.33%</strong> — inside, near the top; above the +0.20% central</td></tr>
     <tr><td class="metric">CPI core, annual</td><td>2.4% (Aug)</td><td>2.4%</td><td>2.2% to 2.6%</td><td>Oct 14</td><td><strong>2.6%</strong> — inside, at the upper edge (2.56% unrounded)</td></tr>
     <tr><td class="metric">30-yr mortgage, Oct 15</td><td>7.40% (Oct 8)</td><td>~7.40%</td><td>7.15% to 7.65%</td><td>Oct 15</td><td><strong>7.40%</strong> — inside, exactly on the central estimate</td></tr>
-    <tr><td class="metric">30-yr mortgage, Nov 5</td><td>7.40% (Oct 8)</td><td>~7.40%</td><td>6.80% to 8.00%</td><td>Nov 5</td><td>pending (7.40% at the Oct 15 checkpoint)</td></tr>
-    <tr><td class="metric">AAA gas, Oct 27</td><td>$4.34 (Oct 13)</td><td>~$4.30</td><td>$4.00 to $4.65</td><td>Oct 27</td><td>pending ($4.30 on Oct 18, inside so far)</td></tr>
-    <tr><td class="metric">Brent crude, Oct 27</td><td>$104.72 (Oct 9 settle)</td><td>~$100-104</td><td>~$80 to ~$128</td><td>Oct 27</td><td>pending (Brent traded near $110 intraday Oct 16, above the central, inside the range)</td></tr>
-    <tr><td class="metric">Fed, Oct 27-28</td><td>3.75%-4.00%</td><td>Hold ~75%</td><td>Hike ~23%; cut or larger move &lt;2%</td><td>Oct 28</td><td>pending (market-implied October hike odds ranged ~27%-52% this week)</td></tr>
+    <tr><td class="metric">30-yr mortgage, Oct 22</td><td>7.40% (Oct 15)</td><td>~7.40%</td><td>7.02% to 7.78% (interpolated)</td><td>Oct 22</td><td><strong>7.32%</strong> — inside; below the central estimate</td></tr>
+    <tr><td class="metric">30-yr mortgage, Nov 5</td><td>7.40% (Oct 8)</td><td>~7.40%</td><td>6.80% to 8.00%</td><td>Nov 5</td><td>pending (7.32% at the Oct 22 checkpoint)</td></tr>
+    <tr><td class="metric">AAA gas, Oct 27</td><td>$4.34 (Oct 13)</td><td>~$4.30</td><td>$4.00 to $4.65</td><td>Oct 27</td><td>pending ($4.27 on Oct 22 and $4.29 on Oct 25 per AAA, inside so far)</td></tr>
+    <tr><td class="metric">Brent crude, Oct 27</td><td>$104.72 (Oct 9 settle)</td><td>~$100-104</td><td>~$80 to ~$128</td><td>Oct 27</td><td>pending (Reuters: Brent about $114.70 intraday Oct 26, above the central estimate but inside the range; EIA's physical Brent spot was $126.55 on Oct 14, near the top of the range)</td></tr>
+    <tr><td class="metric">Fed, Oct 27-28</td><td>3.75%-4.00%</td><td>Hold ~75%</td><td>Hike ~23%; cut or larger move &lt;2%</td><td>Oct 28</td><td>pending (CME-implied October hike odds: 22% before CPI, 50% right after, 28% on Oct 15, per Axios; a Reuters poll of economists had 94 of 100 expecting a hold)</td></tr>
   </table></div></div>
 
   <div class="note warn" style="margin-top:12px;">
     <strong>How these were built, and where they are weakest.</strong> CPI: centers come from the Cleveland Fed's Oct 7 nowcast (0.53% monthly, 3.60% annual) and Continuum Economics (0.6%, 3.7%); I assumed a forecast error of about 0.1 point for headline and 0.08 for core, then used plus or minus 1.96 standard deviations. Mortgages: assumed weekly moves of about 0.13 points and about 0.30 over four weeks, based on recent behavior. Gas and oil: assumed crude volatility around 60% annualized. A 95% range is only as good as those assumptions, and in a war-driven market the real tails are probably fatter. This dashboard will fill in the "actual result" column as each figure is released, so you can judge how well the ranges held up.
   </div>
   <div class="note" style="margin-top:12px;">
-    <strong>Scorecard as of October 18.</strong> Five estimates have resolved so far, and all five landed inside their 95% ranges: headline CPI monthly (+0.6%) and annual (3.7%), core CPI monthly (+0.33%) and annual (2.6%), and the Oct 15 mortgage rate (7.40%). That is what you would expect if the ranges are roughly right, but five results are far too few to confirm it. The misses worth noting are in the center, not the range: core CPI came in at +0.33% against my +0.20% central estimate, and at the very top of its range, which suggests I underestimated core pressure. Oil is also trading above my central estimate. I have not revised any estimate; the original ranges stay for honest scoring. Sources: <a href="https://www.bls.gov/news.release/archives/cpi_10142026.htm" target="_blank" rel="noopener">BLS CPI, Oct 14</a>; <a href="https://www.freddiemac.com/pmms" target="_blank" rel="noopener">Freddie Mac PMMS, Oct 15</a>.
+    <strong>Scorecard as of October 18.</strong> Five estimates have resolved so far, and all five landed inside their 95% ranges: headline CPI monthly (+0.6%) and annual (3.7%), core CPI monthly (+0.33%) and annual (2.6%), and the Oct 15 mortgage rate (7.40%). That is what you would expect if the ranges are roughly right, but five results are far too few to confirm it. The misses worth noting are in the center, not the range: core CPI came in at +0.33% against my +0.20% central estimate, and at the very top of its range, which suggests I underestimated core pressure. Oil is also trading above my central estimate. I have not revised any estimate; the original ranges stay for honest scoring. One definitional caveat on oil: I meant the futures price for Brent. The EIA's physical Brent spot series ran far higher (about $126 on Oct 14) than futures quotes of roughly $100-110 that week, which is itself a sign of how tight physical supply is. Sources: <a href="https://www.bls.gov/news.release/archives/cpi_10142026.htm" target="_blank" rel="noopener">BLS CPI, Oct 14</a>; <a href="https://www.freddiemac.com/pmms" target="_blank" rel="noopener">Freddie Mac PMMS, Oct 15</a>.
+  </div>
+  <div class="note" style="margin-top:12px;">
+    <strong>Scorecard update, October 26.</strong> A sixth estimate has resolved: the October 22 mortgage rate (7.32%) landed inside its interpolated range and below the central estimate. Brent (about $114.70 intraday) is above my central range but still inside the 95% band, and gas ($4.29) is inside its range. Six of six resolved estimates are inside their ranges; the Fed decision, the November 5 mortgage rate and the October 27 gas and oil checkpoints are still pending. The original ranges have not been revised.
   </div>
   <div class="impact"><span class="impact-label">What this means for you</span>Treat these as planning ranges, not promises. If you are budgeting for a mortgage or fuel, the range is more useful than the midpoint: a lender quote anywhere from about 7.15% to 7.65% next week would be normal, and a gas price from $4.00 to $4.65 at the end of the month would not be a surprise.</div>
 </section>
@@ -1211,13 +1273,21 @@
     </div>
   </div>
   <div class="note warn" style="margin-top:12px;">
+    <strong>Update, October 22:</strong> <a href="https://www.kff.org/topic/affordable-care-act/" target="_blank" rel="noopener">KFF reported on October 14</a> that individual (ACA-type) market enrollment fell 18%, from 25.2 million in June 2025 to 20.5 million in June 2026, a loss of more than 4.6 million people, after the enhanced premium tax credits expired. KFF's October 6 health tracking poll found health care costs and gas costs tied as voters' top economic concerns. Enrollment is not the same as the uninsured rate: some people who left marketplace plans may have found other coverage, and the CDC uninsured figures above have not yet captured 2026.
+  </div>
+  <details class="older-updates"><summary><span class="arrow" aria-hidden="true">▼</span><span class="lbl-show">Show background, earlier updates &amp; sources (3)</span><span class="lbl-hide">Hide background, earlier updates &amp; sources</span></summary>
+  <div class="note warn" style="margin-top:12px;">
     The uninsured rate was essentially flat in 2025, but CDC and CBO both expect it to rise going forward. Enhanced ACA marketplace subsidies expired at the end of 2025, and Medicaid eligibility changes from last year's federal tax and spending law are set to phase in — the Congressional Budget Office projects roughly 10 million more uninsured Americans over the next decade as a result.
+  </div>
+  <div class="note" style="margin-top:12px;">
+    <strong>CDC detail (May 28 release):</strong> in the National Health Interview Survey, 8.3% of people of all ages (28.0 million) were uninsured in 2025, down from 9.2% in 2021. Among adults 18-64 it was 11.6%, unchanged from 2024. For children it was 5.6% (4.0 million), a small rise from 5.1% that CDC says is not statistically significant. About 66.2% of people under 65 had private coverage and 26.0% public coverage. Source: <a href="https://cdc.gov/nchs/pressroom/releases/20260528.html" target="_blank" rel="noopener">CDC/NCHS press release</a>. I did not find a newer CDC insurance release this week.
   </div>
   <div class="source-card" style="margin-top:12px;">
     <a href="https://www.cdc.gov/nchs/fastats/health-insurance.htm" target="_blank">CDC/NCHS — Health Insurance Coverage (NHIS Early Release)</a>
     <div class="desc">The most current federal uninsured-rate estimates, released ahead of the Census Bureau's annual American Community Survey figures.</div>
     <span class="tag">cdc.gov</span>
   </div>
+  </details>
   <div class="impact"><span class="impact-label">What this means for you</span>If you get insurance through the ACA marketplace, brace for premium increases as enhanced subsidies expire. This is a good year to shop around during open enrollment rather than auto-renew your current plan.</div>
 </section>
 
@@ -1253,10 +1323,9 @@
   <div class="election-note"><strong>West</strong> (this dashboard's coolest inflation region, 3.0% CPI): Alaska has an open governor's race (Gov. Dunleavy is term-limited); California already held its primary June 2.</div>
 
   <div class="note" style="margin-top:12px;">
-    <strong>Registration deadlines vary widely by state.</strong> Same-day registration (register at the polls): California, Colorado, Illinois, Maryland, Michigan, Minnesota, Nevada, Virginia, and others. The 30-day deadline (Oct 4, 2026) has already passed in Georgia, Mississippi, Rhode Island, Tennessee and Virginia unless same-day rules apply. The 25-day deadline is this Friday, Oct 9, 2026, in Alabama, Florida, Louisiana and Texas. Verify your specific state and status directly — deadlines and rules are subject to change.
+    <strong>Registration deadlines vary widely by state, and many have now passed.</strong> As of October 22 (12 days before Election Day), the 25-30 day deadlines in states such as Georgia, Texas, Florida, Ohio and Arizona have passed. Per <a href="https://www.ncsl.org/elections-and-campaigns/voter-registration-deadlines" target="_blank" rel="noopener">NCSL</a>, deadlines still open include: Idaho, Nebraska (in person), Utah and Virginia on October 23; Hawaii, Massachusetts and New York on October 24; Colorado on October 26; and Connecticut on October 27. Washington accepts in-person registration through Election Day, and Wisconsin has an in-person option the Friday before. Many states, including California, Iowa, Maryland, Nevada, Michigan and Illinois, allow same-day registration during early voting or on Election Day, and North Dakota has no voter registration. NCSL does not give early-voting dates. Verify your own state and status with local election officials, as rules can change.
   </div>
-  <div class="impact"><span class="impact-label">What this means for you</span>If any of the cost-of-living issues tracked in this dashboard — grocery prices, SNAP, housing, healthcare access — matter to you, November is when that gets decided at the state and federal level. Check your registration status now — some deadlines are this week.</div>
-
+  <details class="older-updates"><summary><span class="arrow" aria-hidden="true">▼</span><span class="lbl-show">Show background, earlier updates &amp; sources (3)</span><span class="lbl-hide">Hide background, earlier updates &amp; sources</span></summary>
   <div class="source-card" style="margin-top:12px;">
     <a href="https://www.vote.org" target="_blank">Vote.org — Registration &amp; Deadlines</a>
     <div class="desc">Check your registration status, find your state's deadline, and see what's on your ballot.</div>
@@ -1272,6 +1341,9 @@
     <div class="desc">Official nonpartisan tracker of primary dates and rules by state.</div>
     <span class="tag">ncsl.org</span>
   </div>
+  </details>
+  <div class="impact"><span class="impact-label">What this means for you</span>If any of the cost-of-living issues tracked in this dashboard — grocery prices, SNAP, housing, healthcare access — matter to you, November is when that gets decided at the state and federal level. Check your registration status now: some deadlines are this week, and several states allow same-day registration.</div>
+
 </section>
 
 <section>
@@ -1337,15 +1409,6 @@
       <a href="https://www.epi.org" target="_blank">Economic Policy Institute</a>
       <div class="desc">Nonpartisan-leaning labor and wage research; tracks real wage trends referenced in this dashboard's Unemployment section.</div>
       <span class="tag">epi.org</span>
-    </div>
-  </div>
-
-  <div class="involve-group">
-    <span class="issue-tag">Wildfires &amp; Energy Costs</span>
-    <div class="source-card">
-      <a href="https://www.insurance.ca.gov" target="_blank">California Department of Insurance — Consumer Resources</a>
-      <div class="desc">Official state resource for wildfire-related insurance issues, including the FAIR Plan referenced in this dashboard.</div>
-      <span class="tag">insurance.ca.gov</span>
     </div>
   </div>
 
@@ -1468,26 +1531,50 @@
 </section>
 
 <section id="sec-references">
-  <h2>References &amp; verification log — October 18 refresh</h2>
-  <p class="subnote">Every new figure in this refresh, where it came from, and how well it was verified. "Primary" means read from the issuing agency's own page. "Secondary" means a news or market-data site, cross-checked where noted. Where sources disagreed or a figure could not be verified, the dashboard says so in the section itself.</p>
+  <h2>References &amp; verification log</h2>
+  <details class="older-updates"><summary><span class="arrow" aria-hidden="true">▼</span><span class="lbl-show">Show references &amp; verification log (October 26 refresh)</span><span class="lbl-hide">Hide references &amp; verification log</span></summary>
+
+  <p class="subnote">Every figure that was added or changed in the latest refreshes, where it came from, and how it was verified. "Primary" means read from the issuing agency's own page. Wire services (AP, Reuters) and established outlets are labeled as such. In this refresh I removed or replaced citations to market-news aggregators and other sources I could not treat as reliable.</p>
   <div class="table-wrap"><div class="scroll-hint">↔ swipe to see all columns</div><div class="table-scroll"><table class="trend-table">
     <tr><th>Data point</th><th>Source</th><th>Verification</th></tr>
-    <tr><td>Sept CPI: headline +0.6% m/m, 3.7% y/y; core +0.3%/2.6%; energy +5.2% m/m, 20.4% y/y; gasoline +9.1% m/m, 34.2% y/y; food 0.0%/2.5%; food at home -0.1%/1.8%; shelter +0.4%/3.2%; medical care +0.1%/1.5%</td><td><a href="https://www.bls.gov/news.release/archives/cpi_10142026.htm" target="_blank" rel="noopener">BLS CPI news release, Oct 14, 2026</a></td><td>Primary. Read directly from the BLS release; headline and core also matched investinglive.</td></tr>
-    <tr><td>CPI consensus: headline 3.6% y/y, core +0.2% m/m and 2.5% y/y; unrounded core 0.33% m/m, 2.564% y/y</td><td><a href="https://investinglive.com/news/us-september-cpi-vs-3-6-expected-0/" target="_blank" rel="noopener">investinglive</a></td><td>Secondary (market news). Actuals cross-checked against BLS; consensus figures not independently verified.</td></tr>
-    <tr><td>Sept PPI: final demand +1.3% m/m, 6.3% y/y; goods +2.6%; energy +10.8%; gasoline +20.3%; services +0.8%; ex food, energy, trade +0.5% m/m and 5.0% y/y</td><td><a href="https://www.bls.gov/news.release/archives/ppi_10152026.htm" target="_blank" rel="noopener">BLS PPI news release, Oct 15, 2026</a></td><td>Primary. 5.3% consensus from investinglive (secondary).</td></tr>
-    <tr><td>30-yr mortgage 7.40% (Oct 15), prior 7.40%, year ago 6.27%; 15-yr 6.71%</td><td><a href="https://www.freddiemac.com/pmms" target="_blank" rel="noopener">Freddie Mac PMMS</a></td><td>Primary. Confirmed by AP report.</td></tr>
-    <tr><td>Mortgage context: 7-week streak ended; highest since Nov 2023; 10-yr yield ~5.10%; December hike odds 64.6%; Fannie Mae forecast</td><td><a href="https://www.news4jax.com/news/2026/10/15/average-long-term-us-mortgage-rate-holds-at-74-remaining-at-highest-level-in-nearly-3-years/" target="_blank" rel="noopener">AP via News4Jax, Oct 15</a></td><td>Secondary (wire report), consistent with Freddie Mac figures.</td></tr>
-    <tr><td>Initial jobless claims 199K (week ending Oct 10); 4-wk avg 198.5K; continuing claims 1.710M</td><td><a href="https://www.dol.gov/ui/data.pdf" target="_blank" rel="noopener">U.S. Department of Labor weekly claims</a></td><td>Primary.</td></tr>
-    <tr><td>AAA national gas average $4.2988 on Oct 18; $4.3585 a week ago; $4.4687 a month ago; $3.0408 a year ago</td><td><a href="https://gasprices.aaa.com/" target="_blank" rel="noopener">AAA Gas Prices</a></td><td>Primary (AAA). Figures as shown on the page at time of pull.</td></tr>
-    <tr><td>Fed hike odds: ~22% pre-CPI, ~52% post-CPI, 41.5% (CME FedWatch, Oct 14 midday), ~27% (Oct 15 evening)</td><td><a href="https://247wallst.com/investing/2026/10/15/traders-give-warsh-a-42-chance-of-doing-something-this-month-that-has-only-happened-once-in-the-past-36-years/" target="_blank" rel="noopener">247WallSt; roic.ai; investinglive</a></td><td>Secondary, and the figures differ by source and time of day. Treat as a range, not a single number.</td></tr>
-    <tr><td>Warsh comments at IMF event, Oct 16 (declined to signal October outcome)</td><td><a href="https://tradingeconomics.com/united-states/interest-rate/news/592678" target="_blank" rel="noopener">Trading Economics</a></td><td>Secondary; paraphrased.</td></tr>
-    <tr><td>Oil: Brent highest since May on Oct 16 (intraday high ~$110); WTI $97.59 on Oct 15</td><td><a href="https://baolaocai.vn/gia-xang-dau-hom-nay-1710-dau-the-gioi-tang-vot-phien-giao-dich-cuoi-tuan-post912153.html" target="_blank" rel="noopener">investinglive; Bao Lao Cai (citing Reuters)</a></td><td>Lowest confidence. Secondary sources conflict on the Oct 16 close; no official settlement verified.</td></tr>
-    <tr><td>DOE solicits up to 17M barrel SPR exchange (Oct 16)</td><td><a href="https://www.devdiscourse.com/article/international/3993879-us-solicits-exchange-of-up-to-17-million-barrels-of-oil-from-strategic-reserve" target="_blank" rel="noopener">Devdiscourse</a></td><td>Secondary (news aggregator); DOE primary announcement not opened.</td></tr>
-    <tr><td>Michigan sentiment Oct prelim 46.3; 1-yr 4.7%; 5-yr 3.5% (final due Oct 23)</td><td><a href="https://investinglive.com/news/us-october-umich-prelim-consumer-sentiment-vs-47-8-expected/" target="_blank" rel="noopener">investinglive; AP market wrap</a></td><td>Secondary. Michigan's own release not opened.</td></tr>
+    <tr><td>Sept CPI (Oct 14): headline +0.6% m/m, 3.7% y/y; core +0.3% m/m, 2.6% y/y; energy +5.2% m/m, 20.4% y/y; gasoline +9.1% m/m, 34.2% y/y; food 0.0% / 2.5%; food at home -0.1% / 1.8%; shelter +0.4% / 3.2%; medical care +0.1% / 1.5%</td><td><a href="https://www.bls.gov/news.release/archives/cpi_10142026.htm" target="_blank" rel="noopener">U.S. Bureau of Labor Statistics</a></td><td>Primary. Read directly from the BLS release.</td></tr>
+    <tr><td>Sept PPI (Oct 15): final demand +1.3% m/m, 6.3% y/y; goods +2.6%; energy +10.8%; gasoline +20.3%; services +0.8%; ex food, energy, trade +0.5% m/m, 5.0% y/y</td><td><a href="https://www.bls.gov/news.release/archives/ppi_10152026.htm" target="_blank" rel="noopener">U.S. Bureau of Labor Statistics</a></td><td>Primary.</td></tr>
+    <tr><td>Initial jobless claims 199K (week ending Oct 10); 4-wk avg 198.5K; continuing claims 1.710M. Next release Oct 22.</td><td><a href="https://www.dol.gov/ui/data.pdf" target="_blank" rel="noopener">U.S. Department of Labor</a></td><td>Primary. Re-checked Oct 21; unchanged since Oct 15.</td></tr>
+    <tr><td>30-yr mortgage 7.40% (Oct 15), unchanged; 15-yr 6.71%; year ago 6.27% / 5.52%. Next release Oct 22.</td><td><a href="https://www.freddiemac.com/pmms" target="_blank" rel="noopener">Freddie Mac PMMS</a></td><td>Primary. Re-checked Oct 21.</td></tr>
+    <tr><td>Mortgage context: end of 7-week streak; highest since Nov 2023; Fannie Mae forecast of 7.4% in Q4</td><td><a href="https://www.news4jax.com/news/2026/10/15/average-long-term-us-mortgage-rate-holds-at-74-remaining-at-highest-level-in-nearly-3-years/" target="_blank" rel="noopener">Associated Press (via News4Jax)</a></td><td>Wire service; rate figures match Freddie Mac.</td></tr>
+    <tr><td>10-year Treasury yield: 5.24% (Oct 9), 5.31% peak (Oct 5), 5.09% (Oct 16), 5.13% (Oct 21)</td><td><a href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value_month=202610" target="_blank" rel="noopener">U.S. Treasury, daily par yield curve</a></td><td>Primary.</td></tr>
+    <tr><td>Retail gas: AAA $4.2644 (Oct 21), $4.3333 week ago, $4.4786 month ago, $3.0478 year ago</td><td><a href="https://gasprices.aaa.com/" target="_blank" rel="noopener">AAA Gas Prices</a></td><td>Primary (AAA). Figures as displayed at time of pull.</td></tr>
+    <tr><td>Retail gas $4.284 and diesel $6.276 (Oct 19); week-ago $4.331 and $6.179. Year-ago values are derived from EIA's reported change.</td><td><a href="https://www.eia.gov/petroleum/gasdiesel/" target="_blank" rel="noopener">U.S. Energy Information Administration</a></td><td>Primary. Cross-checks AAA on gasoline.</td></tr>
+    <tr><td>Spot prices: WTI $101.91, Brent (Europe) $126.55 on Oct 14; series for Oct 7-14</td><td><a href="https://www.eia.gov/dnav/pet/pet_pri_spt_s1_d.htm" target="_blank" rel="noopener">U.S. Energy Information Administration</a></td><td>Primary, but lags by about a week. These are physical spot prices, which differ from futures quotes.</td></tr>
+    <tr><td>Oil on Oct 21: Brent ~$109, WTI ~$97.70 (intraday); multi-month highs prior session; 18 vessel attacks in two weeks (Kpler); Kremlin on resuming talks; EIA inventories; heating-oil reserve loan</td><td><a href="https://www.brecorder.com/news/40445237/oil-rises-on-middle-east-supply-worries" target="_blank" rel="noopener">Reuters (via Business Recorder)</a></td><td>Wire service, republished. Intraday only; no official settlement verified.</td></tr>
+    <tr><td>SPR: Sept 29 exchange of up to 40M barrels as part of the 172M-barrel U.S. contribution to the IEA 400M release; five prior solicitations awarded 133M+</td><td><a href="https://www.energy.gov/node/4860435" target="_blank" rel="noopener">U.S. Department of Energy</a></td><td>Primary.</td></tr>
+    <tr><td>SPR: further solicitation of up to 17M barrels on Oct 16</td><td><a href="https://boereport.com/2026/10/16/us-solicits-exchange-of-up-to-17-million-barrels-of-oil-from-strategic-reserve/amp/" target="_blank" rel="noopener">BOE Report (Reuters-sourced)</a></td><td>Secondary (republished wire story); DOE's own Oct 16 notice not located.</td></tr>
+    <tr><td>Fed hike odds (CME FedWatch): 22% before CPI, 50% after, 28% on Oct 15; Warsh remarks Oct 16 in Bangkok</td><td><a href="https://www.axios.com/2026/10/16/warsh-federal-reserve-interest-rates" target="_blank" rel="noopener">Axios</a></td><td>Reputable outlet citing CME; odds as of Oct 15-16 only. Current odds not retrieved.</td></tr>
+    <tr><td>Michigan sentiment, Oct preliminary: 46.3; current conditions 44.7; expectations 47.3; 1-yr inflation expectations 4.7%; 5-yr 3.5%. Final due Oct 23.</td><td><a href="https://www.sca.isr.umich.edu/" target="_blank" rel="noopener">University of Michigan Surveys of Consumers</a></td><td>Primary. Read directly.</td></tr>
+    <tr><td>Upcoming: Q3 GDP advance estimate and September Personal Income and Outlays (PCE), both Oct 29, 8:30 a.m.</td><td><a href="https://www.bea.gov/news/schedule" target="_blank" rel="noopener">Bureau of Economic Analysis release schedule</a></td><td>Primary.</td></tr>
+    <tr><td>2027 Social Security COLA 3.6% (announced Oct 14)</td><td><a href="https://www.ssa.gov/oact/cola/colasummary.html" target="_blank" rel="noopener">Social Security Administration</a>; <a href="https://www.cnbc.com/2026/10/14/social-security-cola-2027.html" target="_blank" rel="noopener">CNBC</a></td><td>Primary (SSA) plus major outlet</td></tr>
+    <tr><td>Sept regional CPI (Northeast/Midwest 4.2%, South/West 3.4%, shelter and gasoline detail)</td><td>BLS regional releases, Oct 14 (Northeast, Midwest, South, West)</td><td>Primary; one Northeast shelter discrepancy noted in text</td></tr>
+    <tr><td>2027 Medicare Part B premium projected $209.50, deductible $292</td><td><a href="https://www.aarp.org/medicare/medicare-part-b-premium-2027/" target="_blank" rel="noopener">AARP</a>, citing Medicare Trustees</td><td>Secondary; projection, CMS final pending</td></tr>
+    <tr><td>SNAP FY2027 max allotments $306 (1 person), $1,023 (4 people)</td><td><a href="https://www.fna.usda.gov/snap/allotment/COLA" target="_blank" rel="noopener">USDA Food and Nutrition Service</a></td><td>Primary</td></tr>
+    <tr><td>KFF: individual-market enrollment down 18% to 20.5M</td><td><a href="https://www.kff.org/topic/affordable-care-act/" target="_blank" rel="noopener">KFF</a></td><td>Reputable research org; linked to topic page, not the specific article</td></tr>
+    <tr><td>FY2026 deficit about $2T through August</td><td><a href="https://www.fox5dc.com/news/federal-budget-deficit-hits-2t-cbo" target="_blank" rel="noopener">Fox 5 DC</a> reporting CBO monthly review</td><td>Secondary; CBO page not read directly</td></tr>
+    <tr><td>Voter registration deadlines</td><td><a href="https://www.ncsl.org/elections-and-campaigns/voter-registration-deadlines" target="_blank" rel="noopener">NCSL</a></td><td>Reputable; verify with your state</td></tr>
+    <tr><td>USDA ERS Food Price Outlook (Sept 25): all food +2.9% 2026, food at home +2.4%, beef +9.4%, eggs -29.4%</td><td><a href="https://www.ers.usda.gov/data-products/food-price-outlook/summary-findings" target="_blank" rel="noopener">USDA ERS</a></td><td>Primary; forecast, next update pending</td></tr>
+    <tr><td>30-yr mortgage 7.32% (Oct 22); 15-yr 6.68%; year ago 6.19% / 5.44%</td><td><a href="https://freddiemac.gcs-web.com/news-releases/news-release-details/mortgage-rates-decrease-732" target="_blank" rel="noopener">Freddie Mac news release</a></td><td>Primary</td></tr>
+    <tr><td>Initial claims 194K (week ended Oct 17); 4-wk avg 197,750; continuing claims 1.728M</td><td><a href="https://www.pymnts.com/economy/2026/dol-data-shows-jobless-claims-drop-to-near-1960s-lows/" target="_blank" rel="noopener">PYMNTS</a> reporting DOL; <a href="https://www.bloomberg.com/news/articles/2026-10-22/us-initial-jobless-claims-fall-to-three-month-low" target="_blank" rel="noopener">Bloomberg</a> headline</td><td>Secondary; DOL release not opened</td></tr>
+    <tr><td>AAA gas $4.27 (Oct 22), $4.29 (Oct 25)</td><td><a href="https://gasprices.aaa.com/2026/10/" target="_blank" rel="noopener">AAA Fuel Prices</a></td><td>Primary (AAA)</td></tr>
+    <tr><td>Michigan final October sentiment 48.0; current 46.7; expectations 48.8; inflation expectations 4.7% / 3.5%</td><td><a href="https://www.advisorperspectives.com/dshort/updates/2026/10/23/consumer-sentiment-at-five-month-low" target="_blank" rel="noopener">Advisor Perspectives</a></td><td>Secondary; Michigan page not opened</td></tr>
+    <tr><td>Brent about $114.70, WTI about $100.71 (Oct 26 intraday); Saudi pipeline attacks; mediation</td><td><a href="https://gvwire.com/2026/10/26/oil-slips-2-a-barrel-but-stays-near-six-month-highs-on-saudi-attacks/" target="_blank" rel="noopener">Reuters via GV Wire</a></td><td>Wire copy republished; intraday</td></tr>
+    <tr><td>Iran/Hormuz developments Oct 26 (Trump options, State Dept order, Hormuz restrictions)</td><td><a href="https://www.foxnews.com/live-news/iran-war-news-trump-israel-saudi-october-26" target="_blank" rel="noopener">Fox News live blog</a></td><td>Secondary; claims attributed in text</td></tr>
+    <tr><td>Reuters economist poll: 94 of 100 expect Fed hold Oct 28; all 100 expect Dec hike</td><td><a href="https://en.sedaily.com/international/2026/10/26/us-economists-see-fed-holding-rates-on-the-28th-hiking-in" target="_blank" rel="noopener">Seoul Economic Daily</a></td><td>Secondary; Reuters story not opened</td></tr>
+    <tr><td>CDC NHIS 2025 uninsured: 8.3% all ages, 11.6% adults 18-64, 5.6% children</td><td><a href="https://cdc.gov/nchs/pressroom/releases/20260528.html" target="_blank" rel="noopener">CDC/NCHS</a></td><td>Primary</td></tr>
+    <tr><td>Sept chained CPI (C-CPI-U) 3.5% y/y, +0.5% m/m; CPI-W 3.9% y/y, +0.7% m/m</td><td><a href="https://www.bls.gov/news.release/cpi.nr0.htm" target="_blank" rel="noopener">BLS CPI release (Oct 14)</a></td><td>Primary; C-CPI-U is preliminary</td></tr>
+    <tr><td>COLA context: 2026 COLA 2.8%; 2027 highest in four years; long-run averages</td><td><a href="https://www.americanactionforum.org/insight/ssa-announces-3-6-percent-social-security-cola-for-2027/" target="_blank" rel="noopener">American Action Forum</a>; <a href="https://finance.yahoo.com/economy/article/social-security-announces-36-cola-for-2027-the-highest-in-4-years-135447865.html" target="_blank" rel="noopener">Yahoo Finance</a></td><td>Secondary; sources disagree on averages</td></tr>
   </table></div></div>
   <div class="note" style="margin-top:12px;">
-    <strong>Not verified in this refresh:</strong> official oil settlement prices for Oct 12-16 (sources conflict); diesel price for September; the Michigan October final (due Oct 23); a clean single figure for October Fed hike odds (they moved between roughly 22% and 52% during the week). Earlier sections that were not updated this week (for example Medicare, Medicaid, SNAP, CBO, uninsured rate and the elections section) still carry the dates and sources shown in their own text.
+    <strong>Not verified in this refresh:</strong> official futures settlement prices for Oct 12-21 (Reuters intraday quotes only; EIA spot data ends Oct 14); current Fed hike odds after Oct 16; any CPI or PPI "consensus" forecasts (I removed them because I could only find them on aggregator sites); the Cleveland Fed nowcast and Continuum Economics figures used to build the forecast ranges (taken from secondary write-ups, not the originals); and the Oct 16 DOE notice for the 17M-barrel solicitation. Older sections not updated this week (Medicare, Medicaid, SNAP, CBO, uninsured rate, elections) carry the dates and sources in their own text.
   </div>
+  </details>
 </section>
 
 <section>
@@ -1500,7 +1587,7 @@
 </main>
 
 <footer>
-  Built from live BLS/BEA/CMS/USDA/CDC/Freddie Mac/DOL/Federal Reserve/S&amp;P Case-Shiller/CBO/CBPP/University of Michigan/U.S. Treasury data, refreshed October 18, 2026. Figures are subject to revision by the issuing agency.
+  Built from live BLS/BEA/CMS/USDA/CDC/Freddie Mac/DOL/Federal Reserve/S&amp;P Case-Shiller/CBO/CBPP/University of Michigan/U.S. Treasury data, refreshed October 26, 2026. Figures are subject to revision by the issuing agency.
 </footer>
 
 <script>
@@ -1748,8 +1835,8 @@
     {label:'Core CPI, annual rate',min:2.0,max:2.8,ticks:[2.0,2.2,2.4,2.6,2.8],lo:2.2,mid:2.4,hi:2.6,act:2.6,cur:2.4,curLabel:'August actual',fmt:pct(1)}
   ]);
   intervals('fc-energy',[
-    {label:'AAA national average gas, regular ($/gal)',min:3.8,max:4.9,ticks:[3.8,4.1,4.4,4.7],lo:4.0,mid:4.30,hi:4.65,cur:4.30,curLabel:'Oct 18 (latest)',fmt:function(v){return '$'+v.toFixed(2);}},
-    {label:'Brent crude ($/barrel)',min:70,max:140,ticks:[70,90,110,130],lo:80,mid:102,hi:128,midText:'~$100-104',cur:104.72,curLabel:'Oct 9 settle',fmt:function(v){return '$'+Math.round(v);}}
+    {label:'AAA national average gas, regular ($/gal)',min:3.8,max:4.9,ticks:[3.8,4.1,4.4,4.7],lo:4.0,mid:4.30,hi:4.65,cur:4.29,curLabel:'Oct 25 (AAA)',fmt:function(v){return '$'+v.toFixed(2);}},
+    {label:'Brent crude ($/barrel)',min:70,max:140,ticks:[70,90,110,130],lo:80,mid:102,hi:128,midText:'~$100-104',cur:114.7,curLabel:'Oct 26 (Reuters, intraday)',fmt:function(v){return '$'+Math.round(v);}}
   ]);
   intervals('fc-fed2',[
     {label:'If CPI annual is 3.5% or lower',min:0,max:60,ticks:[0,20,40,60],lo:10,mid:12.5,hi:15,midText:'~12%',fmt:function(v){return Math.round(v)+'%';},note:'Hike probability'},
